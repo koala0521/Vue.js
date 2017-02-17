@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue</title>
+</head>
+<body>
+<div id="wmd-preview" class="wmd-preview"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="b78o" id="vue">Vue</h1><p data-anchor-id="v548"><code>vue</code></p><hr><div class="md-section-divider"></div><h4 data-anchor-id="vj8z" id="一个用数据来操控视图的js工具"><strong>一个用数据来操控视图的js工具</strong></h4><p data-anchor-id="0rpc"><strong>vue使用:</strong></p><pre data-anchor-id="br38"><code> 1 . 先引入 vue.js;
+
+ 2 . 创建一个Vue实例( new Vue() );
+
+ 3 . 实例需要传入一个对象;
+</code></pre><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="62mw"><ol class="linenums"><li class="L0"><code><span class="pun">{</span></code></li><li class="L1"><code><span class="pln">    el</span><span class="pun">:</span><span class="str">"#list"</span><span class="pun">,</span><span class="pln">  </span><span class="com">// 作用区域，在某个元素内部</span></code></li><li class="L2"><code></code></li><li class="L3"><code><span class="pln">    data</span><span class="pun">:{</span><span class="pln">       </span><span class="com">// 要用到数据，需要是一个对象</span></code></li><li class="L4"><code><span class="pln">        list</span><span class="pun">:</span><span class="pln">list</span></code></li><li class="L5"><code><span class="pln">    </span><span class="pun">},</span></code></li><li class="L6"><code><span class="pln">    methods</span><span class="pun">:{</span><span class="pln">    </span><span class="com">// 使用到函数必须放在这个对象里面</span></code></li><li class="L7"><code><span class="pln">        fn</span><span class="pun">:</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">a</span><span class="pun">){</span></code></li><li class="L8"><code><span class="pln">            alert</span><span class="pun">(</span><span class="pln">a</span><span class="pun">);</span></code></li><li class="L9"><code><span class="pln">        </span><span class="pun">}</span><span class="pln">   </span></code></li><li class="L0"><code><span class="pln">    </span><span class="pun">}</span></code></li></ol></pre><pre data-anchor-id="1rql"><code>4 . 指令：需要写在作用的元素行间或者内部；
+        v-for(for循环)=""，v-on:"事件名" = "函数", v-model = ""(可以监控表单元素的属性值变化),v-bind:onoff = false 绑定行间属性
+</code></pre><p data-anchor-id="7q3m"><strong>v-bind 动态的绑定数据</strong></p><pre data-anchor-id="ufzs"><code>响应的数据绑定  当数据发生变化的时候，视图会自动更新
+
+vue会把data中的数据，放在根实例上 ;  
+</code></pre><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="tz0u"><ol class="linenums"><li class="L0"><code><span class="pln">    </span><span class="kwd">var</span><span class="pln"> vm </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Vue</span><span class="pun">({</span></code></li><li class="L1"><code><span class="pln">        el</span><span class="pun">:</span><span class="str">"#box"</span><span class="pun">,</span></code></li><li class="L2"><code><span class="pln">        data</span><span class="pun">:{</span></code></li><li class="L3"><code><span class="pln">            mes</span><span class="pun">:</span><span class="str">"aaa"</span></code></li><li class="L4"><code><span class="pln">        </span><span class="pun">}</span></code></li><li class="L5"><code><span class="pln">    </span><span class="pun">});</span></code></li><li class="L6"><code><span class="pln">    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln"> vue</span><span class="pun">.</span><span class="pln">_data </span><span class="pun">)</span><span class="pln">  </span><span class="com">//  { mes : "aaa" }</span></code></li></ol></pre><pre data-anchor-id="etdo"><code>添加class
+v-bind:class="{class名字:一个表达式}"
+
+class是否添加到这个元素上，取决于对应的表达式是true还是fasle
+
+v-bind: 简写为 :
+v-on:   简写为  @
+</code></pre><p data-anchor-id="yq9b"><strong>绑定事件处理程序 v-on:   简写为  @</strong></p><pre data-anchor-id="6bq2"><code>事件处理程序统一的写在选项项的methods中
+
+事件修饰符
+    利用修饰符，methods 只有纯粹的数据逻辑，而不是去处理 DOM 事件细节
+
+    @click.stop
+
+    .stop 阻止冒泡修饰符
+
+在绑定事件处理程序的时候
+    @click="事件名"
+    @click="事件名($event)" // $event为事件对象参数，固定写法，不可改
+</code></pre><p data-anchor-id="5cnr"><strong>v-if  / v-show</strong> <br>
+驱动元素的现实和隐藏</p><pre data-anchor-id="9sne"><code>v-if = "布尔值 / 可解析为布尔值的表达式"
+v-show = "布尔值 / 可解析为布尔值的表达式"
+
+v-if 操作dom元素删除 / 添加 达到显示和隐藏的目的;
+v-show 是控制 css 的 display 来达到元素显示或者隐藏的目的;
+</code></pre><p data-anchor-id="8267"><strong>计算属性 computed</strong></p><pre data-anchor-id="dq6w"><code>模板不建议放过多的逻辑，不利于阅读和维护，所以引入一个计算属性；
+
+优点：computed 会动态的把计算的属性值，缓存起来，如果还需要再用，直接会从内存拿，不需要在调用函数
+</code></pre><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="fbsi"><ol class="linenums"><li class="L0"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"box"</span><span class="pln"> </span><span class="tag">&gt;</span></code></li><li class="L1"><code><span class="pln">    </span><span class="tag">&lt;span&gt;</span><span class="pln"> {{ val }} </span><span class="tag">&lt;/span&gt;</span><span class="pln">  //  a</span></code></li><li class="L2"><code><span class="tag">&lt;/div&gt;</span></code></li><li class="L3"><code></code></li><li class="L4"><code></code></li><li class="L5"><code><span class="pln">var a = 1;</span></code></li><li class="L6"><code><span class="pln">new Vue（{</span></code></li><li class="L7"><code><span class="pln">    el:"#box",</span></code></li><li class="L8"><code><span class="pln">    data:{</span></code></li><li class="L9"><code><span class="pln">        massage:"abc"</span></code></li><li class="L0"><code><span class="pln">    },</span></code></li><li class="L1"><code><span class="pln">    computed：{</span></code></li><li class="L2"><code><span class="pln">        "val":function(){</span></code></li><li class="L3"><code><span class="pln">            return a</span></code></li><li class="L4"><code><span class="pln">        }</span></code></li><li class="L5"><code><span class="pln">    }</span></code></li><li class="L6"><code><span class="pln">}）</span></code></li><li class="L7"><code></code></li><li class="L8"><code><span class="pln">computed 只写一个函数默认为取值，需要设置，要用到set；</span></code></li><li class="L9"><code></code></li><li class="L0"><code><span class="pln">computed{</span></code></li><li class="L1"><code><span class="pln">    "val"{</span></code></li><li class="L2"><code><span class="pln">        get(){</span></code></li><li class="L3"><code><span class="pln">            rerurn a</span></code></li><li class="L4"><code><span class="pln">        },</span></code></li><li class="L5"><code><span class="pln">        set(){</span></code></li><li class="L6"><code></code></li><li class="L7"><code><span class="pln">        }</span></code></li><li class="L8"><code></code></li><li class="L9"><code><span class="pln">    }</span></code></li><li class="L0"><code><span class="pln">}</span></code></li></ol></pre><p data-anchor-id="28wd">生命周期</p></div>
+</body>
+</html>
