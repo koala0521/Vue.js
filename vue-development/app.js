@@ -9,7 +9,7 @@
 //	}
 //];
 
-var store = {
+var store = {	//数据保存到 localstorage 中，不需要写假数据
 	
 	save(key,value){
 		
@@ -19,7 +19,7 @@ var store = {
 	
 	fetch(key){
 
-		return JSON.parse(localStorage.getItem(key)) || []
+		return JSON.parse( JSON.parse(localStorage.getItem(key)) ) || [];
 
 	}
 	
@@ -27,7 +27,33 @@ var store = {
 
 var list = store.fetch("todo-list");
 
-new Vue({
+var filter = {	//根据hash值筛选数据
+
+	all:function( list ){
+
+		return list;
+	},
+
+	finished:function( list ){
+
+		return list.filter(function( item ){
+
+			return item.isChecked;
+		})
+	},
+
+	unfinished:function( list ){
+
+		return list.filter(function( item ){
+
+			return !item.isChecked;
+		})
+
+	}			
+}
+
+
+var vm = new Vue({
 	
 	el:".main",	
 	
@@ -36,14 +62,20 @@ new Vue({
 		list:list,
 		todo:"",
 		edtorTodos:"", //记录正在编辑的数据
-		boforeTitle:""
+		boforeTitle:"",
+		visibility:"all"
 	},
 	
 	watch:{
 		
-		list:function(){
+		list:{
 			
-			store.save("todo-list",JSON.stringify(this.list) );
+			handler:function(){
+				
+				store.save("todo-list",JSON.stringify(this.list) );
+			},
+			
+			deep:true
 		}
 		
 	},
@@ -56,6 +88,14 @@ new Vue({
             			return !item.isChecked
             	
             		}).length;
+		},
+
+		filterList:function(){  //过滤数据函数
+
+			filter[this.visibility] ? filter[this.visibility] : this.visibility = "all";
+
+			return filter[this.visibility](list);	
+
 		}
 		
 	},
@@ -64,7 +104,14 @@ new Vue({
 		addTodo(ev){  //添加任务
 
 			//事件处理函数中的this指向当前跟实例
-			
+
+			if( !this.todo.trim()  ){
+
+
+				return alert("请输入内容");
+
+			}				
+
 			this.list.push({	//向list添加一条数据
 				
 				title:this.todo,
@@ -111,3 +158,19 @@ new Vue({
 		}
 	}
 });
+
+function watchHash(){
+
+	var hash = window.location.hash.substring(1);
+
+	vm.visibility = hash;
+
+}
+
+watchHash();
+
+window.addEventListener("hashchange", watchHash );
+
+
+
+

@@ -16,7 +16,7 @@
     	
         <h3 class="big-title">添加任务：</h3>
         <input 
-            placeholder="例如：吃饭睡觉打豆豆；    提示：+回车即可添加任务" 
+            placeholder="例如：吃饭睡觉打豆豆；    提示：回车即可添加任务" 
             class="task-input" 
             type="text"
             v-on:keyup.enter ="addTodo"
@@ -25,9 +25,9 @@
         <ul class="task-count" v-show="list.length">
             <li>{{ noCheckedLength }} 个任务未完成</li>
             <li class="action" >
-                <a class="active" href="#">所有任务</a>
-                <a href="#">未完成的任务</a>
-                <a href="#">完成的任务</a>
+                <a :class="{ active:visibility === 'all'}" href="#all">所有任务</a>
+                <a href="#unfinished" :class="{ active:visibility === 'unfinished'}" >未完成的任务</a>
+                <a href="#finished" :class="{ active:visibility === 'finished'}" >完成的任务</a>
             </li>
         </ul>
         <h3 class="big-title">任务列表：</h3>
@@ -35,7 +35,7 @@
 
             <span class="no-task-tip" v-show="!list.length" >还没有添加任何任务</span>
             <ul class="todo-list">
-                <li class="todo" :class="{completed:value.isChecked,editing:value === edtorTodos }"   v-for="value of list" >
+                <li class="todo" :class="{completed:value.isChecked,editing:value === edtorTodos }"   v-for="value of filterList" >
                     <div class="view">
                         <input class="toggle" type="checkbox" v-model="value.isChecked" />
                         <label v-on:dblclick="edtorTodo(value)" >{{ value.title }}</label>
