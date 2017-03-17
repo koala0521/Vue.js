@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>document</title>
+		
+		<style>
+			
+			.warp{
+				
+				width: 400px;
+				margin:50px auto;
+				
+				border-radius: 6px;
+				overflow: hidden;
+			}
+			
+			.warp .component h2{
+				
+				margin: 0;
+				height: 50px;
+				line-height: 50px;
+				background: #ADADAD;
+				position: relative;
+			}
+			
+			.warp .component h2 input{
+				
+				height: 40px;
+				width: 380px;
+				border: none;
+				outline: none;
+				margin: 5px 10px;
+				padding: 0 20px;
+				box-sizing: border-box;
+				vertical-align: top;
+				border-radius: 10px;
+			}
+			
+			.warp .component h2 span{
+				padding: 0 10px;
+				position: absolute;
+				right: 10px;
+				top: 0;
+			};
+			
+			.warp .component{
+				
+				overflow: hidden;
+				margin: 20px 0;
+				background: #7FFFD4;
+			}
+			
+			.warp .component .list{
+				
+				width: 400px;
+				margin: 0;
+				padding: 0;
+			}
+			
+			.warp .component .list li{
+				padding-left: 20px;
+				height: 40px;
+				line-height: 40px;
+				list-style: none;
+				border-bottom: 1px solid #AAAAAA;
+				color: #fff;
+			}
+			
+			.warp .component .list li.hover{
+				
+				background: #FFFDE1;
+				color: #000;
+			}
+			
+			
+		</style>
+		<script src="js/vue.js" ></script>
+	</head>
+	<body>
+		
+		<section class="warp" id="app" >
+			
+			<h3> 自定义组件 1</h3>
+			<custom-celect></custom-celect>
+			<h3> 自定义组件2 </h3>
+			<custom-celect></custom-celect>
+			<!--<div class="component" >
+				<h2>	
+					
+					<input type="text" />
+					
+					<span>▼</span>  
+				
+				</h2>
+				<ul class="list" >
+					
+					<li class="" >css</li>
+					<li>javascript</li>
+					<li>html</li>
+					<li>jQuery</li>
+					<li>Vue</li>
+					
+				</ul>
+				
+			</div>-->
+			
+			
+		</section>
+		
+		<script>
+			
+			Vue.component("custom-celect",
+				
+				{template:
+				`<div class="component" >
+					<h2>	
+						
+						<input type="text" />
+						
+						<span>▼</span>  
+					
+					</h2>
+					<ul class="list" >
+						
+						<li>css</li>
+						<li>javascript</li>
+						<li>html</li>
+						<li>jQuery</li>
+						<li>Vue</li>
+						
+					</ul>
+					
+				</div>`}
+				
+				
+			);
+			
+			new Vue(
+				
+				{el:'#app'}
+				
+			);
+			
+			
+//			vue组件开发：
+//				1.组件模板,存放组件的结构,需要先注册;
+				
+		</script>
+		
+	</body>
+</html>
