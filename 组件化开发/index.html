@@ -48,7 +48,6 @@
 				
 				overflow: hidden;
 				margin: 20px 0;
-				background: #7FFFD4;
 			}
 			
 			.warp .component .list{
@@ -56,6 +55,7 @@
 				width: 400px;
 				margin: 0;
 				padding: 0;
+				background: #7FFFD4;
 			}
 			
 			.warp .component .list li{
@@ -82,9 +82,9 @@
 		<section class="warp" id="app" >
 			
 			<h3> 自定义组件 1</h3>
-			<custom-celect></custom-celect>
+			<custom-celect span-value="查询" ></custom-celect>
 			<h3> 自定义组件2 </h3>
-			<custom-celect></custom-celect>
+			<custom-celect span-value = "搜索" ></custom-celect>
 			<!--<div class="component" >
 				<h2>	
 					
@@ -109,42 +109,54 @@
 		</section>
 		
 		<script>
-			
+			//全局注册组件
 			Vue.component("custom-celect",
 				
-				{template:
-				`<div class="component" >
-					<h2>	
-						
-						<input type="text" />
-						
-						<span>▼</span>  
+				{
+					data:function(){	//组件通用数据
+						return {
+							
+							selectShow:false
+						}
+					},
+					props:["spanValue"],	//组件通信数据
 					
-					</h2>
-					<ul class="list" >
+					//组件模板
+					template: `<div class="component" >	
+						<h2>	
+							
+							<input type="text" v-on:focus = "selectShow = true" />
+							
+							<span> {{spanValue}} ▼</span>  
 						
-						<li>css</li>
-						<li>javascript</li>
-						<li>html</li>
-						<li>jQuery</li>
-						<li>Vue</li>
-						
-					</ul>
+						</h2>
+						<ul class="list" v-show = "selectShow" >
+							
+							<li>css</li>
+							<li>javascript</li>
+							<li>html</li>
+							<li>jQuery</li>
+							<li>Vue</li>
+							
+						</ul>
 					
-				</div>`}
+					</div>`
+				}
 				
 				
 			);
 			
-			new Vue(
+			new Vue({
 				
-				{el:'#app'}
-				
-			);
+					el:'#app',
+					components:{}	//局部注册组件
+				});
 			
 			
 //			vue组件开发：
 //				1.组件模板,存放组件的结构,需要先注册;
+//				全局注册可以再任何地方使用,局部注册,只能在作用区域内使用
+//				2.组件之间的通信:在父组件内增加props属性value值为一个数组，存放传递的数据，子组件模板利用自定义属性的方式绑定通信数据，并且传值给父组件
 				
 		</script>
 		
