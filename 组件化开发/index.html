@@ -35,6 +35,7 @@
 				box-sizing: border-box;
 				vertical-align: top;
 				border-radius: 10px;
+				font-size: 18px;
 			}
 			
 			.warp .component h2 span{
@@ -42,6 +43,7 @@
 				position: absolute;
 				right: 10px;
 				top: 0;
+				font-size: 20px;
 			};
 			
 			.warp .component{
@@ -82,74 +84,82 @@
 		<section class="warp" id="app" >
 			
 			<h3> 自定义组件 1</h3>
-			<custom-celect span-value="查询" ></custom-celect>
+			<custom-celect span-value="查询" v-bind:list ="list1" ></custom-celect>
 			<h3> 自定义组件2 </h3>
-			<custom-celect span-value = "搜索" ></custom-celect>
-			<!--<div class="component" >
-				<h2>	
-					
-					<input type="text" />
-					
-					<span>▼</span>  
-				
-				</h2>
-				<ul class="list" >
-					
-					<li class="" >css</li>
-					<li>javascript</li>
-					<li>html</li>
-					<li>jQuery</li>
-					<li>Vue</li>
-					
-				</ul>
-				
-			</div>-->
+			<custom-celect span-value = "搜索"  v-bind:list ="list2" ></custom-celect>
+
 			
 			
 		</section>
 		
 		<script>
-			//全局注册组件
+			//全局注册组件，下拉框组件
 			Vue.component("custom-celect",
 				
 				{
 					data:function(){	//组件通用数据
 						return {
 							
-							selectShow:false
+							selectShow:false,
+							val:""
 						}
 					},
-					props:["spanValue"],	//组件通信数据
+					props:["spanValue","list"],	//组件通信数据
 					
-					//组件模板
+					methods:{
+						
+						selectValue:function(value){
+							
+							this.val = value;
+						}
+					},					
+					
+					//组件模板 	，下拉框组件中用到了 列表组件
 					template: `<div class="component" >	
 						<h2>	
 							
-							<input type="text" v-on:focus = "selectShow = true" />
+							<input type="text" v-bind:value="val" v-on:click = "selectShow = !selectShow" />
 							
-							<span> {{spanValue}} ▼</span>  
+							<span> {{spanValue}} </span>  
 						
 						</h2>
-						<ul class="list" v-show = "selectShow" >
-							
-							<li>css</li>
-							<li>javascript</li>
-							<li>html</li>
-							<li>jQuery</li>
-							<li>Vue</li>
-							
-						</ul>
+
+						<custom-list v-on:receive="selectValue" v-show = "selectShow" :list="list" ></custom-list>			
 					
 					</div>`
+					
 				}
 				
 				
+			);
+			//列表组件
+			Vue.component('custom-list',
+				{
+					props:["list"],
+					template:`<ul class="list" >
+							
+							<li @click="selectLi(value)" v-for= "value of list" >{{value}}</li>
+							
+						</ul>`,
+					methods:{
+						
+						selectLi:function(value){
+							//列表组件传数据给父组件，利用触发父级的自定义事件
+							this.$emit("receive",value);
+						}
+					}
+				}
 			);
 			
 			new Vue({
 				
 					el:'#app',
-					components:{}	//局部注册组件
+					data:{
+						
+						list1:["北京","上海","杭州"],
+						list2:["今天","明天","后天"]
+					}
+//					components:{}	//局部注册组件
 				});
 			
 			
@@ -157,6 +167,7 @@
 //				1.组件模板,存放组件的结构,需要先注册;
 //				全局注册可以再任何地方使用,局部注册,只能在作用区域内使用
 //				2.组件之间的通信:在父组件内增加props属性value值为一个数组，存放传递的数据，子组件模板利用自定义属性的方式绑定通信数据，并且传值给父组件
+//				3.子组件传数据给父组件不能直接修改数据,需要通知父组件来修改,利用自定义事件来传值给父组件
 				
 		</script>
 		
