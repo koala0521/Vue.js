@@ -3,80 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>document</title>
-		
-		<style>
-			
-			.warp{
-				
-				width: 400px;
-				margin:50px auto;
-				
-				border-radius: 6px;
-				overflow: hidden;
-			}
-			
-			.warp .component h2{
-				
-				margin: 0;
-				height: 50px;
-				line-height: 50px;
-				background: #ADADAD;
-				position: relative;
-			}
-			
-			.warp .component h2 input{
-				
-				height: 40px;
-				width: 380px;
-				border: none;
-				outline: none;
-				margin: 5px 10px;
-				padding: 0 20px;
-				box-sizing: border-box;
-				vertical-align: top;
-				border-radius: 10px;
-				font-size: 18px;
-			}
-			
-			.warp .component h2 span{
-				padding: 0 10px;
-				position: absolute;
-				right: 10px;
-				top: 0;
-				font-size: 20px;
-			};
-			
-			.warp .component{
-				
-				overflow: hidden;
-				margin: 20px 0;
-			}
-			
-			.warp .component .list{
-				
-				width: 400px;
-				margin: 0;
-				padding: 0;
-				background: #7FFFD4;
-			}
-			
-			.warp .component .list li{
-				padding-left: 20px;
-				height: 40px;
-				line-height: 40px;
-				list-style: none;
-				border-bottom: 1px solid #AAAAAA;
-				color: #fff;
-			}
-			
-			.warp .component .list li.hover{
-				
-				background: #FFFDE1;
-				color: #000;
-			}
-			
-			
-		</style>
+		<link rel="stylesheet" href="./css/index.css">
 		<script src="js/vue.js" ></script>
 	</head>
 	<body>
@@ -84,9 +11,9 @@
 		<section class="warp" id="app" >
 			
 			<h3> 自定义组件 1</h3>
-			<custom-celect span-value="查询" v-bind:list ="list1" ></custom-celect>
+			<custom-select span-value="查询" v-bind:list ="list1" ></custom-select>
 			<h3> 自定义组件2 </h3>
-			<custom-celect span-value = "搜索"  v-bind:list ="list2" ></custom-celect>
+			<custom-select span-value = "搜索"  v-bind:list ="list2" ></custom-select>
 
 			
 			
@@ -94,7 +21,7 @@
 		
 		<script>
 			//全局注册组件，下拉框组件
-			Vue.component("custom-celect",
+			Vue.component("custom-select",
 				
 				{
 					data:function(){	//组件通用数据

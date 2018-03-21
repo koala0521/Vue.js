@@ -1,0 +1,70 @@
+
+.warp{
+    
+    width: 400px;
+    margin:50px auto;
+    
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.warp .component h2{
+    
+    margin: 0;
+    height: 50px;
+    line-height: 50px;
+    background: #ADADAD;
+    position: relative;
+}
+
+.warp .component h2 input{
+    
+    height: 40px;
+    width: 380px;
+    border: none;
+    outline: none;
+    margin: 5px 10px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    vertical-align: top;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.warp .component h2 span{
+    padding: 0 10px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    font-size: 20px;
+};
+
+.warp .component{
+    
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.warp .component .list{
+    
+    width: 400px;
+    margin: 0;
+    padding: 0;
+    background: #7FFFD4;
+}
+
+.warp .component .list li{
+    padding-left: 20px;
+    height: 40px;
+    line-height: 40px;
+    list-style: none;
+    border-bottom: 1px solid #AAAAAA;
+    color: #fff;
+}
+
+.warp .component .list li.hover{
+    
+    background: #FFFDE1;
+    color: #000;
+}
+
