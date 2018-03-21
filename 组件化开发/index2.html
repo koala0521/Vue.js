@@ -12,13 +12,19 @@
 			<input type="button" v-on:click="reverseMessage"  value="反转字符"  />	
 			<button v-on:click="hiddenMassage" > 隐藏消息 </button>
 			<p>{{ message }}</p>
+
+			<div>
+				<input v-model="inputMassage" type="text"  />
+				<p> {{ inputMassage }} </p>
+			</div>
 		</section>
 		
 		<script>
 			var app5 = new Vue({
 				el: '#app',
 				data: {
-					message: 'Hello Vue.js!'
+					message: 'Hello Vue.js!',
+					inputMassage:"双向绑定哦"
 				},
 				methods: {
 					reverseMessage: function () {
@@ -31,11 +37,12 @@
 					}
 				}
 			})
-		//			vue组件开发：
-		//				1.组件模板,存放组件的结构,需要先注册;
-		//				全局注册可以再任何地方使用,局部注册,只能在作用区域内使用
-		//				2.组件之间的通信:在父组件内增加props属性value值为一个数组，存放传递的数据，子组件模板利用自定义属性的方式绑定通信数据，并且传值给父组件
-		//				3.子组件传数据给父组件不能直接修改数据,需要通知父组件来修改,利用自定义事件来传值给父组件
+			/*
+				vue指令： 
+					v-on:  绑定时间
+					v-model: 双向绑定 数据和表单元素
+			
+			*/
 				
 		</script>
 		

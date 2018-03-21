@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue组件</title>
+		<link rel="stylesheet" href="./css/index.css">
+		<script src="js/vue.js" ></script>
+	</head>
+	<body>
+		
+		<section class="warp" id="app" >
+			<ul>
+				<todo-item v-bind:todo="todo" ></todo-item>
+			</ul>
+		</section>
+		
+		<script>
+			
+			Vue.component('todo-item', {
+			// todo-item 组件现在接受一个
+			// "prop"，类似于一个自定义特性。
+			// 这个 prop 名为 todo。
+			props: ['todo'],
+			template: '<li>{{ todo.text }}</li>'
+			})
+
+			var app = new Vue({
+				el:"#app",
+				data:{
+					todo:{
+						text:"aaa"
+					},
+					title:"列表"	
+				}
+			});
+
+
+			/*
+				vue组件： 
+					Vue.component( 'todo-item' [ ，props ] , template );
+					第一个参数为组件名：
+					第二个参数为 传给组件的参数
+					第三个参数为组件的模板
+				
+				注意： 组件创建必须在 Vue实例之前。
+			
+			*/
+				
+		</script>
+		
+	</body>
+</html>
