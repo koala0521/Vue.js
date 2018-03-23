@@ -30,11 +30,16 @@
                 <span class="no-task-tip"  v-show="!list.length" >还没有添加任何任务</span>
                 <ul class="todo-list" >
 
-                    <li class="todo" v-for="item in list" >
+                    <li class="todo" v-bind:class="{completed:item.isChecked}" v-for="item in list" >
                             <div class="view">
-                                <input class="toggle" type="checkbox" />
-                                <label  > {{ item.title }} </label>
-                                <button class="destroy" ></button>
+                                <input v-model="item.isChecked"  class="toggle" type="checkbox" />
+                                <label 
+                                    @:dbclick = "editTodo( item )"
+                                > {{ item.title }} </label>
+                                <button 
+                                    class="destroy" 
+                                    v-on:click="removeTodo( item )"
+                                ></button>
                             </div>
                             <input 
                                 class="edit" 

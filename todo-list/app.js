@@ -34,9 +34,15 @@ let VM = new Vue({
 		addTodo:function(ev) {
 			this.list.push({
 				title:this.todo,
-				isChecked:false
+				isChecked:false,
+				id:Math.random()
 			});
 			this.todo = "";
+		},
+		removeTodo(item){
+			var index = this.list.indexOf( item );
+			this.list.splice( index , 1 );
+			
 		}
 
 	}
