@@ -30,11 +30,11 @@
                 <span class="no-task-tip"  v-show="!list.length" >还没有添加任何任务</span>
                 <ul class="todo-list" >
 
-                    <li class="todo" v-bind:class="{completed:item.isChecked}" v-for="item in list" >
+                    <li class="todo" v-bind:class="{completed:item.isChecked , editing:edittingId === item.id }" v-for="item in list" >
                             <div class="view">
                                 <input v-model="item.isChecked"  class="toggle" type="checkbox" />
                                 <label 
-                                    @:dbclick = "editTodo( item )"
+                                    v-on:dblclick = "editTodo( item )"
                                 > {{ item.title }} </label>
                                 <button 
                                     class="destroy" 
@@ -44,6 +44,9 @@
                             <input 
                                 class="edit" 
                                 type="text"
+                                v-model="item.title"
+                                v-focus="edittingId === item.id"
+                                v-on:blur="edited"
                             />
                         </li>                    
                 </ul>
