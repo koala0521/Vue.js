@@ -30,7 +30,10 @@
                 <span class="no-task-tip"  v-show="!list.length" >还没有添加任何任务</span>
                 <ul class="todo-list" >
 
-                    <li class="todo" v-bind:class="{completed:item.isChecked , editing:edittingId === item.id }" v-for="item in list" >
+                    <li class="todo" 
+                        v-bind:class="{completed:item.isChecked , editing:edittingId === item.id }" 
+                        v-for="item in filterTodos" 
+                    >
                             <div class="view">
                                 <input v-model="item.isChecked"  class="toggle" type="checkbox" />
                                 <label 
@@ -46,18 +49,28 @@
                                 type="text"
                                 v-model="item.title"
                                 v-focus="edittingId === item.id"
-                                v-on:blur="edited"
+                                v-on:blur="edited( item , true )"
+                                @keyup.13 = "edited( item , true )"
+                                @keyup.27 = "edited( item , false )"
                             />
                         </li>                    
                 </ul>
             </div>
 
             <ul class="task-count" v-show="list.length" >
-                <li>{{ unCompleted() }}个任务未完成</li>
+                <li>{{ unCompleted }}个任务未完成</li>
                 <li class="action" >
-                    <a  href="#all">所有任务</a>
-                    <a href="#unfinished" >未完成的任务</a>
-                    <a href="#finished" >完成的任务</a>
+                    <a  
+                        v-bind:class="{active:show === all}"
+                        href="#all">所有任务</a>
+                    <a 
+                        v-bind:class="{active:show === unfinished}"
+                        href="#unfinished" 
+                    >未完成的任务</a>
+                    <a 
+                        v-bind:class="{active:show === finished}"
+                        href="#finished" 
+                    >完成的任务</a>
                 </li>
             </ul>
         </div>

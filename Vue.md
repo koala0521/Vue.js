@@ -117,3 +117,32 @@ computed{
 }
 
 ```
+**watch 数据监控**
+
+```
+new Vue（{
+    el:"#box",
+    data:{
+        massage:"abc",
+        "name":{
+            a:1
+        }
+    },
+    watch{
+        "massage":function(){
+            // message 变化是触发，数据为复合类型是，这样写，无法实现深度监控
+            dosomething();
+        },
+        // 复合类型深度监控写法
+        "name":{
+            handler: function(){
+                // name对应的对象内部数据变化时，也能监控到
+            dosomething();
+            },
+            deep:true
+        }
+
+    }
+}）
+
+```
