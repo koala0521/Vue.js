@@ -61,14 +61,14 @@
                 <li>{{ unCompleted }}个任务未完成</li>
                 <li class="action" >
                     <a  
-                        v-bind:class="{active:show === all}"
+                        v-bind:class="{active:show === 'all'}"
                         href="#all">所有任务</a>
                     <a 
-                        v-bind:class="{active:show === unfinished}"
+                        v-bind:class="{active:show === 'unfinished'}"
                         href="#unfinished" 
                     >未完成的任务</a>
                     <a 
-                        v-bind:class="{active:show === finished}"
+                        v-bind:class="{active:show === 'finished'}"
                         href="#finished" 
                     >完成的任务</a>
                 </li>
