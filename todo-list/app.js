@@ -37,7 +37,10 @@ let VM = new Vue({
 		// 当前编辑的todo的 id
 		edittingId:null,
 		// 保存编辑之前的title
-		oldTitle:""
+		oldTitle:"",
+		test:{
+			a:1
+		}
 	},
 
 	computed:{
@@ -51,11 +54,13 @@ let VM = new Vue({
 		},
 		filterTodos:function(){
 			let list = this.list;
+
 			let todos ={
 				"all":function(){
 					return list;
 				},
 				"finished":function(){
+
 					return list.filter(item=>{
 						return item.isChecked === true
 					});
@@ -97,6 +102,9 @@ let VM = new Vue({
 			this.todo = "";
 		},
 		removeTodo:function(item){
+			console.log('====================================');
+			console.log("remove todo");
+			console.log('====================================');
 			var index = this.list.indexOf( item );
 			this.list.splice( index , 1 );
 			

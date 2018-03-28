@@ -1,5 +1,5 @@
 Vue.component("my-button",{
-    template:`<button @click="clickFn(text , callBack )" >{{ massage }}</button>`,
+    template:`<button @click="clickFn( type )" >{{ massage }}</button>`,
     data:function(){
         return (
             {
@@ -7,12 +7,9 @@ Vue.component("my-button",{
             }
         )
     },
-    props:["massage" , "callBack" ],
+    props:["massage" , "type" ],
     methods:{
-        clickFn( text , callBack ){
-            console.log( this );
-
-            callBack && callBack();          
+        clickFn( type ){                   
         }
     }
 });
