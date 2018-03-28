@@ -1,20 +1,69 @@
-Vue.component("my-button",{
-    template:`<button @click="clickFn( type )" >{{ massage }}</button>`,
+Vue.component("custom-select",{
+    template:`<div class="component" >	
+                <h2>	
+                    
+                    <input 
+                        type="text" 
+                        v-model:value="value"
+                        @input="showOption"
+                    />
+                    
+                    <span> {{title}} </span>  
+                
+                </h2>
+                <option-list 
+                    v-bind:value="value" 
+                    v-bind:list="list" 
+                    v-show="showList" 
+                    v-on:select="selectValue"
+                ></option-list>      
+            </div>`,
     data:function(){
         return (
             {
-                text:"确定"
+                value:"",
+                showList:false
             }
         )
     },
-    props:["massage" , "type" ],
+    props:["title" , "list" ],
     methods:{
-        clickFn( type ){                   
+        showOption:function(){    
+ 
+            if( this.value.trim() ){
+                this.showList = true;
+                return
+            }
+            
+            this.showList = false;
+        },
+        selectValue:function(value) {
+
+            this.value = value;
+        }
+    }
+});
+
+Vue.component( "option-list" , {
+    template:`<ul class="list" >
+                                    
+            <li v-for= "value of list" v-on:click="changeParentVal(value)"  >{{value}}</li>
+            
+        </ul>`,
+    props:[ "value" , "list"],
+    methods:{
+        changeParentVal:function(val) {
+            this.$emit( "select" , val );
         }
     }
 });
 
 
 new Vue({
-    el:"#app"
+    el:"#app",
+    data:{
+
+        list1:[ "a" , "b" , "c" ],
+        list2:["1","2","3"]
+    }
 });

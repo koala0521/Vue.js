@@ -10,9 +10,12 @@
 </head>
 <body>
     <div class="warp" id="app" >
-        <my-button massage="保存" type="1" ></my-button>
-        <my-button massage="取消" type="2" ></my-button>
+        <h4> 国外： </h4>
+        <custom-select title="google" v-bind:list="list1" ></custom-select>
+        <h4> 国内： </h4>
+        <custom-select title="百度一下" v-bind:list="list2" ></custom-select>
     </div>
+
     <script src="app.js"></script>
 </body>
 </html>
