@@ -102,9 +102,7 @@ let VM = new Vue({
 			this.todo = "";
 		},
 		removeTodo:function(item){
-			console.log('====================================');
-			console.log("remove todo");
-			console.log('====================================');
+
 			var index = this.list.indexOf( item );
 			this.list.splice( index , 1 );
 			

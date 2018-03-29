@@ -97,7 +97,7 @@ ul {
     margin-right: 0;
 }
 
-.active {
+.router-link-active {
     border: 1px solid rgba(175, 47, 47, 0.2);
 }
 
@@ -160,7 +160,7 @@ ul {
     margin: auto 0;
     border: none; /* Mobile Safari */
     -webkit-appearance: none;
-    /* appearance: none; */
+    appearance: none;
 }
 
 .toggle {
@@ -174,7 +174,7 @@ ul {
     margin: auto 0;
     border: none; /* Mobile Safari */
     -webkit-appearance: none;
-    /* appearance: none; */
+    appearance: none;
 }
 
  .toggle:after {
