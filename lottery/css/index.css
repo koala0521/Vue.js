@@ -1,0 +1,59 @@
+.warp{
+    text-align: center;
+}
+.lottery-warp{
+    width: 530px;
+    height: 530px;
+    background-image: url(../img/bg.png);
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    padding: 40px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.btn{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg)
+    }
+    to{
+        transform: rotate(720deg)
+    }
+}
+
+.content-img{
+    border: none;
+    transition: 2s;
+}
+
+.content-img.move{
+    /* transition: 1s; */
+    animation: rotate 1s linear infinite;
+}
+
+.content-img.slowlly{
+    transition: 2s;
+    transform: rotate(240deg);
+    animation-play-state:paused;
+}
+
+.stop{
+    animation-play-state:paused;
+}
+
+button{
+    margin-top: 10px;
+    width: 80px;
+    height: 30px;
+    background: #00aaff;
+    outline: none;
+}
+
+
