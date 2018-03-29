@@ -25,28 +25,23 @@ Vue.component("lottery-demo",{
 
             }, 2000);
         },
-        slowllyMove(){
-            this.isMove = false;
-            this.isSlow = true;
-        },
         stopMove(){
 
-            let content = this.$refs.content;
-            setTimeout(() => {            
+            // 模拟后台请求到的结果
+            const result = Math.floor(Math.random() * (this.map.length - 1) );
+
+            let content = this.$refs.content;     
                 this.isMove = false;
                 this.isSlow = true;    
 
-                // 模拟后台请求到的结果
-                var result = Math.floor(Math.random() * 5);
 
-                let endDeg = (this.map[ result ].min + this.map[ result ].max)/2;                 
-            
-                content.style.transform = "rotate("+ endDeg +"deg)";  
-                setTimeout(() => {
-                    alert( this.map[ result ].text );
-                }, 2000);
+            let endDeg = (this.map[ result ].min + this.map[ result ].max)/2;                 
+        
+            content.style.transform = "rotate("+ endDeg +"deg)";  
+            setTimeout(() => {
+                alert( this.map[ result ].text );
+            }, 1000);
 
-            }, 500);
         },
         reset(){
             let content = this.$refs.content;
