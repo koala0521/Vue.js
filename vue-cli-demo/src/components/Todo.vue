@@ -27,8 +27,8 @@
 
         data(){
             return {
-                // list:store.fatch("todos") || [],
-                list:[],
+
+                list:this.$store.state.list,
                 // 创建todo时，输入的todo名称
                 todo:""
             }
@@ -53,11 +53,8 @@
         methods:{
 
             addTodo:function(ev) {
-                this.list.push({
-                    title:this.todo,
-                    isChecked:false,
-                    id:Math.random()
-                });
+                // 调用 store.commit方法， 触发 mutation，改变数据
+                this.$store.commit("ADD_TODO" , this.todo );
                 this.todo = "";
             },
             removeTodo:function(item){
@@ -65,9 +62,7 @@
                 var index = this.list.indexOf( item );
                 this.list.splice( index , 1 );
                 
-            }
-                
-
+            }                
         }
     }
 

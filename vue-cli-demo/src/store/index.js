@@ -3,13 +3,22 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-const store = new Vuex.store({
+const store = new Vuex.Store({
+    // 应用的全局数据
     state:{
         list:[]
     },
+    // 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation
     mutations:{
         ADD_TODO( state , todo ){
-            state.list.push(todo);
+
+            state.list.push({
+                title:todo,
+                isChecked:false,
+                id:Math.random()
+            });
+            this.todo = "";
+
         },
         REMOVE_TODO( id ){
             let index = state.list.findIndex(element=>{

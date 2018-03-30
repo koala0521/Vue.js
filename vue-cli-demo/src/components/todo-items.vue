@@ -87,9 +87,7 @@ export default {
             return unCompletedList.length
         },
         filterTodo(){
-            console.log('=============this.$route=======================');
-            console.log( this.$route );
-            console.log('============this.$route========================');
+
             let { name } = this.$route;
 
             switch (name) {
