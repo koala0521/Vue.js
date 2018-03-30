@@ -3,14 +3,30 @@ import Router from 'vue-router'
 
 import TodoList from '@/components/Todo'
 
-Vue.use(Router)
+/*测试路由*/ 
+const df = { template: '<div>默认组件</div>' };
+const ch = { template: '<h4>嵌套组件</h4>' };
+
+Vue.use(Router);
+
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
+      redirect:{name:"all"}
+    },    
+    {
+      path: '/all',
       name: 'all',
-      component: TodoList
+      component: TodoList,
+      // children:[
+      //   {
+      //     path:"/aaa",
+      //     component:ch
+      //   }
+      // ]
     },
     {
       path: '/unfinished',
@@ -21,6 +37,11 @@ export default new Router({
       path: '/finished',
       name: 'finished',
       component: TodoList
-    }        
+    },{
+      path:"*",
+      redirect:{name:"all"}
+    }    
+    
+    
   ]
 })

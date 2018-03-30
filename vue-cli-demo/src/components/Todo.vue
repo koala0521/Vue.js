@@ -12,6 +12,10 @@
       
             <h3 class="big-title">任务列表：</h3>
             <TodoItems v-bind:show="show" v-bind:list="list" ></TodoItems>
+            <div>
+                <h2>Todo: {{ $route.params.id }} </h2>
+                <router-view />
+            </div>
         </div>
 </template>
 
