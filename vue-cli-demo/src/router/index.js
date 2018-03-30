@@ -4,8 +4,8 @@ import Router from 'vue-router'
 import TodoList from '@/components/Todo'
 
 /*测试路由*/ 
-const df = { template: '<div>默认组件</div>' };
-const ch = { template: '<h4>嵌套组件</h4>' };
+// const df = { template: '<div>默认组件</div>' };
+// const ch = { template: '<h4>嵌套组件</h4>' };
 
 Vue.use(Router);
 
@@ -20,7 +20,7 @@ export default new Router({
     {
       path: '/all',
       name: 'all',
-      component: TodoList,
+      component: TodoList
       // children:[
       //   {
       //     path:"/aaa",

@@ -11,10 +11,10 @@
             />
       
             <h3 class="big-title">任务列表：</h3>
-            <TodoItems v-bind:show="show" v-bind:list="list" ></TodoItems>
+            <TodoItems v-bind:list="list" ></TodoItems>
             <div>
-                <h2>Todo: {{ $route.params.id }} </h2>
-                <router-view />
+                <!-- <h2>Todo: {{ $route.params.id }} </h2>
+                <router-view /> -->
             </div>
         </div>
 </template>
@@ -29,48 +29,12 @@
             return {
                 // list:store.fatch("todos") || [],
                 list:[],
-                // 当前展示的分类
-                show:"all",
                 // 创建todo时，输入的todo名称
                 todo:""
             }
         },
         components:{
             TodoItems
-        },
-        computed:{
-            unCompleted:function(){
-                
-                let unCompletedList = this.list.filter((item)=>{
-                    return item.isChecked ===  false
-                });
-
-                return unCompletedList.length
-            },
-            filterTodos:function(){
-                let list = this.list;
-
-                let todos ={
-                    "all":function(){
-                        return list;
-                    },
-                    "finished":function(){
-
-                        return list.filter(item=>{
-                            return item.isChecked === true
-                        });
-                    },
-                    "unfinished":function(){
-                        return list.filter(item=>{
-                            return item.isChecked === false
-                        });
-                    }
-                };
-                let filterFn = todos[ this.show ] || todos.all;
-
-                return filterFn();
-            }
-
         },
         watch:{
 

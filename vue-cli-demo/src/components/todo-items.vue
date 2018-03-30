@@ -56,7 +56,7 @@ export default {
         }
     },
 
-    props:["show","list"],
+    props:["list"],
 
     methods:{
         // 进入编辑状态
