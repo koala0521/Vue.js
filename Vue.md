@@ -166,4 +166,76 @@ new Vue（{
         }
     });
 
+
+    // demo
+
+    <div id="root" >
+
+        <show-name name="小明" > </show-name>
+
+    </div>
+
+    // 组件和 vue 实例，卸载同一个文件中时，要先注册组件，再 new 一个 vue 实例
+
+    Vue.component("show-name", 
+        {   
+            template:`
+                <div>${{ this.name }}</div> 
+            `,
+            "props":["name"]
+        }
+
+    )
+
+    new Vue({
+        el:"#root",
+        data:{
+            a:1
+        }
+    });  
+
+
+```
+
+### 单文件组件 
+
+vue 提供的一种组件独立的写法，一个组件就是一个文件，复用性高。 .vue  文件，需要配合webpack的loader使用。
+
+组建由三部分组成：
+
+- template 模板
+- script  逻辑
+- style  样式
+
+
+```
+// app.vue 文件
+
+<template>
+  <div id="app">
+    <div class="page-top">
+        hello vue！
+    </div>
+    
+    <router-view/>
+  </div>
+</template>
+
+<script>
+    // 组件向外暴露接口
+    export default {
+    name: 'App'
+    }
+</script>
+
+<style>
+
+    .page-top{
+        fonst-size:20px;
+    }
+
+</style>   
+
+
+
 ```
