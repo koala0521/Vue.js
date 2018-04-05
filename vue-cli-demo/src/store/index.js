@@ -20,11 +20,18 @@ const store = new Vuex.Store({
             this.todo = "";
 
         },
-        REMOVE_TODO( id ){
+        REMOVE_TODO( state , id ){
             let index = state.list.findIndex(element=>{
                 return element.id == id;
             });
             state.list.splice( index , 1 );  
+        },
+        EDIT_TODO( state , item ){
+            let index = state.list.findIndex(element=>{
+                return element.id === item.id;
+            });
+
+            state.list[ index ].title = item.title;
         }
     } 
 });

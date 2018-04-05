@@ -24,7 +24,7 @@
                             type="text"
                             v-model="item.title"
                             v-focus="edittingId === item.id"
-                            v-on:blur="edited( item , true )"
+                            v-on:blur = "edited( item , true )"
                             @keyup.13 = "edited( item , true )"
                             @keyup.27 = "edited( item , false )"
                         />
@@ -59,6 +59,12 @@ export default {
     props:["list"],
 
     methods:{
+
+        removeTodo:function(item){
+
+            this.$store.commit("REMOVE_TODO",item.id);
+            
+        }, 
         // 进入编辑状态
         editTodo:function(item){
             this.edittingId = item.id;
@@ -71,7 +77,12 @@ export default {
                 isSave = false;
             }
             // 取消保存
-            if(!isSave) item.title = this.oldTitle;
+            if(!isSave || item.title === this.oldTitle ){
+                item.title = this.oldTitle;               
+            }else{
+                // 发送 编辑todo "mutations"
+                this.$store.commit( "EDIT_TODO" , item );
+            }
 
             // 退出编辑状态
             this.edittingId = "";
