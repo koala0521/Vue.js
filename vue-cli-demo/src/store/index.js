@@ -31,7 +31,7 @@ const store = new Vuex.Store({
                 return element.id === item.id;
             });
 
-            state.list[ index ].title = item.title;
+            state.list[ index ] ? state.list[ index ].title = item.title : null;
         }
     } 
 });
