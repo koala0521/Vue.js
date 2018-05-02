@@ -56,13 +56,7 @@
                 // 调用 store.commit方法， 触发 mutation，改变数据
                 this.$store.commit("ADD_TODO" , this.todo );
                 this.todo = "";
-            },
-            removeTodo:function(item){
-
-                var index = this.list.indexOf( item );
-                this.list.splice( index , 1 );
-                
-            }                
+            }               
         }
     }
 
