@@ -1,0 +1,599 @@
+@import "../reset.less";
+
+@rem : 50rem;  /* 50 : 针对 750 尺寸 **/
+
+/**
+  px -> rem;
+  实际像素 / @rem 所得值为元素在设计文稿上的 rem 值
+  div { width : 100px ; height : 100px} 转换成 rem 的写法:
+  div{
+    width : 100 / @rem;   // 注意 :  此处 / 两端都要有空格;
+    height : 100 / @rem;
+  }
+**/
+
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url(../img/redRain/moneybj.jpg) no-repeat top left;
+  background-size: 100%;
+}
+
+.contantabc {
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.title123 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 534/@rem;
+  width: 100%;
+  background: url(../img/redRain/qianghongbao-1.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+.titlegai {
+  position: absolute;
+  left: 0;
+  top: -0.15rem;
+  height: 534/@rem;
+  width: 100%;
+  background: url(../img/redRain/qianghongbao-2.png) no-repeat;
+  background-size: 100% 100%;
+  z-index: 3;
+}
+
+//光束
+.guang {
+  position: absolute;
+  display: none;
+  top: 235/@rem;
+  left: 0;
+  width: 100%;
+  height: 938/@rem;
+  z-index: 2;
+  background: url(../img/redRain/guang-1.png) no-repeat;
+  animation: guang 1s linear 0s infinite;
+  background-size: 100% 100%;
+}
+@keyframes guang{
+  0%,100%{
+    background: url(../img/redRain/guang-1.png) no-repeat;
+    background-size: 100% 100%;
+  }
+  50% {
+    background: url(../img/redRain/guang-2.png) no-repeat;
+    background-size: 100% 100%;
+  }
+}
+
+//红包雨
+.couten {
+  position: absolute;
+  left: 40/@rem;
+  margin: 0 auto;
+  top: 274/@rem;
+  width: 90%;
+  height: 976/@rem;
+  overflow: hidden;
+  z-index: 2;
+  li {
+    position: absolute;
+    animation: all 3s linear;
+    top: -100px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    a {
+      display: inline-block;
+      img{
+        display: inline-block;
+      }
+    }
+  }
+}
+
+//走右手摇摆
+.leftshou, .rightshou {
+  position: absolute;
+  top: 0;
+  width: 163/@rem;
+  height: 272/@rem;
+}
+.leftshou {
+  left: -1rem;
+  background: url(../img/redRain/moneyleft.png) no-repeat;
+  background-size: 100% 100%;
+  animation: swinging 2s ease-in-out 0s infinite;
+  transform-origin: 50% 100%;
+}
+.rightshou {
+  right: -1rem;
+  background: url(../img/redRain/moneyright.png) no-repeat;
+  background-size: 100% 100%;
+  animation: swinging1 2s ease-in-out 0s infinite;
+  transform-origin: 50% 100%;
+}
+@keyframes swinging{
+  0% { -webkit-transform: rotate(10deg); }
+  50% { -webkit-transform: rotate(-10deg); }
+  100% { -webkit-transform: rotate(10deg); }
+}
+@keyframes swinging1{
+  0% { -webkit-transform: rotate(-10deg); }
+  50% { -webkit-transform: rotate(10deg); }
+  100% { -webkit-transform: rotate(-10deg); }
+}
+
+//
+.backward {
+  width: 100%;
+  opacity: 1;
+  position: absolute;
+  display: none;
+  z-index: 3;
+  top: 45%;
+  left: 0;
+  span {
+    display: inline-block;
+    width: 196/@rem;
+    height: 196/@rem;
+    color: #fde624;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    line-height: 390/@rem;
+    font-size: 235/@rem;
+  }
+}
+
+//开始按钮
+#start {
+  position: absolute;
+  width: 136/@rem;
+  height: 136/@rem;
+  top: 712/@rem;
+  left: 50%;
+  margin-left:-68/@rem;
+  z-index: 3;
+  background: url(../img/redRain/moneystart.png) no-repeat top left;
+  background-size: 100%;
+}
+.startlv {
+  position: absolute;
+  width: 250/@rem;
+  height: 250/@rem;
+  top: 652/@rem;
+  left: 50%;
+  margin-left:-125/@rem;
+  z-index: 2;
+  background: url(../img/redRain/meneyguang.png) no-repeat top left;
+  background-size: 100%;
+  animation: scale 3s linear infinite;
+}
+@keyframes scale{
+  0 {transform:scale(1); }
+  50% {transform:scale(1.4); }
+  100% {transform:scale(1); }
+}
+
+#foot {
+  position: absolute;
+  bottom: 50/@rem;
+  left: 0;
+  z-index: 4;
+  display: block;
+  width: 100%;
+  height: 150/@rem;
+}
+#rule, #prize {
+  position: absolute;
+  bottom: 1rem;
+  width: 118/@rem;
+  height: 110/@rem;
+}
+#rule {
+  left: 0.5rem;
+  background: url(../img/redRain/moneyrule.png) no-repeat top left;
+  background-size: 100% 100%;
+}
+#prize {
+  right: 0.5rem;
+  background: url(../img/redRain/moneyprize.png) no-repeat top left;
+  background-size: 100% 100%;
+}
+
+.count {
+  position: absolute;
+  top: 556/@rem;
+  left: 230/@rem;
+  z-index: 2;
+  display: block;
+  text-align: center;
+  width: 250/@rem;
+  padding: 6/@rem 20/@rem;
+  font-size: 24/@rem;
+  height: 40/@rem;
+  line-height: 40/@rem;
+  border-radius: 40/@rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.zhenotice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.pop-position.show {
+  display: block;
+}
+//抽奖结果
+.prizes-pop-box{
+  position: relative;
+  top: 3.6rem;
+  width: 100%;
+  .close {
+    position: absolute;
+    top: -3.5rem;
+    right: 0.6rem;
+    z-index: 10002;
+    width: .9rem;
+    height: .9rem;
+    background: url('../img/redRain/close.png') no-repeat;
+    background-size: 100% 100%;
+    opacity: 0;
+    -webkit-animation: showClose 1s .5s linear forwards;
+    -moz-animation: showClose 1s .5s linear forwards;
+    -o-animation: showClose 1s .5s linear forwards;
+    animation: showClose 1s .5s linear forwards;
+  }
+
+  .prizes-zoom-box{
+    position: relative;
+    margin: 5.1rem auto 0;
+    width: 11.2rem;
+  }
+  .purse-back {
+    width: 11.2rem;
+    height: 10.8rem;
+    background: url("../img/redRain/bg-back.png");
+    background-size: 100% 100%;
+  }
+  .prizes-card {
+    position: absolute;
+    z-index: 30;
+    transition: all .4s linear;
+    top: 1.8rem;
+    left: 0.64rem;
+
+    &.show-card {
+      top: -0.45rem !important;
+    }
+    img:first-child {
+      display: block;
+      position: absolute;
+      width: 9rem;
+      left: 0.6rem;
+      top: -4.95rem;
+    }
+    img:last-child {
+      display: block;
+      position: absolute;
+      width: 8.4rem;
+      height: 3.96rem;
+      left: 0.87rem;
+      top: -2.7rem;
+    }
+  }
+
+  .purse-top{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 7.95rem;
+    text-align: center;
+    font-weight: 100;
+    background: url("../img/redRain/bg-front.png") no-repeat;
+    background-size: 100% 100%;
+    z-index: 40;
+    color:#fff;
+
+    &>h3 {
+      font-size: 0.78rem;
+      font-weight: 100;
+      color:#fff;
+      margin-top: 2.01rem;
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+    .prizes-name{
+      max-width: 80%;
+      height: 0.9rem;
+      line-height: 0.9rem;
+      letter-spacing: 1px;
+      color: #fed430;
+      background: rgba(227,8,38,0.6);
+      margin: 0.6rem auto;
+      font-size: 0.6rem;
+    }
+    .get-rewards-btn{
+      height: 1.8rem;
+      line-height: 1.5rem;
+      width: 10rem;
+      text-align: center;
+      font-size: .6rem;
+      font-weight: 700;
+      color: #e42410;
+      background: url("../img/redRain/button.png")no-repeat;
+      background-size: 100% 100%;
+      margin: 0 auto;
+      margin-top: 0.57rem;
+    }
+  }
+}
+
+//弹窗
+.pop-position {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  background-color: rgba(0,0,0,.85);
+  &.fail .prizes-no-cont {
+    display: block;
+  }
+  &.fail .prizes-cont-box {
+    display: none;
+  }
+  //未中奖弹窗
+  .prizes-no-cont {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    top: 9rem;
+    .prizes-no-img {
+      display: block;
+      width: 10.8rem;
+      margin: 0 auto;
+    }
+    .close-btn {
+      position: absolute;
+      left: 50%;
+      bottom: .8rem;
+      width: 5.4rem;
+      margin-left: -2.7rem;
+    }
+    .close {
+      position: absolute;
+      top: -3.59733333rem;
+      right: 0.61333333rem;
+      z-index: 10002;
+      width: .91333333rem;
+      height: .91333333rem;
+      background: url('../img/redRain/close.png') no-repeat;
+      background-size: 100% 100%;
+      opacity: 0;
+      -webkit-animation: showClose 1s .5s linear forwards;
+      -moz-animation: showClose 1s .5s linear forwards;
+      -o-animation: showClose 1s .5s linear forwards;
+      animation: showClose 1s .5s linear forwards;
+    }
+  }
+
+}
+
+//中奖弹窗
+.prizes-cont-box {
+  .prizes-back-box {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 8rem;
+    width: 3rem;
+    height: 2rem;
+    margin-left: -1.5rem;
+    border-radius: 50%;
+    box-shadow: 0 0 5rem 2.5rem #ff8a2c;
+    animation: showLightBg 1s linear 1;
+    .l-shine {
+      position: absolute;
+      top: -5rem;
+      left: -5rem;
+      width: 15rem;
+      height: 15rem;
+      background-image: url("../img/redRain/light.png");
+      background-size: 100% 100%;
+      -webkit-animation: lightRound 18s linear 1s infinite;
+      -moz-animation: lightRound 18s linear 1s infinite;
+      -o-animation: lightRound 18s linear 1s infinite;
+      animation: lightRound 18s linear 1s infinite
+    }
+  }
+
+  .decoration {
+    position: absolute;
+    left: 50%;
+    top: 5.5rem;
+    display: block;
+    width: 12rem;
+    height: 6rem;
+    margin-left: -6rem;
+    pointer-events: none;
+    background-image: url('../img/redRain/redpacks.png');
+    background-size: 100% 100%;
+    -webkit-animation: showRedpacks .5s .5s;
+    animation: showRedpacks .5s .5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  .prizes-pop-box{
+    position: relative;
+    top: 3.6rem;
+    width: 100%;
+    .close {
+      position: absolute;
+      top: -3.5rem;
+      right: 0.6rem;
+      z-index: 10002;
+      width: .9rem;
+      height: .9rem;
+      background: url('../img/redRain/close.png') no-repeat;
+      background-size: 100% 100%;
+      opacity: 0;
+      -webkit-animation: showClose 1s .5s linear forwards;
+      -moz-animation: showClose 1s .5s linear forwards;
+      -o-animation: showClose 1s .5s linear forwards;
+      animation: showClose 1s .5s linear forwards;
+    }
+
+    .prizes-zoom-box{
+      position: relative;
+      margin: 5.1rem auto 0;
+      width: 11.2rem;
+    }
+    .purse-back {
+      width: 11.2rem;
+      height: 10.8rem;
+      background: url("../img/redRain/bg-back.png");
+      background-size: 100% 100%;
+    }
+    .prizes-card {
+      position: absolute;
+      z-index: 30;
+      transition: all .4s linear;
+      top: 1.8rem;
+      left: 0.64rem;
+
+      &.show-card {
+        top: -0.45rem !important;
+      }
+      img:first-child {
+        display: block;
+        position: absolute;
+        width: 9rem;
+        left: 0.6rem;
+        top: -4.95rem;
+      }
+      img:last-child {
+        display: block;
+        position: absolute;
+        width: 8.4rem;
+        height: 3.96rem;
+        left: 0.87rem;
+        top: -2.7rem;
+      }
+    }
+
+    .purse-top{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 7.95rem;
+      text-align: center;
+      font-weight: 100;
+      background: url("../img/redRain/bg-front.png") no-repeat;
+      background-size: 100% 100%;
+      z-index: 40;
+      color:#fff;
+
+      &>h3 {
+        font-size: 0.78rem;
+        font-weight: 100;
+        color:#fff;
+        margin-top: 2.01rem;
+        padding-left: 10%;
+        padding-right: 10%;
+      }
+      .prizes-name{
+        max-width: 80%;
+        height: 0.9rem;
+        line-height: 0.9rem;
+        letter-spacing: 1px;
+        color: #fed430;
+        background: rgba(227,8,38,0.6);
+        margin: 0.6rem auto;
+      }
+      .get-rewards-btn{
+        height: 1.8rem;
+        line-height: 1.5rem;
+        width: 10rem;
+        text-align: center;
+        font-size: .6rem;
+        font-weight: 700;
+        color: #e42410;
+        background: url("../img/redRain/button.png")no-repeat;
+        background-size: 100% 100%;
+        margin: 0 auto;
+        margin-top: 0.57rem;
+      }
+    }
+  }
+}
+@keyframes showClose {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+@keyframes lightRound {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes showLightBg {
+  from {
+    top: 9rem;
+    height: 0
+  }
+
+  to {
+    top: 8rem;
+    width: 3rem;
+    height: 2rem;
+  }
+}
+@keyframes showRedpacks {
+  from {
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0)
+  }
+
+  to {
+    -webkit-transform: scale(.9);
+    -moz-transform: scale(.9);
+    -o-transform: scale(.9);
+    transform: scale(.9)
+  }
+}

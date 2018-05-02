@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Keywords" content="砸金蛋" />
+    <meta name="Description" content="砸金蛋" />
+    <meta name="screen-orientation" content="portrait">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>砸金蛋</title>
+    <link rel="stylesheet" href="./dist/css/goldenEggs.css">
+
+</head>
+<body>
+
+<div id="contant">
+
+    <div class="chuizi rotateInit"></div>
+    <div id="danlists">
+        <h1>今日剩余免费次数<span id="countZa"></span>次</h1>
+        <ul id="danlist">
+            <li class="full eggbreak"><span class="tip"></span></li>
+            <li class="full"><span class="tip"></span></li>
+            <li class="full"><span class="tip"></span></li>
+            <li class="full"><span class="tip"></span></li>
+            <li class="full"><span class="tip"></span></li>
+            <li class="full"><span class="tip"></span></li>
+            <li class="full"><span class="tip"></span></li>
+            <li class="full"><span class="tip"></span></li>
+            <li class="full"><span class="tip"></span></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<div id="hdgg_show-win" class="pop-position" style="display: none;">
+    <div class="m-close close" style=""></div>
+    <div class="m-wrapper prizes-cont-box hdgg_result_show_animation " hidden="" style="display: block;">
+        <div class="m-box prizes-zoom-box">
+            <div class="m-image-wrap">
+                <div class="m-image-inner">
+                    <img src="" class="prizes-img">
+                </div>
+            </div>
+        </div>
+        <div class="m-name prizes-name"></div>
+        <div id="hdgg_click_ad_btn" data-u="" class="m-btn">立即领取</div>
+    </div>
+    <div class="no-results prizes-no-cont" style="display: none;">
+        <img src="./dist/img/goldenEggs/prizes-pop-fail.png" class="prizes-no-img" alt="">
+        <img src="./dist/img/goldenEggs/close-btn.png" class="close-btn coupon-modal-close">
+    </div>
+    <div id="contaner" class="traceContaner" style="display: none;"></div>
+</div>
+
+<script src="./plugin/store.js"></script>
+<script>
+
+    function setHTMLSize(){
+        var oHtml = document.querySelector('html');
+        var width = oHtml.getBoundingClientRect().width;
+        oHtml.style.fontSize = width / 15 + 'px';  // 针对设计尺寸为750 , 如果为 640 此处 / 16;
+    }
+    function windowResize(){
+        window.addEventListener('resize',function(){
+            setHTMLSize();
+        },false);
+    }
+
+    setHTMLSize();
+    windowResize();
+
+
+    window.CFG = {
+        template_id: '4',
+        device_id: '',
+        app_id:'',
+        adslot_id:''
+    };
+</script>
+
+<script src="./plugin/jquery-3.3.1.min.js"></script>
+<script src="./dist/js/goldenEggs.js"></script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a95ff97161599334035fb1f59a9b75a2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+</body>
+</html>

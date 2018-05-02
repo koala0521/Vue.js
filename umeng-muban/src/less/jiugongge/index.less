@@ -1,0 +1,337 @@
+@import "../reset.less";
+
+@rem : 50rem;  /* 50 : 针对 750 尺寸 **/
+
+/**
+  px -> rem;
+  实际像素 / @rem 所得值为元素在设计文稿上的 rem 值
+  div { width : 100px ; height : 100px} 转换成 rem 的写法:
+  div{
+    width : 100 / @rem;   // 注意 :  此处 / 两端都要有空格;
+    height : 100 / @rem;
+  }
+**/
+* {
+  box-sizing: border-box;
+}
+body, html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  line-height: 1.6;
+  background-color: #1d0065;
+}
+.g-cj {
+  
+  padding-top: 75/@rem;
+  background: url(../img/jiugongge/jgg-bg.png) 0 0 no-repeat;
+  background-size: cover;
+  img {
+    display: block;
+  }
+  
+  .g-cj-wrap {
+    position: relative;
+    margin: 285/@rem auto 0;
+    width: 682.5/@rem;
+    height: 900/@rem;
+    background-size: cover;
+    .m-times {
+      // position: absolute;
+      // bottom: 40/@rem;
+      background: url(../img/jiugongge/btn-bg.png) center no-repeat; 
+      background-size: contain;
+      height: 100/@rem;
+      line-height: 70/@rem;
+      width: 70%;
+      margin: 25/@rem auto;
+      // padding-top: 11/@rem;
+      text-align: center;
+      color: #fff;
+      font-size: 30/@rem;
+      z-index: 2
+    }
+  }
+
+  .m-cj-box {
+    margin: 64/@rem auto 0;
+    padding: 15/@rem;
+    padding-top: 25/@rem;
+    width: 630/@rem;
+    height: 600/@rem;
+    border-radius: 16.5/@rem;
+    background: url(../img/jiugongge/cont-bg.png) 0 0 no-repeat;
+    background-size: contain;
+    .m-playarea {
+      width: 100%;
+      height: 100%;
+      .m-flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: auto;
+        padding: 0 8/@rem 0 5/@rem;
+        .m-btn-wrap{
+          border-radius: 10.3/@rem;
+          &:before{
+            content: none;
+          }
+          .m-btn {
+            padding: 30/@rem 0;
+            background: #ffe841;
+            border-radius: 18.5/@rem;
+            font-size: 45.36/@rem;
+            color: #2b2b2b;
+            letter-spacing: 3.34/@rem;
+            line-height: 55.67/@rem;
+            text-align: center
+          }
+        }
+
+
+      }
+    }
+  }
+}
+#a-times{
+  font-size: 35/@rem;
+  color: #f8b328;
+}
+
+.g-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  line-height: 1;
+}
+
+.m-flex-item-prize-box{
+  position: relative;
+  margin-bottom:20/@rem ;
+  width:170/@rem;
+  height:170/@rem;
+  overflow:hidden;
+  // 解决 安卓小于 4.3 不支持 弹性布局
+  display: inline-block;
+  padding: 8/@rem;
+  &:before{
+    content:" ";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    //background-color:#2680f1;
+    // background-color:rgba(0,0,0,0.3);
+  }
+  &.active{
+    content: none;
+    background: url(../img/jiugongge/active-bg.png) 0 0 no-repeat;
+    background-size: contain;
+  }
+
+  .m-prize {
+    width: 100%;
+    height: 100%;
+    border-radius: 20.6/@rem;
+    img {
+      width: 100%;
+    }
+  }
+
+
+  &.m-prize-transition-scale {
+    transform: scale(1.4);
+    transform-origin: 50% 50%
+  }
+  &.m-prize-transition-move {
+    top: 0 !important;
+    left: 50% !important;
+    transform: translate(-50%, -100%) scale(0)
+  }
+}
+
+#hdgg_redpack {
+  font-size: 51.5/@rem !important
+}
+
+
+
+
+#hdgg_show-win * {
+  margin: 0;
+  box-sizing: border-box;
+}
+#hdgg_show-win {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.7);
+  z-index: 1000;
+  font-size: 24px;
+
+  .m-close {
+    position: absolute;
+    top: 136/@rem;
+    right: 75/@rem;
+    z-index: 2;
+    width: 60/@rem;
+    height: 60/@rem;
+    background: url(../img/sudoku/hdgg_close.png) 0 0 no-repeat;
+    background-size: contain;
+    animation: showClose 1s .5s linear forwards;
+    opacity: 0;
+  }
+  .m-wrapper {
+    position: absolute;
+    top: 100/@rem;
+    left: 50%;
+    margin-left: -368.5/@rem;
+    margin-top: -75/@rem;
+    width: 737/@rem;
+    height: 976/@rem;
+    background: url(../img/sudoku/hdgg_result-bg.png) center no-repeat;
+    background-size: cover;
+    opacity: 0;
+
+    .m-box {
+      position: absolute;
+      bottom: 385/@rem;
+      left: 50%;
+      margin-left: -222/@rem;
+      width: 444/@rem;
+      height: 205/@rem;
+      border-radius: 5/@rem;
+      overflow: hidden;
+      .m-image-wrap {
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        padding: 8/@rem;
+        overflow: hidden;
+        .m-image-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background-color: #fff;
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .m-name,.m-btn {
+      position: absolute;
+      left: 50%;
+      height: 2em;
+      border-radius: .3em;
+      line-height: 2em;
+      text-align: center;
+    }
+    .m-name {
+      bottom: 10.3em;
+      width: 14em;
+      margin-left: -7em;
+      font-size: 30/@rem;
+      color: #ffd800;
+      z-index: 9;
+    }
+    .m-btn {
+      bottom: 4.65em;
+      margin-left: -6em;
+      width: 12em;
+      font-size: 32/@rem;
+      color: #993c04;
+    }
+  }
+}
+.hdgg_result_show_animation{
+  opacity: 1!important;
+  animation: a 1s;
+}
+.hdgg_result_hide_animation{
+  -webkit-animation:b .4s;
+  animation:b .4s
+}
+@keyframes a{
+  0%{
+    opacity:0;
+    transform:translateY(-40%)
+  }
+  50%{
+    opacity:1;
+    transform:translateY(15%)
+  }
+  60%{
+    transform:translateY(-10%)
+  }
+  70%{
+    transform:translateY(6%)
+  }
+  80%{
+    transform:translateY(-3%)
+  }
+  90%{
+    transform:translateY(1%)
+  }
+  to{
+    opacity:1;
+    transform:translateY(0)
+  }
+}
+@keyframes b{
+  0%{
+    opacity:1;
+    transform:translateY(0)
+  }
+  to{
+    opacity:0;
+    transform:translateY(-100%)
+  }
+}
+@keyframes showClose {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+
+#hdgg_show-win .no-results {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  top: 9rem;
+  text-align: center;
+  .prizes-no-img {
+    width: 10.8rem;
+    margin: 0 auto;
+  }
+  .close-btn {
+    position: absolute;
+    left: 50%;
+    bottom: .8rem;
+    width: 5.4rem;
+    margin-left: -2.7rem;
+  }
+}
+
+
+
+
+
+
+

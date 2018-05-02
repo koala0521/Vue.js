@@ -1,0 +1,34 @@
+{
+  "name": "umeng2",
+  "version": "1.0.0",
+  "description": "youmeng2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zql",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^3.2.0",
+    "gulp-less": "^3.4.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-util": "^3.0.8",
+    "require-dir": "^0.3.2",
+    "run-sequence": "^2.2.1",
+    "store2": "^2.7.0",
+    "stringify": "^5.2.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-paths": "^2.1.0",
+    "vinyl-source-stream": "^2.0.0",
+    "watchify": "^3.10.0"
+  }
+}

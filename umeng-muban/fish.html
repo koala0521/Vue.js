@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 17.0667px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Keywords" content="捕鱼假日"/>
+    <meta name="Description" content="捕鱼假日"/>
+    <meta name="screen-orientation" content="portrait">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>捕鱼假日</title>
+    <link rel="stylesheet" href="./plugin/swiper/swiper.min.css">
+    <link rel="stylesheet" href="./dist/css/fish.css?t=1">
+
+
+</head>
+<body>
+<div id="db-content" style="display: block;">
+    <div id="contant">
+        <div class="rule"></div>
+        <div class="jiang"></div>
+        <div class="counts">抽奖机会剩余<span id="countZa">0</span>次</div>
+        <div class="contain">
+            <div class="btn start-btn" id="startBtn">
+                <div class="DB_guide">
+                    <span class="DB_G_circle"></span>
+                    <span class="DB_G_hand"></span>
+                </div>
+            </div>
+            <div class="rope active"></div>
+            <div class="rope-stretch"></div>
+            <div class="solo">
+                <div id="ox" indexdata="" class="ox-grey active1"><img src="./dist/img/fish/move1.png"></div>
+                <div id="ox1" indexdata="1" class="ox-grey active1"><img src="./dist/img/fish/move2.png"></div>
+                <div id="ox2" indexdata="2" class="ox-grey active1"><img src="./dist/img/fish/move3.png"></div>
+                <div id="ox3" indexdata="3" class="ox-grey active1"><img src="./dist/img/fish/move4.png"></div>
+            </div>
+
+            <div id="catchOx" class="">
+                <div class="grey-ox-catch ox-catch"></div>
+                <div class="red-ox-catch ox-catch"></div>
+                <div class="yellow-ox-catch ox-catch"></div>
+                <div class="gray-ox-catch ox-catch"></div>
+                <div class="rope-catch rope-c"></div>
+                <div class="rope-break rope-c"></div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" ><div class="imgf"></div><p>1000元</p></div>
+                <div class="swiper-slide" ><div class="imgf"></div><p>500元</p></div>
+                <div class="swiper-slide" ><div class="imgf"></div><p>200元</p></div>
+                <div class="swiper-slide" ><div class="imgf"></div><p>10元</p></div>
+                <div class="swiper-slide" ><div class="imgf"></div><p>幸运福袋</p></div>
+                <div class="swiper-slide" ></div>
+            </div>
+            <div class="swiper-title"></div>
+        </div>
+
+        <div class="zhenotice"></div>
+    </div>
+</div>
+<div class="popShowPrize" id="dialog5" style="display: none; transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+    <div class="caiguang"></div>
+    <div class="m-box"></div>
+    <div class="showPrize-dialog modal-body">
+        <div class="dings">
+            <div class="card-bg">
+                <img class="prizes-img" src="https://hdggcdn.bayimob.com/hdggAdv/2482/500/20180306130359_611.gif" alt="">
+            </div>
+            <div class="red-bg"></div>
+            <span class="close-btn closetc iconfont"></span>
+            <div class="detail">
+                <div class="topic prizes-name">40000元新年免息红包速领</div>
+                <div class="goto"></div>
+            </div>
+            <span class="ribbon"></span>
+            <span class="ribbon"></span>
+            <span class="ribbon"></span>
+            <span class="ribbon"></span>
+            <span class="ribbon"></span>
+            <span class="ribbon"></span>
+            <span class="ribbon"></span>
+            <span class="ribbon"></span>
+            <span class="ribbon"></span>
+            <span class="ribbon"></span>
+            <span class="ribbon"></span>
+            <span class="ribbon"></span>
+        </div>
+        <div id="contaner" class="traceContaner" style="display: none;"></div>
+    </div>
+</div>
+<div class="popNoResult">
+    <div class="noResult-dialog">
+        <span class="close"></span>
+        <img src="./dist/img/fish/prizes-pop-fail.png" class="prizes-no-img" alt="">
+        <img src="./dist/img/fish/close-btn.png" class="close-btn coupon-modal-close">
+    </div>
+</div>
+<script>
+
+    // 调试工具
+    !(function () {
+        var src = 'http://cdn.bootcss.com/eruda/1.3.2/eruda.min.js';
+        if (!/eruda=true/.test(window.location) && localStorage.getItem('active-eruda') != 'true') return;
+        document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+        document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
+    })();
+
+
+    function setHTMLSize() {
+        var oHtml = document.querySelector('html');
+        var width = oHtml.getBoundingClientRect().width;
+        oHtml.style.fontSize = width / 18.75 + 'px';  // 针对设计尺寸为750
+    }
+
+    function windowResize() {
+        window.addEventListener('resize', function () {
+            setHTMLSize();
+        }, false);
+    }
+
+    setHTMLSize();
+    windowResize();
+
+
+    window.CFG = {
+        template_id: '7',
+        device_id: '',
+        app_id: '',
+        adslot_id: ''
+    };
+</script>
+
+<script src="./plugin/jquery-3.3.1.min.js"></script>
+<script src="plugin/swiper/swiper.min.js"></script>
+<script src="./dist/js/fish.js"></script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a95ff97161599334035fb1f59a9b75a2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+</body>
+</html>

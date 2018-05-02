@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Keywords" content="红包雨" />
+    <meta name="Description" content="红包雨" />
+    <meta name="screen-orientation" content="portrait">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>红包雨</title>
+    <link rel="stylesheet" href="./dist/css/redRain.css">
+
+</head>
+<body>
+
+<div class="contantabc">
+    <div class="title123"></div>
+    <div class="titlegai"></div>
+    <div class="guang" ></div>
+    <ul class="couten">
+        <!--<li class="li87" style="left: 153px; top: 320.37px;">
+            <a href="javascript:;">
+                <img src="https://hdggcdn.bayimob.com/hdggstatic/moneyhb_1.png" style="width: 40px; transform: rotate(-39deg);">
+            </a>
+        </li>-->
+    </ul>
+    <div class="leftshou"></div>
+    <div class="rightshou"></div>
+    <div class="backward" style="display: none;">
+        <span></span>
+    </div>
+    <div id="start" style="display: block;"></div>
+    <div id="foot">
+        <div class="contenta">
+            <div id="rule"></div>
+            <div id="prize"></div>
+        </div>
+    </div>
+    <div class="count" style="display: block;">今日剩余免费次数<span id="countZa"></span>次</div>
+    <div class="startlv"></div>
+</div>
+<div class="pop-position " id="pop-prizes-position">
+    <div class="prizes-no-cont">
+        <span class="close coupon-modal-close"></span>
+        <img src="./dist/img/redRain/prizes-pop-fail.png" class="prizes-no-img" alt="">
+        <img src="./dist/img/redRain/close-btn.png" class="close-btn coupon-modal-close">
+    </div>
+    <div class="prizes-cont-box">
+        <div class="prizes-back-box">
+            <div class="l-shine"></div>
+        </div>
+        <sapn class="decoration"></sapn>
+        <div class="prizes-pop-box" style="color:#FFF">
+            <span class="close coupon-modal-close"></span>
+            <div class="prizes-zoom-box">
+                <div class="purse-back"></div>
+                <div class="prizes-card" id="prizes-card">
+                    <img src="./dist/img/redRain/prizeBody.png">
+                    <img src="" class="prizes-img" alt="">
+                </div>
+                <div class="purse-top">
+                    <h3>
+                        恭喜您获得了
+                    </h3>
+                    <div class="prizes-name text-ellipsis">128元年货大礼包</div>
+                    <div class="get-rewards-btn" id="get-rewards-btn">马上使用</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="contaner" class="traceContaner" style="display: none;"></div>
+</div>
+<script src="./plugin/store.js"></script>
+
+<script>
+
+    function setHTMLSize(){
+        var oHtml = document.querySelector('html');
+        var width = oHtml.getBoundingClientRect().width;
+        oHtml.style.fontSize = width / 15 + 'px';  // 针对设计尺寸为750 , 如果为 640 此处 / 16;
+    }
+    function windowResize(){
+        window.addEventListener('resize',function(){
+            setHTMLSize();
+        },false);
+    }
+
+    setHTMLSize();
+    windowResize();
+
+
+    window.CFG = {
+        template_id: '3',
+        device_id: '',
+        app_id:'',
+        adslot_id:''
+    };
+</script>
+
+<script src="./plugin/jquery-3.3.1.min.js"></script>
+<script src="./dist/js/redRain.js"></script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a95ff97161599334035fb1f59a9b75a2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+</body>
+</html>

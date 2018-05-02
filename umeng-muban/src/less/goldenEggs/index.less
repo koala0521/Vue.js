@@ -1,0 +1,195 @@
+@import "../reset.less";
+
+@rem : 50rem;  /* 50 : 针对 750 尺寸 **/
+
+/**
+  px -> rem;
+  实际像素 / @rem 所得值为元素在设计文稿上的 rem 值
+  div { width : 100px ; height : 100px} 转换成 rem 的写法:
+  div{
+    width : 100 / @rem;   // 注意 :  此处 / 两端都要有空格;
+    height : 100 / @rem;
+  }
+**/
+
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+  background-color: #db2b2d;
+}
+
+#contant {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  background: url(../img/goldenEggs/zadanbg.jpg) no-repeat;
+  background-size: 100%;
+  height: 100%;
+  padding-bottom: 0.9rem;
+}
+
+.chuizi {
+  position: absolute;
+  right: 19/@rem;
+  top: 265/@rem;
+  width: 173/@rem;
+  height: 166/@rem;
+  z-index: 2;
+  background-image: url(../img/goldenEggs/chuizi.png);
+  background-size: 100% 100%;
+}
+
+.rotateInit {
+  transform-origin: right bottom;
+  animation: hammerrotateinit 3.5s ease-in-out 0s infinite alternate;
+}
+@keyframes hammerrotateinit {
+  100%,
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: rotate3d(0, 0, 1, 15deg)
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: rotate3d(0, 0, 1, -15deg)
+  }
+}
+#danlists {
+  height: 755/@rem;
+  padding-top: 320/@rem;
+  h1 {
+    height: 52/@rem;
+    line-height: 52/@rem;
+    color: #7b0002;
+    font-size: 28.5/@rem;
+    font-weight: normal;
+    text-align: center;
+    position: relative;
+    top: -3/@rem;
+  }
+}
+
+#danlists ul {
+  width: 585/@rem;
+  margin: 0 auto;
+  padding-top: 50/@rem;
+  padding-left: 25/@rem;
+  li{
+    position: relative;
+    width: 159/@rem;
+    height:170/@rem;
+    margin:10/@rem 35/@rem 0 0;
+    float: left;
+    background: url(../img/goldenEggs/jindan_1.png) no-repeat;
+    background-size:100% 100%;
+    &:nth-child(3n){
+      margin:10/@rem 5/@rem 63/@rem 2/@rem;
+    }
+    &:nth-child(3n+1){
+      margin:10/@rem 40/@rem 0 0;
+    }
+
+    &:nth-child(7),&:nth-child(8),&:nth-child(9){
+      margin-top: 12/@rem
+    }
+
+    span {
+      width: 75/@rem;
+      height: 28/@rem;
+      display: block;
+      position: absolute;
+      right: -45/@rem;
+      top: -7.5/@rem;
+    }
+
+    &.eggbreak {
+      transform: translateX(15/@rem) translateY(3/@rem) scaleX(1.05);
+      animation: eggbreak .5s;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+.beat {
+  background: url(../img/goldenEggs/jindan_i.png) no-repeat !important;
+  background-size: 100% 100%!important;
+  animation: beat .5s linear 0s 2 alternate;
+}
+.beat1 {
+  background: url(../img/goldenEggs/jindan_i.png) no-repeat !important;
+  background-size: 100% 100%!important;
+  animation: beat .5s infinite linear 0s alternate;
+}
+.beat .tip {
+  background: url(../img/goldenEggs/zawoyouli.png) center no-repeat;
+  background-size: 100% 100%;
+  z-index: 9;
+  animation: tipscale .6s infinite linear .1s  alternate;
+}
+.beat1 .tip {
+  background: url(../img/goldenEggs/zawoyouli.png) center no-repeat;
+  background-size: 100% 100%;
+  z-index: 9;
+  animation: tipscale .6s infinite linear .1s  alternate;
+}
+
+@keyframes tipscale {
+  from {
+    transform: scale(.9)
+  }
+  to {
+    transform: scale(1.1)
+  }
+}
+@keyframes eggbreak {
+  0%,
+  10%,
+  20%,
+  30%{
+    background:url(../img/goldenEggs/jindan_1.png) no-repeat;
+    background-size:  100% 100%;
+  }
+  40%,
+  50%,
+  60%{
+    background:url(../img/goldenEggs/jindan_2.png) no-repeat;
+    background-size:  100% 100%;
+  }
+  70%,
+  80%,
+  90%,
+  100%{
+    background:url(../img/goldenEggs/jindan_3.png) no-repeat;
+    background-size:  100% 100%;
+  }
+}
+@keyframes beat {
+  from {
+    transform: translateY(0)
+  }
+  to {
+    transform: translateY(-15px)
+  }
+}
+
+
+@import "../prize.less";
+
+#hdgg_show-win .m-close{
+  background: url(../img/goldenEggs/hdgg_close.png) 0 0 no-repeat;
+  background-size: cover;
+}
+#hdgg_show-win .m-wrapper{
+  background: url(../img/goldenEggs/hdgg_result-bg.png) center no-repeat;
+  background-size: cover;
+}

@@ -1,0 +1,338 @@
+@import "../reset.less";
+
+@rem : 50rem;  /* 50 : 针对 750 尺寸 **/
+
+/**
+  px -> rem;
+  实际像素 / @rem 所得值为元素在设计文稿上的 rem 值
+  div { width : 100px ; height : 100px} 转换成 rem 的写法:
+  div{
+    width : 100 / @rem;   // 注意 :  此处 / 两端都要有空格;
+    height : 100 / @rem;
+  }
+**/
+
+body{
+  background: #152c78;
+  color: #333;
+  outline: 0;
+}
+
+#contant {
+  position: relative;
+  width: 18.75rem;
+  margin: 0 auto;
+  background: url(../img/fish/bg.jpg) no-repeat;
+  background-size: 100%;
+  height: 33.7rem;
+  padding-bottom: 0.9rem;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.counts {
+  position: absolute;
+  top: 8.7rem;
+  left: 36%;
+  color: #2a66c4;
+  font-size: 0.7rem;
+}
+.contain {
+  margin-top: 8rem;
+  height: 20.85rem;
+  position: relative;
+  overflow: hidden;
+  .btn {
+    position: absolute;
+    top: 16.5rem;
+    left: 31.7%;
+    width: 7.25rem;
+    height: 2.85rem;
+    z-index: 3;
+    background: url(../img/fish/anniu.png) no-repeat;
+    background-size: 100%;
+  }
+}
+.DB_guide {
+  position: absolute;
+  left: 58%;
+  top: 0;
+  z-index: 2;
+  pointer-events: none;
+  .DB_G_circle {
+    background-size: 100% 100%;
+    width: 1rem;
+    height: 1rem;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    animation: guidCircle 1.5s linear infinite normal;
+  }
+  .DB_G_hand {
+    width: 5rem;
+    height: 5.25rem;
+    left: 1.1rem;
+    top: .05rem;
+    background-image: url(../img/fish/Hands.png);
+    background-size: contain;
+    -webkit-animation: guideHand 1.5s linear infinite normal;
+    animation: guideHand 1.5s linear infinite normal;
+    opacity: 0;
+  }
+}
+.DB_guide .DB_G_circle, .DB_guide .DB_G_hand {
+  position: absolute;
+  background-repeat: no-repeat;
+}
+
+#ox,#ox1,#ox2,#ox3{
+  position: absolute;
+  animation:ox-oxRunning .6s steps(1) infinite;
+}
+#ox img,#ox1 img,#ox2 img,#ox3 img{
+  width:100%;
+  height:100%;
+}
+#ox{
+  top:2rem;
+  right: -7rem;
+  width: 6.0rem;
+  height: 6.35rem;
+  //background-image: url(../img/fish/move1.png) !important;
+  //animation: ox-oxMove 2.4s linear infinite,ox-oxRunning .6s steps(1) infinite;
+  //background-size: 100%;
+}
+#ox1{
+  top:2rem;
+  right: -7rem;
+  width: 6.0rem;
+  height: 5.85rem;
+  //background-image: url(../img/fish/move2.png) !important;
+  //background-size: 100%;
+}
+#ox2{
+  top:2rem;
+  right: -5rem;
+  width:4.0rem;
+  height: 6.3rem;
+  //background-image: url(../img/fish/move3.png) !important;
+  //background-size: 100%;
+}
+#ox3{
+  top:2rem;
+  right: -10rem;
+  width: 10.0rem;
+  height: 3.7rem;
+  //background-image: url(../img/fish/move4.png) !important;
+  //background-size: 100%;
+}
+#catchOx {
+  position: relative;
+  top: 15.2rem;
+  left: 31.7%;
+  width: 7.5rem;
+  height: 15rem;
+  .grey-ox-catch {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: -3rem;
+    width: 6.0rem;
+    height: 6.35rem;
+    background-image: url(../img/fish/move1.png) !important;
+    background-size: cover;
+  }
+  .red-ox-catch {
+    display: none;
+    position: absolute;
+    top: -3rem;
+    width: 6.0rem;
+    height: 5.85rem;
+    z-index: 1;
+    background-image: url(../img/fish/move2.png) !important;
+    background-size: cover;
+  }
+  .yellow-ox-catch {
+    display: none;
+    position: absolute;
+    top: -3rem;
+    width: 4.0rem;
+    height: 6.3rem;
+    z-index: 1;
+    background-image: url(../img/fish/move3.png) !important;
+    background-size: cover;
+  }
+  .gray-ox-catch {
+    display: none;
+    position: absolute;
+    top: -2rem;
+    width: 10.0rem;
+    height: 3.7rem;
+    z-index: 1;
+    background-image: url(../img/fish/move4.png) !important;
+    background-size: cover;
+  }
+}
+.xactive{
+  transition: all 1s linear;
+  transform: translateY(-9rem);
+}
+.oactive{
+  transition:all 1s linear;
+  transform:translateY(-9rem);
+}
+.rope-catch {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 5.8rem;
+  height: 28rem;
+  background-image: url(../img/fish/g86xnkjj2q.png);
+  background-size: 100%;
+}
+.rope-break {
+  position: absolute;
+  z-index: 2;
+  top: -1.7rem;
+  left: 0.5rem;
+  width: 6.35rem;
+  height: 4.3rem;
+  background-image: url(../img/fish/o852zp1bf8.png) !important;
+  animation: ox-ropeRunning .4s steps(1) infinite;
+  background-size: cover;
+}
+
+.zhenotice {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.swiper-container {
+  position: relative;
+  width: 100%;
+  height: 5.3rem;
+  padding-top: 0.3rem;
+  background: #142c79;
+  border-top: 2px solid #244da7;
+  border-bottom: 2px solid #244da7;
+}
+.swiper-title{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.45rem;
+  height: 2.8rem;
+  z-index: 2;
+  background: url(../img/fish/shops_title.png) no-repeat;
+  background-size: 100%;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  height: 4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.swiper-slide:nth-child(1){
+  margin-left: 1.5rem;
+}
+.swiper-slide .imgf{
+  width: 3.25rem;
+  height: 3.25rem;
+  margin:0 auto;
+  display: block;
+  border-radius: 0.5rem;
+  border:3px solid #fae00b;
+}
+.swiper-slide p{
+  margin-top: 0.3rem;
+  width: 100%;
+  display: block;
+  color: #fff;
+  font-size: 0.6rem;
+}
+.swiper-slide:nth-child(1) .imgf{
+  background:#fff url(../img/fish/fanpai11000.png) no-repeat;
+  background-size: 100%;
+}
+.swiper-slide:nth-child(2) .imgf{
+  background:#fff url(../img/fish/fanpai1500.png) no-repeat;
+  background-size: 100%;
+}
+.swiper-slide:nth-child(3) .imgf{
+  background:#fff url(../img/fish/fanpai1200.png) no-repeat;
+  background-size: 100%;
+}
+.swiper-slide:nth-child(4) .imgf{
+  background:#fff url(../img/fish/fanpai110.png) no-repeat;
+  background-size: 100%;
+}
+.swiper-slide:nth-child(5) .imgf{
+  background:#fff url(../img/fish/fanpai1fudai.png) no-repeat;
+  background-size: 100%;
+}
+.swiper-slide:nth-child(6) .imgf{
+  width: 0.5rem;
+  background: transparent;
+}
+
+
+@-webkit-keyframes guideHand {
+  0% {
+    opacity: 1;
+    transform: scale(1,1);
+  }
+  20%, 80% {
+    opacity: 1;
+    transform: scale(.8,.8);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(.8,.8);
+  }
+}
+@keyframes ox-oxMove {
+  0% {
+    transform: translateX(0)
+  }
+  100% {
+    transform: translateX(-30.50986667rem)
+  }
+}
+@keyframes ox-oxRunning {
+  0%,
+  100% {
+    top:3rem;
+  }
+  33% {
+    top:3.3rem;
+  }
+  66% {
+    top:2.8rem;
+  }
+}
+@keyframes ox-ropeRunning {
+  0%,
+  100% {
+    transform:scale(1.2)
+  }
+  25% {
+    transform:scale(1)
+  }
+  50% {
+    transform:scale(0.7)
+  }
+  75% {
+    transform:scale(1)
+  }
+}
+
+@import "alertCommon";
