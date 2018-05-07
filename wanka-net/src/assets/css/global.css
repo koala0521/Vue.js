@@ -1,0 +1,26 @@
+ul , ol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    vertical-align: top;
+}
+
+.sub_cont{
+    width: 800px;
+}
+.cont-width{
+    width: 1200px;
+    min-width: 1200px;
+    margin: 0 auto;
+}
+
+/* card样式 */
+.ivu-card:hover{
+    box-shadow: none;
+    border-color:none;
+    }
+.ivu-card-body{
+    padding: 14px 0;
+}
