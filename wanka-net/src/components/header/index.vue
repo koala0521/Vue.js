@@ -11,7 +11,6 @@
         position: relative;
         top: 0px;
         left: 0px;
-        margin-right: 100px;
         cursor: pointer;
     }
     .layout-logo img{

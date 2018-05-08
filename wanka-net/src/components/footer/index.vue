@@ -39,6 +39,9 @@
     .footer-part{
         height: 160px;
     }
+    .footer-content{
+        padding: 0 10px;
+    }
 </style>
 
 <template>
@@ -46,7 +49,7 @@
     <Footer class="layout-footer-center footer-wrap">
         <div  class="cont-width t-border"  >
 
-            <Row>
+            <Row class="footer-content" >
                 <i-col span="12" class="footer-part" >
                     <Row>
                         <i-col span="8" >

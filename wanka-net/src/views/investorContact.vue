@@ -1,3 +1,4 @@
+// 投资者关系 > 联系我们
 <template>
   <div  class="cont-width" >
       
@@ -6,7 +7,7 @@
         <router-link  to="/investor/two" >  > 关系2 </router-link>
     </div> -->
     <h2> 联系我们 </h2>
-    投资者关系关系1关系1关系1关系1关系1投资者关系投资者关系
+    投资者关系关系1关系1关系1关系1关系1投资者关系投资者关系 
     Member board
 
   </div>

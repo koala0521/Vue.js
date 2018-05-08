@@ -27,10 +27,11 @@ a.txt{
 <template>
     <Card :bordered="false" dis-hover >
         <p slot="title" >{{  title }}</p>
-        <a v-if="!!btntext" href="#" slot="extra" @click.prevent="changeLimit">
+        <router-link v-if="!!btntext" slot="extra" :to="url" >
             <Icon type="ios-loop-strong"></Icon>
             {{ btntext }}
-        </a>
+        </router-link>
+
         <ul class="news_sub_list" >
             <li v-for="item in list ">
                 <a class="txt" :href="item.url" target="_blank">{{ item.name }}</a>
@@ -92,6 +93,10 @@ a.txt{
             list:{
                 type:Array,
                 default:()=> dataList
+            },
+            url:{
+                type: String,
+                default: '#'
             }
         },
         methods:{

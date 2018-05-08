@@ -95,7 +95,48 @@ const routers = [
             title:'董事会成员'
         },
         component:(resolve) => require(['./views/investorBoardMember.vue'] , resolve )
+    }
+    ,{
+        path:Investor + '/financenews',
+        name:'financeNews',
+        meta:{
+            title:'财务新闻稿'
+        },
+        component:(resolve) => require(['./views/investorContactFinanceNews.vue'] , resolve )
+    }    
+    ,{
+        path:Investor + '/news',
+        name:'news',
+        meta:{
+            title:'公司公告'
+        },
+        component:(resolve) => require(['./views/investorContactNews.vue'] , resolve )
     }   
+    ,{
+        path:Investor + '/financereport',
+        name:'financeReport',
+        meta:{
+            title:'财务报告'
+        },
+        component:(resolve) => require(['./views/investorContactFinanceReport.vue'] , resolve )
+    }  
+    ,{
+        path:Investor + '/investortrend',
+        name:'investorTrend',
+        meta:{
+            title:'投资者关系动态'
+        },
+        component:(resolve) => require(['./views/investorContactTrend.vue'] , resolve )
+    }             
+    ,{
+        path:Infos + '/trend',
+        name:'trend',
+        meta:{
+            title:'公司动态'
+        },
+        component:(resolve) => require(['./views/companyInfosTrend.vue'] , resolve )
+    }  
+
     ,{
         path:'*',
         redirect:'/index'
