@@ -4,12 +4,12 @@
         border: 1px solid #dddee1;
     }
     .layout-logo{
-        width: 100px;
-        height: 30px;
+        width: 300px;
+        height: 60px;
         border-radius: 3px;
         float: left;
         position: relative;
-        top: 15px;
+        top: 0px;
         left: 0px;
         margin-right: 100px;
         cursor: pointer;
@@ -54,7 +54,8 @@
             ref="header_menu"
         >
             <div class="layout-logo" @click="tohome" >
-                <img src="../../assets/img/logo.png" alt="玩咖">
+                <!-- <img src="../../assets/img/logo.png" alt="玩咖"> -->
+                <Logo></Logo>
             </div>
            
             <div class="layout-nav">
@@ -90,9 +91,14 @@
     </Header>
 </template>
 <script>
+
+    import Logo from '../logo';
     export default{
         data(){
             return {};
+        },
+        components:{
+            Logo
         },
         computed:{            
             name(){
