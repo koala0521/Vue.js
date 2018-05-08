@@ -94,9 +94,10 @@
         data(){
             return {};
         },
-        computed:{
+        computed:{            
             name(){
-                return this.$route.name;
+                let pathArr = this.$route.path.split("/");
+                return pathArr[1] || '';
             },
             lan(){
                 return this.$store.getters.lan;

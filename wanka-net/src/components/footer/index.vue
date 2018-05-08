@@ -72,10 +72,10 @@
                             <div class="footer-items" >
                                 <h4>联系我们</h4>
                                 <div  class="items-infos items-infos-legal" >
-                                    <a href="#">商业合作</a>
+                                    <router-link to="/investor/contact" >商业合作</router-link>
                                 </div>                             
                                 <div  class="items-infos items-infos-legal" >
-                                    <a href="#">市场合作</a>                                    
+                                    <router-link to="/investor/contact" >市场合作</router-link>                      
                                 </div>
                             </div>
                         </i-col>
@@ -83,7 +83,7 @@
                             <div class="footer-items" >
                                 <h4>法律信息</h4>
                                 <div class="items-infos items-infos-legal" >
-                                    <a href="#">免责声明</a>
+                                    <router-link to="/index/statement" >免责声明</router-link>     
                                 </div>                             
                             </div>
                         </i-col>

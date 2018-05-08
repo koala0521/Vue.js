@@ -1,8 +1,12 @@
 <template>
   <div  class="cont-width" >投资者关系
-
-    <router-link  to="/investor/one" > 关系1 </router-link>
-    <router-link  to="/investor/two" >  > 关系2 </router-link>
+    <div>
+      <router-link  to="/investor/contact" > contact </router-link>
+      <hr>
+      <router-link  to="/investor/control" > control </router-link>
+      <hr>
+      <router-link to="/investor/member">member</router-link>
+    </div>
 
   </div>
 </template>

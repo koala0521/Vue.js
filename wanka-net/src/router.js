@@ -1,57 +1,104 @@
+
+const Index = '/index';
+
+const Infos = '/infos';
+
+const Culture = '/culture';
+
+const System = '/system';
+
+const Investor = '/investor';
+
 const routers = [
     {
-        path: '/',
+        path: Index,
         meta: {
             title: '首页'
         },
-        name:"index",
+        name:'index',
         component: (resolve) => require(['./views/index.vue'], resolve)
-    },{
-        path:"/infos",
-        name:"infos",
+    }
+    
+    // 二级路由
+    ,{
+        path:Infos,
+        name:'infos',
         meta:{
-            title:"公司信息"
+            title:'公司信息'
         },
         component:(resolve) => require(['./views/companyInfos.vue'] , resolve )
-
     }
     ,{
-        path:"/culture",
-        name:"culture",
+        path:Culture,
+        name:'culture',
         meta:{
-            title:"企业文化"
+            title:'企业文化'
         },
         component:(resolve) => require(['./views/culture.vue'] , resolve )
 
     },{
-        path:"/system",
-        name:"system",
+        path:System,
+        name:'system',
         meta:{
-            title:"业务体系"
+            title:'业务体系'
         },
         component:(resolve) => require(['./views/system.vue'] , resolve )
 
     },{
-        path:"/investor",
-        name:"investor",
+        path:Investor,
+        name:'investor',
         meta:{
-            title:"投资者关系"
+            title:'投资者关系'
         },
         component:(resolve) => require(['./views/investorRelations.vue'] , resolve )
 
-    },{
-        path:"/investor/:id",
-        name:"investor",
-        meta:{
-            title:"投资者关系"
-        },
-        component:(resolve) => require(['./views/investor-one.vue'] , resolve )
+    } 
 
-    }
+    // 三级路由
 
     ,{
-        path:"*",
-        redirect:"/"
+        path: Index + '/statement',
+        name:'statement',
+        meta:{
+            title:'免责声明'
+        },
+        component:(resolve) => require(['./views/indexStatement.vue'] , resolve )
+    }
+    ,{
+        path: Index + '/introduce',
+        name:'introduce',
+        meta:{
+            title:'玩咖介绍'
+        },
+        component:(resolve) => require(['./views/indexIntroduce.vue'] , resolve )
+    }   
+    ,{
+        path:Investor + '/contact',
+        name:'contact',
+        meta:{
+            title:'联系我们'
+        },
+        component:(resolve) => require(['./views/investorContact.vue'] , resolve )
+    }
+    ,{
+        path:Investor + '/control',
+        name:'control',
+        meta:{
+            title:'企业管制'
+        },
+        component:(resolve) => require(['./views/investorControl.vue'] , resolve )
+    }    
+    ,{
+        path:Investor + '/member',
+        name:'member',
+        meta:{
+            title:'董事会成员'
+        },
+        component:(resolve) => require(['./views/investorBoardMember.vue'] , resolve )
+    }   
+    ,{
+        path:'*',
+        redirect:'/index'
 
     }
 ];

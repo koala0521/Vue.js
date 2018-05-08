@@ -2,6 +2,7 @@
 
 .news_sub_list{
     height: auto;
+    padding: 0 16px;
 }
 .news_sub_list li{
     overflow: hidden;

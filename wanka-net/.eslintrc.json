@@ -15,6 +15,7 @@
         }],
         "quotes": ["error", "single"],
         "semi": ["error", "always"],
-        "no-console": ["error"]
+        "no-console": ["error"],
+        "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }]
     }
 }

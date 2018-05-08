@@ -33,17 +33,20 @@
                 <Row>
                     <i-col span="6" >
                     <Card title="标题" :bordered="false" :shadow="false" >
-                        <p slot="title">腾讯简介</p>
+                        <p slot="title">玩咖简介</p>
                         <p>
                             腾讯成立于1998年11月，是目前中国领先的互联网增值服务提供商之一。
                             成立10多年来，腾讯一直秉承“一切以用户价值为依归”的经营理念，
                             为亿级海量用户提供稳定优质的各类服务，始终处于稳健发展状态。
                             2004年6月16日，腾讯控股有限公司在香港联交所主板公开上市(股票代号700)。
                         </p>
-                        <a href="#" slot="extra" >
-                            更多
-                            <Icon type="ios-arrow-forward"></Icon>
-                            <Icon type="ios-arrow-forward"></Icon>
+                        <a href="#" slot="extra" >                            
+                            <router-link to="/index/introduce" >
+                                更多 
+                                <Icon type="ios-arrow-forward"></Icon>
+                                <Icon type="ios-arrow-forward"></Icon>                            
+                            </router-link>     
+
                         </a>
                     </Card>                             
                 </i-col>
@@ -57,9 +60,9 @@
                             为亿级海量用户提供稳定优质的各类服务，始终处于稳健发展状态。
                             2004年6月16日，腾讯控股有限公司在香港联交所主板公开上市(股票代号700)。
                         </p>
-                        <a href="#" slot="extra" >
-                            更多 >>
-                        </a>
+                        <!-- <a href="#" slot="extra" >
+                            更多>>
+                        </a> -->
                     </Card>                             
                 </i-col>
                     <i-col span="6" offset="3" >
