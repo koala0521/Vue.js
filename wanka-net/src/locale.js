@@ -3,7 +3,7 @@
  * 注意：语言包内部第一层级的key对应的value值不能为对象类型。
  * 这里的解决方法是用数组包装一下。
  * */  
-export default {
+export default{
     'zh-CN': {
         // 'title':'你好 view',
         'menu':['公司信息','企业文化',' 业务体系','投资者关系'],
@@ -21,7 +21,7 @@ export default {
                 'list':['免责声明']
             },
             'copyright':{
-                '1':'Copyright © 1998 - '+ (new Date).getFullYear() +' Tencent. All Rights Reserved.玩咖公司 版权所有'
+                '1':'Copyright © 1998 - '+ (new Date).getFullYear() +' 玩咖公司 版权所有'
             }
         }]
     },
@@ -35,14 +35,14 @@ export default {
             },
             'contact':{
                 'title':'Contact Us',
-                'list':['商业合作','市场合作']
+                'list':['Business Cooperation','mMrket Collaboration']
             },
             'legalInfo':{
                 'title':'Legal Information',
                 'list':['免责声明']
             },
             'copyright':{
-                '1':'Copyright © 1998 - 2018 Tencent. All Rights Reserved.玩咖公司 版權所有'
+                '1':'Copyright © 1998 - '+ (new Date).getFullYear() +' WanKa. All Rights Reserved.'
             }
         }]
     },
@@ -61,6 +61,9 @@ export default {
             'legalInfo':{
                 'title':'法律信息',
                 'list':['免責聲明']
+            },
+            'copyright':{
+                '1':'Copyright © 1998 - '+ (new Date).getFullYear() +' 玩咖公司 版權所有'
             }
         }]
     }

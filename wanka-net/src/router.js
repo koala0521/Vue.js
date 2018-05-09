@@ -16,7 +16,6 @@ const lang = window.localStorage.getItem('language') || localLang || 'zh-CN';
 
 console.log( ' 检测语言动态设置meta信息 ' , lang );
 
-
 const routers = [
     {
         path: Index,
