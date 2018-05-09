@@ -52,7 +52,7 @@
                 </i-col>
 
                     <i-col span="6"  offset="3" >
-                    <Card title="标题1"  :bordered="false" :shadow="false" >
+                    <Card :bordered="false" :shadow="false" >
                         <p slot="title">腾讯简介</p>
                         <p>
                             腾讯成立于1998年11月，是目前中国领先的互联网增值服务提供商之一。

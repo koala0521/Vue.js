@@ -54,39 +54,51 @@
                     <Row>
                         <i-col span="8" >
                             <div class="footer-items" >
-                                <h4>关注我们</h4>
+                                <h4>{{ footerText.attention.title }}</h4>
                                 <div  class="items-infos items-infos-legal">
                                     <Icon type="chatbubbles"></Icon>
-                                    <a href="#">微信公众号</a>
+                                    <a href="#">                                                                     
+                                        {{ footerText.attention.list[0] }}   
+                                    </a>
                                 </div>                             
                                 <div  class="items-infos items-infos-legal">
                                     <Icon type="at"></Icon>
-                                    <a href="#">腾讯微博</a>                                    
-                                    </div>
+                                    <a href="#">
+                                        {{ footerText.attention.list[1] }}   
+                                    </a>                                    
+                                </div>
                                 <div  class="items-infos items-infos-legal">
                                     
                                     <Icon type="at"></Icon>
-                                    <a href="#">新浪微博</a>
+                                    <a href="#">
+                                        {{ footerText.attention.list[2] }}  
+                                    </a>
                                 </div>
                             </div>
                         </i-col>
 
                         <i-col  span="8"  >
                             <div class="footer-items" >
-                                <h4>联系我们</h4>
+                                <h4>{{ footerText.contact.title }}</h4>
                                 <div  class="items-infos items-infos-legal" >
-                                    <router-link to="/investor/contact" >商业合作</router-link>
+                                    <router-link to="/investor/contact" >                                
+                                        {{ footerText.contact.list[0] }}                                    
+                                    </router-link>
                                 </div>                             
                                 <div  class="items-infos items-infos-legal" >
-                                    <router-link to="/investor/contact" >市场合作</router-link>                      
+                                    <router-link to="/investor/contact" >                                        
+                                        {{ footerText.contact.list[1] }}
+                                    </router-link>                      
                                 </div>
                             </div>
                         </i-col>
                         <i-col  span="8">
                             <div class="footer-items" >
-                                <h4>法律信息</h4>
+                                <h4>{{ footerText.legalInfo.title }}</h4>
                                 <div class="items-infos items-infos-legal" >
-                                    <router-link to="/index/statement" >免责声明</router-link>     
+                                    <router-link to="/index/statement" >
+                                        {{ footerText.legalInfo.list[0] }}
+                                    </router-link>     
                                 </div>                             
                             </div>
                         </i-col>
@@ -111,7 +123,12 @@
 <script>
     
     export default {
+        data(){
+            return {
+                'footerText':this.$t('footerText')[0]
 
+            };
+        }
     };
     
 

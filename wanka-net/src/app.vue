@@ -38,10 +38,10 @@
             wHeader,
             wFooter
         },
-        data() {
-            return {
-
-            };
+        computed:{
+            // lan(){
+            //     return this.$store.getters.lan;
+            // }
         },
         mounted() {
 
