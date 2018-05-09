@@ -1,4 +1,4 @@
-<style type="text/css">
+<style >
     .st0{fill:#231815;}
     .st1{fill:#D61518;}
 </style>
@@ -76,8 +76,6 @@
 </template>
 
 <script>
-    export default {
-        
-    };
+    export default {};
     
 </script>
