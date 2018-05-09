@@ -14,6 +14,10 @@
     .ivu-layout{
         background: #fff;
     }
+    .ivu-layout-content{
+        width: 100%;
+        overflow-x: hidden;
+    }
 </style>
 
 <template>
