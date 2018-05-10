@@ -31,8 +31,11 @@
 </template>
 
 <script>
+    import { MenuItem ,Menu } from 'iview';
     export default {
-        
+        components:{
+            MenuItem ,Menu
+        }
     };
     
 </script>

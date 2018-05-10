@@ -37,24 +37,7 @@
 
 <template>
     <div class="wrap cont-width" > 
-        
-        <!-- <div class="sub_sider" >
-            <div class="menu-title ivu-card-head" >
-                <p>公司信息</p>
-            </div>
-            <Menu active-name="1-1" :style="{ width:'100%' }" > 
-                <MenuItem name="1-1">
-                    <a href="#company_charity">公司动态</a>
-                </MenuItem>
-                <MenuItem name="1-2">
-                    <a href="#company_dev">发展历程</a>    
-                
-                </MenuItem>
-                <MenuItem name="1-3">
-                    <a href="#company_board">管理团队</a>
-                </MenuItem> 
-            </Menu>  
-        </div> -->
+
         <siderMenu></siderMenu>
         <div class="sub_cont" >
             <cardList title="公司动态" :url="trendUrl" ></cardList>
@@ -83,14 +66,15 @@
                     <p class="content">史蒂夫·乔布斯去世</p>
                 </TimelineItem>
             </Timeline>
-        </div>
-            
+        </div>          
     </div>
 </template>
 
 <script>
     import cardList from '../components/card';
-    import siderMenu from '../components/siderMenu';
+    import siderMenu from '../components/siderMenu';    
+    import { Timeline , TimelineItem } from 'iview';
+
     export default {
         data(){
             return {
@@ -106,7 +90,8 @@
         },
         components:{
             cardList,
-            siderMenu
+            siderMenu,
+            Timeline , TimelineItem 
         }
     };
     

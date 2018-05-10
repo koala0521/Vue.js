@@ -93,8 +93,9 @@
     </Header>
 </template>
 <script>
-
     import Logo from '../logo';
+    
+    import { Header , Menu , MenuItem , Icon } from 'iview';
     export default{
         data(){
             return {
@@ -102,7 +103,8 @@
             };
         },
         components:{
-            Logo
+            Logo,
+            Header , Menu , MenuItem , Icon
         },
         computed:{            
             name(){

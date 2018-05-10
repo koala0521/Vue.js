@@ -50,9 +50,9 @@
         <div  class="cont-width t-border"  >
 
             <Row class="footer-content" >
-                <i-col span="12" class="footer-part" >
+                <Col span="12" class="footer-part" >
                     <Row>
-                        <i-col span="8" >
+                        <Col span="8" >
                             <div class="footer-items" >
                                 <h4>{{ footerText.attention.title }}</h4>
                                 <div  class="items-infos items-infos-legal">
@@ -75,9 +75,9 @@
                                     </a>
                                 </div>
                             </div>
-                        </i-col>
+                        </Col>
 
-                        <i-col  span="8"  >
+                        <Col  span="8"  >
                             <div class="footer-items" >
                                 <h4>{{ footerText.contact.title }}</h4>
                                 <div  class="items-infos items-infos-legal" >
@@ -91,8 +91,8 @@
                                     </router-link>                      
                                 </div>
                             </div>
-                        </i-col>
-                        <i-col  span="8">
+                        </Col>
+                        <Col  span="8">
                             <div class="footer-items" >
                                 <h4>{{ footerText.legalInfo.title }}</h4>
                                 <div class="items-infos items-infos-legal" >
@@ -101,18 +101,18 @@
                                     </router-link>     
                                 </div>                             
                             </div>
-                        </i-col>
+                        </Col>
                         
                     </Row>
-                </i-col>
+                </Col>
 
-                <i-col span="12"   class="footer-part footer-copyright-wrap" >
+                <Col span="12"   class="footer-part footer-copyright-wrap" >
                     <div class="footer-copyright" >
                         <p>Copyright © 1998 - 2018 Tencent. All Rights Reserved.玩咖公司 版权所有</p>
                         <p>京公网安备11010502027357</p>
                     </div>
                      
-                </i-col>
+                </Col>
             </Row>
         
         </div>
@@ -121,13 +121,15 @@
 </template>
 
 <script>
-    
+    import { Row , Col , Icon } from 'iview';
     export default {
         data(){
             return {
                 'footerText':this.$t('footerText')[0]
-
             };
+        },
+        components:{
+            Row , Col , Icon
         }
     };
     

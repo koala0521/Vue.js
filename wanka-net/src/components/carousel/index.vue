@@ -65,7 +65,7 @@ import '../../libs/swiper/css/idangerous.swiper.css';
             let mySwiper = new Swiper('.swiper-container',{
                 loop: true,
                 autoplay : 5000,
-                autoResize : false,
+                autoResize : true,
                 pagination : '.pagination',   
                 paginationClickable :true, 
                 onSlideChangeStart: function(swiper){

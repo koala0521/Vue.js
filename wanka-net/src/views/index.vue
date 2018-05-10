@@ -27,17 +27,17 @@
 <template>
     <div>
         <Row>
-            <i-col span="24" >                
+            <Col span="24" >                
                 <WCarousel  
                     class="banner-wrap" 
                     :imgList="imgList"
                 >
                 
                 </WCarousel>  
-            </i-col>  
+            </Col>  
         </Row>
         <Row class="cont-width">        
-            <i-col span="6" >
+            <Col span="6" >
                 <Card title="标题" :bordered="false" :shadow="false" >
                     <p slot="title">玩咖简介</p>
                     <p>
@@ -55,9 +55,9 @@
 
                     </a>
                 </Card>                             
-            </i-col>
+            </Col>
 
-                <i-col span="6"  offset="3" >
+                <Col span="6"  offset="3" >
                 <Card :bordered="false" :shadow="false" >
                     <p slot="title">腾讯简介</p>
                     <p>
@@ -70,8 +70,8 @@
                         更多>>
                     </a> -->
                 </Card>                             
-            </i-col>
-                <i-col span="6" offset="3" >
+            </Col>
+                <Col span="6" offset="3" >
                 <Card title="标题2"  :bordered="false" :shadow="false" >
                     <p slot="title">
                         <Icon type="ios-film-outline"></Icon>
@@ -82,15 +82,18 @@
                         Change
                     </a>
                 </Card>                             
-            </i-col>                                                
+            </Col>                                                
         </Row>
     </div>
 </template>
 <script>
     import WCarousel from '../components/carousel';
+    import { Row ,Col ,Card , Icon } from 'iview';
+
     export default {
         components:{
-            WCarousel
+            WCarousel,
+            Row ,Col ,Card , Icon
         },
         data(){
             return {

@@ -2,7 +2,7 @@
 import 'babel-polyfill';
 
 import Vue from 'vue';
-import iView from 'iview';
+// import iView from 'iview';
 import VueRouter from 'vue-router';
 import Routers from './router';
 import Vuex from 'vuex';
@@ -17,10 +17,12 @@ import zhLocale from 'iview/src/locale/lang/zh-CN';
 import twLocale from 'iview/src/locale/lang/zh-TW';
 import enLocale from 'iview/src/locale/lang/en-US';
 
+import { LoadingBar } from 'iview';
+
 Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(VueI18n);
-Vue.use(iView);
+// Vue.use(iView);
 
 // 自动设置语言
 const navLang = navigator.language;
@@ -46,13 +48,13 @@ const RouterConfig = {
 const router = new VueRouter(RouterConfig);
 
 router.beforeEach((to, from, next) => {
-    iView.LoadingBar.start();
+    LoadingBar.start();
     Util.title(to.meta.title);
     next();
 });
 
 router.afterEach(() => {
-    iView.LoadingBar.finish();
+    LoadingBar.finish();
     window.scrollTo(0, 0);
 });
 

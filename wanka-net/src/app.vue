@@ -36,11 +36,13 @@
 <script>
     import wHeader from './components/header/index';
     import wFooter from './components/footer/index';
-
+    import { Layout , Content } from 'iview';
     export default {
         components:{
             wHeader,
-            wFooter
+            wFooter,
+            Layout,
+            Content
         },
         computed:{
             // lan(){

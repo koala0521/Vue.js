@@ -1,4 +1,4 @@
-<style>
+<style scoped >
 
 .news_sub_list{
     height: auto;
@@ -45,8 +45,8 @@ a.txt{
   
 </template>
 <script>
-
-    var dataList = [
+    import { Card , Icon } from 'iview';
+    let dataList = [
         {
             name: '肖申克的救赎',
             url: 'https://movie.douban.com/subject/1292052/',
@@ -98,6 +98,9 @@ a.txt{
                 type: String,
                 default: '#'
             }
+        },
+        components:{
+            Card , Icon
         },
         methods:{
             changeLimit(){
