@@ -24,3 +24,37 @@ li{
 .ivu-card-body{
     padding: 14px 0;
 }
+
+/* 弹框背景 */
+.video-wrap .ivu-modal-content{
+    background: none;
+}
+.video-wrap .ivu-modal-footer{
+    border: none;
+}
+.video-wrap .ivu-icon-ios-close-empty{
+    color: #fff;
+    font-size: 48px;
+}
+.video-wrap .ivu-modal-footer{
+    display: none;
+}
+
+/* 播放器样式 */
+.video-player , .video-player > div{
+    width: 800px;
+    height: 450px;
+}
+.ivu-modal-content{
+    background-color: transparent;
+}
+.video-player .vjs-big-play-button{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 3em;
+    line-height: 3em;
+    border-radius: 50%;
+    margin-left: -1.5em;
+    margin-top: -1.5em;
+}

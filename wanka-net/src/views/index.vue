@@ -1,4 +1,4 @@
-<style scoped>
+<style scoped lang="less" >
     .cont-width{
         width: 1200px;
         min-width: 1200px;
@@ -23,6 +23,36 @@
     .banner-wrap .banner-cont{
         height: 100%;
     }
+    .partII , .video-img-wrap{
+        height: 220px;
+        padding: 0 10px;
+    }
+    .video-img-wrap{
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding: 0;
+    }
+    .bg-video{
+        width: 100%;
+    }
+    #icon-play{
+        top: 50%;  
+        left: 50%;
+        margin-left: -39px;
+        margin-top: -15px;
+        width: 78px;
+        height: 78px;
+        background: url(../assets/img/ico_play.png) no-repeat;
+        cursor: pointer;
+        -webkit-transition: all .3s ease;
+        transition: all .3s ease;
+        z-index: 5;
+        position: absolute;
+    }
+    .partII .item:not(.last){
+        padding-right: 40px;
+    }
 </style>
 <template>
     <div>
@@ -31,13 +61,12 @@
                 <WCarousel  
                     class="banner-wrap" 
                     :imgList="imgList"
-                >
-                
+                >                
                 </WCarousel>  
             </Col>  
         </Row>
-        <Row class="cont-width">        
-            <Col span="6" >
+        <Row class="cont-width partII">        
+            <Col span="8" class="item" >
                 <Card title="标题" :bordered="false" :shadow="false" >
                     <p slot="title">玩咖简介</p>
                     <p>
@@ -57,7 +86,7 @@
                 </Card>                             
             </Col>
 
-                <Col span="6"  offset="3" >
+            <Col span="8"  class="item"  >
                 <Card :bordered="false" :shadow="false" >
                     <p slot="title">腾讯简介</p>
                     <p>
@@ -71,29 +100,46 @@
                     </a> -->
                 </Card>                             
             </Col>
-                <Col span="6" offset="3" >
-                <Card title="标题2"  :bordered="false" :shadow="false" >
-                    <p slot="title">
-                        <Icon type="ios-film-outline"></Icon>
-                        Classic film
-                    </p>
-                    <a href="#" slot="extra" >
-                        <Icon type="ios-loop-strong"></Icon>
-                        Change
-                    </a>
-                </Card>                             
+            <Col span="8" class="item last"  >
+                <Card :bordered="false" :shadow="false" >
+                    <p slot="title">视频简介</p>
+
+                    <img class="bg-video" src="../assets/img/bg-video.jpg" alt="" srcset="">
+                    <span id="icon-play"  @click="showPlayer"  ></span>
+                </Card>                
             </Col>                                                
         </Row>
+        <div v-if="isLoadPlayer" >
+            <Modal
+                v-model="isShowPlayer"
+                class-name="vertical-center-modal video-wrap"
+                width="860"
+                @on-visible-change="visibleChange"                
+            >
+                <video-player 
+                    class="vjs-custom-skin"
+                    :options="playerOptions"                     
+                    ref="playerWrap"
+                    @ended="onPlayerEnded($event)"
+                 >
+                    
+                </video-player> 
+                <div slot="footer"> </div>
+            </Modal>
+        </div>
     </div>
+
 </template>
 <script>
     import WCarousel from '../components/carousel';
-    import { Row ,Col ,Card , Icon } from 'iview';
+    import { Row ,Col ,Card , Icon , Modal } from 'iview';
+    import 'video.js/dist/video-js.css';
+    import { videoPlayer } from 'vue-video-player';
 
     export default {
         components:{
             WCarousel,
-            Row ,Col ,Card , Icon
+            Row , Col , Card , Icon , videoPlayer , Modal
         },
         data(){
             return {
@@ -101,7 +147,24 @@
                     {src: require('../assets/img/1.jpg')},
                     {src:require('../assets/img/2.png')},
                     {src:require('../assets/img/3.jpg')}
-                ]
+                ],
+                playerOptions: {
+                    // videojs options
+                    // 是否静音
+                    muted: false,
+                    language: 'zh-CN',
+                    sources: [{
+                        type: 'video/mp4',
+                        src: 'http://vjs.zencdn.net/v/oceans.mp4'
+                    }],
+                    poster: require('../assets/img/bg-video.jpg'),
+                },
+                // 是否加载视频组件
+                isLoadPlayer:false,
+                // 是否显示播放
+                isShowPlayer:false,
+                // 是否可滚动
+                scrollable:false,
             }
         },
         computed:{
@@ -119,6 +182,9 @@
             },
             isEN(){
                 return this.lan === 'en-US'
+            },
+            player(){
+                return this.$refs.playerWrap.$refs.video;
             }
         },
         methods: {
@@ -126,6 +192,21 @@
             changeLan( lan ){
                 localStorage.setItem('language',lan);
                 window.location.reload();
+            },
+            showPlayer(){
+                // 加载播放器组件
+                this.isLoadPlayer = true;
+                // 显示播放器
+                this.isShowPlayer = true;
+            },
+            // 弹框状态切换时
+            visibleChange(state){
+                // 关闭弹框时，暂停播放
+                !state && this.player.pause();                
+            },
+            onPlayerEnded(player) {
+                console.log('播放结束了', player);
+                player.currentTime(0);
             }
         }
     };
