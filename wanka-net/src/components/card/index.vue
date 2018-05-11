@@ -18,7 +18,7 @@ a.txt{
     text-decoration: none;
     -webkit-transition: color .3s;
     transition: color .3s;
-    width: 500px;
+    max-width: 500px;
     height: 30px;
 }
 
@@ -26,7 +26,10 @@ a.txt{
 
 <template>
     <Card :bordered="false" dis-hover >
-        <p slot="title" >{{  title }}</p>
+        <p slot="title" >
+            {{  title }}            
+            <slot name="titles" ></slot>
+        </p>
         <router-link v-if="!!btntext" slot="extra" :to="url" >
             <Icon type="ios-loop-strong"></Icon>
             {{ btntext }}
@@ -34,9 +37,9 @@ a.txt{
 
         <ul class="news_sub_list" >
             <li v-for="item in list ">
-                <a class="txt" :href="item.url" target="_blank">{{ item.name }}</a>
+                <a class="txt" :href="item.url" target="_blank">{{ item.title }}</a>
                 <span class="item_time" >
-                    {{ item.time }}
+                    {{ item.ctime }}
                 </span>
             </li>
         </ul>
@@ -48,39 +51,39 @@ a.txt{
     import { Card , Icon } from 'iview';
     let dataList = [
         {
-            name: '肖申克的救赎',
+            title: '肖申克的救赎',
             url: 'https://movie.douban.com/subject/1292052/',
-            time: '2018/03/21'
+            ctime: '2018/03/21'
         },
         {
-            name: '这个杀手不太冷',
+            title: '这个杀手不太冷',
             url: 'https://movie.douban.com/subject/1295644/',
-            time: '2018/03/21'
+            ctime: '2018/03/21'
         },
         {
-            name: '霸王别姬',
+            title: '霸王别姬',
             url: 'https://movie.douban.com/subject/1291546/',
-            time: '2018/03/21'
+            ctime: '2018/03/21'
         },
         {
-            name: '阿甘正传',
+            title: '阿甘正传',
             url: 'https://movie.douban.com/subject/1292720/',
-            time: '2018/03/21'
+            ctime: '2018/03/21'
         },
         {
-            name: '美丽人生',
+            title: '美丽人生',
             url: 'https://movie.douban.com/subject/1292063/',
-            time: '2018/03/21'
+            ctime: '2018/03/21'
         },
         {
-            name: '千与千寻',
+            title: '千与千寻',
             url: 'https://movie.douban.com/subject/1291561/',
-            time: '2018/03/21'
+            ctime: '2018/03/21'
         },
         {
-            name: '辛德勒的名单',
+            title: '辛德勒的名单',
             url: 'https://movie.douban.com/subject/1295124/',
-            time: '2018/03/21'
+            ctime: '2018/03/21'
         }
     ];
     export default {
@@ -88,7 +91,7 @@ a.txt{
             title:String,
             btntext:{
                 type: String,
-                default: '查看更多'
+                default: ''
             },
             list:{
                 type:Array,

@@ -58,14 +58,25 @@ router.afterEach(() => {
     window.scrollTo(0, 0);
 });
 
+
+const lanCodes = {
+    'zh-CN':1,
+    'zh-TW':2,
+    'en-US':3
+};
+
 // 状态管理
 const store = new Vuex.Store({
     state: {
-        'lan':lang
+        'lan':lang,
+        'lanCode':lanCodes[lang]
     },
     getters: {
         'lan' : state =>{
             return state.lan;
+        },
+        'lanCode' : state =>{
+            return state.lanCode;
         }
     },
     mutations: {

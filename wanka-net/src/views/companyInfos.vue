@@ -40,7 +40,7 @@
 
         <siderMenu></siderMenu>
         <div class="sub_cont" >
-            <cardList title="公司动态" :url="trendUrl" ></cardList>
+            <cardList title="公司动态" btntext="查看更多" :url="trendUrl" ></cardList>
             <cardList title="评论管理" ></cardList>
             <cardList title="举报管理" ></cardList>
             <!-- 时间轴 -->

@@ -33,7 +33,7 @@
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div 
-                v-for="(item , index ) in imgList"
+                v-for="(item , index ) in banner"
                 :key="index"
                 class="swiper-slide"
             
@@ -60,7 +60,7 @@ import '../../libs/swiper/css/idangerous.swiper.css';
                 value1: 0
             }
         },
-        props:['imgList'],
+        props:['banner'],
         mounted(){
             let mySwiper = new Swiper('.swiper-container',{
                 loop: true,

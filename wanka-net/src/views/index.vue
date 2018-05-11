@@ -23,7 +23,7 @@
     .banner-wrap .banner-cont{
         height: 100%;
     }
-    .partII , .video-img-wrap{
+    .part , .video-img-wrap{
         height: 220px;
         padding: 0 10px;
     }
@@ -33,8 +33,9 @@
         overflow: hidden;
         padding: 0;
     }
-    .bg-video{
+    .bg-video , .part img{
         width: 100%;
+        height: 175px;
     }
     #icon-play{
         top: 50%;  
@@ -50,9 +51,13 @@
         z-index: 5;
         position: absolute;
     }
-    .partII .item:not(.last){
+    .part .item:not(.last){
         padding-right: 40px;
     }
+    .news-list .swiper-active-switch{
+        background:red;
+    }
+
 </style>
 <template>
     <div>
@@ -60,12 +65,12 @@
             <Col span="24" >                
                 <WCarousel  
                     class="banner-wrap" 
-                    :imgList="imgList"
+                    :banner="banner"
                 >                
                 </WCarousel>  
             </Col>  
         </Row>
-        <Row class="cont-width partII">        
+        <Row class="cont-width part">        
             <Col span="8" class="item" >
                 <Card title="标题" :bordered="false" :shadow="false" >
                     <p slot="title">玩咖简介</p>
@@ -104,11 +109,35 @@
                 <Card :bordered="false" :shadow="false" >
                     <p slot="title">视频简介</p>
 
-                    <img class="bg-video" src="../assets/img/bg-video.jpg" alt="" srcset="">
+                    <img class="bg-video" src="../assets/img/bg-video.jpg" alt=""/>
                     <span id="icon-play"  @click="showPlayer"  ></span>
                 </Card>                
             </Col>                                                
         </Row>
+        <Row class="cont-width part">
+            <Col span="8" class="item" v-for="item in thumb" :key="item.id" >
+                <a :href="item.url" target="_blank" >
+                    <Card :bordered="false" :shadow="false" >
+                        <p slot="title">{{ item.title }}</p>
+                        <img class="bg-video" :src="item.img" />
+                    </Card>         
+                </a>           
+            </Col>  
+            <Col span="8" class="item last"  >
+                <ListCard  :list="list" class="news-list" >
+                    <div slot="titles" >
+                        <i 
+                            class="swiper-pagination-switch" 
+                            :class="{'swiper-active-switch': cPage==item }" 
+                            v-for="item in pages"
+                            :key="item"
+                        ></i>
+                    </div>   
+                </ListCard>          
+            </Col>              
+
+        </Row>
+
         <div v-if="isLoadPlayer" >
             <Modal
                 v-model="isShowPlayer"
@@ -135,19 +164,73 @@
     import { Row ,Col ,Card , Icon , Modal } from 'iview';
     import 'video.js/dist/video-js.css';
     import { videoPlayer } from 'vue-video-player';
+    import ListCard from '../components/card';
+    import util from '../libs/util';
 
     export default {
         components:{
             WCarousel,
-            Row , Col , Card , Icon , videoPlayer , Modal
+            Row , Col , Card , Icon , videoPlayer , Modal ,ListCard
         },
         data(){
             return {
-                imgList:[
+                banner:[
                     {src: require('../assets/img/1.jpg')},
                     {src:require('../assets/img/2.png')},
                     {src:require('../assets/img/3.jpg')}
                 ],
+                thumb:[
+                    {
+                        "title": "玩咖公布第四季度及全年业绩",
+                        "img": "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
+                        "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf"
+                    },
+                    {
+                        "title": "玩咖公布第三季度业绩",
+                        "img": "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
+                        "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf"
+                    }
+                ],
+                list:[
+                    {
+                        "title": "玩咖公布2018第四季度及全年业绩",
+                        "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                        "ctime": "1525342411"
+                    },
+                    {
+                        "title": "玩咖公布2018第三季度业绩",
+                        "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                        "ctime": "1525342411"
+                    },
+                    {
+                        "title": "玩咖公布2018第二季度及中期业绩",
+                        "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                        "ctime": "1525342411"
+                    },
+                    {
+                        "title": "玩咖公布2018第一季度业绩",
+                        "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                        "ctime": "1525342411"
+                    },
+                    {
+                        "title": "玩咖公布2017第四季度及全年业绩",
+                        "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                        "ctime": "1525342411"
+                    },
+                    {
+                        "title": "玩咖公布2017第三季度业绩",
+                        "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                        "ctime": "1525342411"
+                    },
+                    {
+                        "title": "玩咖公布2017第三季度业绩",
+                        "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                        "ctime": "1525342411"
+                    }
+                ],
+                cPage:1,
+                size:6,
+                // 播放器配置参数
                 playerOptions: {
                     // videojs options
                     // 是否静音
@@ -175,16 +258,25 @@
                 return this.$store.getters.lan;
             },
             isCN(){
-                return this.lan === 'zh-CN'
+                return this.lan === 'zh-CN';
             },
             isTW(){
-                return this.lan === 'zh-TW'
+                return this.lan === 'zh-TW';
             },
             isEN(){
-                return this.lan === 'en-US'
+                return this.lan === 'en-US';
             },
             player(){
                 return this.$refs.playerWrap.$refs.video;
+            },
+            // 计算分页数量
+            pages(){
+                let arr = [];
+                let len = Math.ceil(this.list.length / this.size);
+                for (let i = 0; i < len; i++) {
+                    arr.push(i + 1 );                    
+                }
+                return arr;
             }
         },
         methods: {
