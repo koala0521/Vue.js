@@ -57,6 +57,9 @@
     .news-list .swiper-active-switch{
         background:red;
     }
+    .news-list .title-wrap{
+        text-align: right;
+    }
 
 </style>
 <template>
@@ -124,13 +127,14 @@
                 </a>           
             </Col>  
             <Col span="8" class="item last"  >
-                <ListCard  :list="list" class="news-list" >
-                    <div slot="titles" >
+                <ListCard  :list="pageList" class="news-list" >
+                    <div slot="titles" class="title-wrap" >
                         <i 
                             class="swiper-pagination-switch" 
                             :class="{'swiper-active-switch': cPage==item }" 
                             v-for="item in pages"
                             :key="item"
+                            @click="cPage = item"
                         ></i>
                     </div>   
                 </ListCard>          
@@ -166,6 +170,7 @@
     import { videoPlayer } from 'vue-video-player';
     import ListCard from '../components/card';
     import util from '../libs/util';
+import index from 'vue';
 
     export default {
         components:{
@@ -274,9 +279,16 @@
                 let arr = [];
                 let len = Math.ceil(this.list.length / this.size);
                 for (let i = 0; i < len; i++) {
-                    arr.push(i + 1 );                    
+                    arr.push( i + 1 );                    
                 }
                 return arr;
+            },
+            // 当前页码对应的数据
+            pageList(){
+                return this.list.filter( (item ,index) =>{
+                    let cIndex = this.size * (this.cPage -1 );
+                    return index >= cIndex && index < (this.size * this.cPage);
+                });
             }
         },
         methods: {

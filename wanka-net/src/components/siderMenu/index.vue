@@ -9,32 +9,89 @@
        padding: 14px 24px;
        border-color: transparent;
    }
+   a{
+       color: #495060;
+   }
 </style>
 <template>
     <div class="sub-sider" >
         <div class="menu-title ivu-card-head" >
             <p>公司信息</p>
         </div>
-        <Menu active-name="1-1" :style="{ width:'100%' }" > 
-            <MenuItem name="1-1">
-                <a href="#company_charity">公司动态</a>
+        <Menu 
+            :active-name="cName"
+            :style="{ width:'100%' }"
+            @on-select="changeMenu"
+            ref="siderMenu" 
+        > 
+            <MenuItem 
+                v-for="( item , index ) in list"
+                :name="index"
+                :key="item.name"
+            >
+                {{ item.title }}
             </MenuItem>
-            <MenuItem name="1-2">
-                <a href="#company_dev">发展历程</a>    
-            
-            </MenuItem>
-            <MenuItem name="1-3">
-                <a href="#company_board">管理团队</a>
-            </MenuItem> 
+
+            <!-- <a href="#company_charity">
+                <MenuItem name="1-1">
+                    公司动态
+                </MenuItem>
+            </a> -->
+            <!-- <a href="#company_dev">
+                <MenuItem name="1-2">   
+                    发展历程
+                </MenuItem>
+            </a>
+            <a href="#company_board">
+                <MenuItem name="1-3">
+                    管理团队
+                </MenuItem> 
+            </a> -->
         </Menu>  
     </div>
 </template>
 
 <script>
+    import { scrollToTar } from '../../libs/util';
+
     import { MenuItem ,Menu } from 'iview';
     export default {
         components:{
             MenuItem ,Menu
+        },
+        props:["list"],
+        data(){
+            return {
+                cName:0,
+                contItems:null
+            }
+        },
+        computed:{
+
+        },
+        methods:{
+            changeMenu(name){
+                
+                let cItem = this.contItems[name];
+                let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                let elTop = cItem.getBoundingClientRect().y;
+                if( this.cName === name || !cItem ) return;   
+                
+                console.log( scrollTop + elTop );
+                
+                this.cName = name;
+                scrollToTar( 600 , (scrollTop + elTop) );
+            },
+            updateActiveName(){            
+
+                this.$nextTick(()=>{
+                    this.$refs.siderMenu.updateActiveName();
+                });
+            }
+        },
+        mounted(){
+            this.contItems = document.querySelectorAll('div.cotent-item');
+
         }
     };
     

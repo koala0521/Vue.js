@@ -20,4 +20,23 @@ util.ajax = axios.create({
     timeout: 30000
 });
 
+    // 平滑滚动
+const scrollToTar = function (scrollDuration , target ) {
+    // ???有问题
+    var scrollStep = -window.scrollY / (scrollDuration / 15),
+        target = target || 0,
+        scrollInterval = setInterval(function(){
+            console.log( window.scrollY , scrollStep );
+            
+        if ( Math.abs( window.scrollY - target ) <= 15 ) {
+            window.scrollBy( target, scrollStep );
+        }
+        else clearInterval(scrollInterval); 
+    },15);
+}
+export {
+
+    scrollToTar
+}
+
 export default util;

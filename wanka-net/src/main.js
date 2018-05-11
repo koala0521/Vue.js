@@ -43,7 +43,18 @@ Vue.locale('en-US', mergeEN);
 // 路由配置
 const RouterConfig = {
     mode: 'history',
-    routes: Routers
+    routes: Routers,
+    scrollBehavior (to, from, savedPosition) {
+        console.log( 'to >>>>>>' , to  );
+        console.log( 'savedPosition >>>>>>' , savedPosition );
+        
+        if (to.hash) {
+          return { 
+            'selector': to.hash,
+            'offset':{ x:0 , y :64 }
+          }
+        }
+    }
 };
 const router = new VueRouter(RouterConfig);
 

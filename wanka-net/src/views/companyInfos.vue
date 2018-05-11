@@ -38,11 +38,19 @@
 <template>
     <div class="wrap cont-width" > 
 
-        <siderMenu></siderMenu>
+        <siderMenu :list="siderMenuData" ></siderMenu>
         <div class="sub_cont" >
-            <cardList title="公司动态" btntext="查看更多" :url="trendUrl" ></cardList>
-            <cardList title="评论管理" ></cardList>
-            <cardList title="举报管理" ></cardList>
+            <cardList 
+                title="公司动态" 
+                btntext="查看更多" 
+                :url="trendUrl"
+                id="company_charity"
+                class="cotent-item"
+            >
+            </cardList>
+            
+            <cardList class="cotent-item" id="company_dev" title="评论管理" ></cardList>
+            <cardList class="cotent-item" id="company_board" title="举报管理" ></cardList>
             <!-- 时间轴 -->
             <Timeline>
                 <TimelineItem>
@@ -79,7 +87,27 @@
         data(){
             return {
 
+                // 左侧菜单数据
+                siderMenuData:[
+                    {
+                        title : "公司动态", 
+                        name : "company_charity"
+                    },
+                    {
+                        title : "发展历程", 
+                        name : "company_dev"
+                    },
+                    {
+                        title : "管理团队", 
+                        name : "company_board"
+                    }
+                ]
             };
+        },
+        components:{
+            cardList,
+            siderMenu,
+            Timeline , TimelineItem 
         },
         computed:{
             trendUrl(){
@@ -87,11 +115,6 @@
                 
                 return this.$route.path + '/trend';
             }
-        },
-        components:{
-            cardList,
-            siderMenu,
-            Timeline , TimelineItem 
         }
     };
     
