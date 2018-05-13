@@ -37,6 +37,9 @@
     import wHeader from './components/header/index';
     import wFooter from './components/footer/index';
     import { Layout , Content } from 'iview';
+
+
+
     export default {
         components:{
             wHeader,
@@ -50,13 +53,18 @@
             // }
         },
         mounted() {
-
+            window.addEventListener('scroll', this.handleScroll);
+            // 内容区元素
+            this.contItems = document.querySelectorAll('div.cotent-item');
         },
         beforeDestroy() {
 
         },
         methods: {
-
+            handleScroll(){
+                console.log('页面滚动了');
+                
+            }
         }
     };
 </script>

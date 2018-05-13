@@ -55,6 +55,7 @@
     import { scrollToTar } from '../../libs/util';
 
     import { MenuItem ,Menu } from 'iview';
+
     export default {
         components:{
             MenuItem ,Menu
@@ -73,14 +74,10 @@
             changeMenu(name){
                 
                 let cItem = this.contItems[name];
-                let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-                let elTop = cItem.getBoundingClientRect().y;
-                if( this.cName === name || !cItem ) return;   
-                
-                console.log( scrollTop + elTop );
-                
+                let elTop = cItem.getBoundingClientRect().top;
+                if( this.cName === name || !cItem ) return;            
                 this.cName = name;
-                scrollToTar( 600 , (scrollTop + elTop) );
+                scrollToTar( 600 , elTop - 65 );
             },
             updateActiveName(){            
 
