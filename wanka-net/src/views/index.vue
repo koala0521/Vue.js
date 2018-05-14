@@ -24,7 +24,7 @@
         height: 100%;
     }
     .part , .video-img-wrap{
-        height: 220px;
+
         padding: 0 10px;
     }
     .video-img-wrap{
@@ -60,6 +60,9 @@
     .news-list .title-wrap{
         text-align: right;
     }
+    .ofset{
+	   margin-left: 6.25%;
+   }
 
 </style>
 <template>
@@ -74,7 +77,7 @@
             </Col>  
         </Row>
         <Row class="cont-width part">        
-            <Col span="8" class="item" >
+            <Col span="7" class="item" >
                 <Card title="标题" :bordered="false" :shadow="false" >
                     <p slot="title">玩咖简介</p>
                     <p>
@@ -94,7 +97,7 @@
                 </Card>                             
             </Col>
 
-            <Col span="8"  class="item"  >
+            <Col span="7"  class="ofset"  >
                 <Card :bordered="false" :shadow="false" >
                     <p slot="title">腾讯简介</p>
                     <p>
@@ -108,7 +111,7 @@
                     </a> -->
                 </Card>                             
             </Col>
-            <Col span="8" class="item last"  >
+            <Col span="7" class="ofset"  >
                 <Card :bordered="false" :shadow="false" >
                     <p slot="title">视频简介</p>
 
@@ -118,7 +121,7 @@
             </Col>                                                
         </Row>
         <Row class="cont-width part">
-            <Col span="8" class="item" v-for="item in thumb" :key="item.id" >
+            <Col span="7" :class="{ofset: (index !== 0) }" v-for="item ,index in thumb" :key="item.id" >
                 <a :href="item.url" target="_blank" >
                     <Card :bordered="false" :shadow="false" >
                         <p slot="title">{{ item.title }}</p>
@@ -126,7 +129,7 @@
                     </Card>         
                 </a>           
             </Col>  
-            <Col span="8" class="item last"  >
+            <Col span="7" class="ofset"  >
                 <ListCard  :list="pageList" class="news-list" >
                     <div slot="titles" class="title-wrap" >
                         <i 

@@ -6,6 +6,9 @@ ul , ol{
 li{
     vertical-align: top;
 }
+p{
+    line-height: 1.8em;
+}
 
 .sub_cont{
     width: 800px;
@@ -25,7 +28,7 @@ li{
     margin-bottom: 30px;
     border-radius: 0;
 }
-.cotent-item .ivu-card-head{
+.cotent-item .ivu-card-head , .part .ivu-card-head{
     padding: 14px 0;
 }
 
@@ -36,14 +39,29 @@ li{
     padding-bottom: 30px;
 }
 
+/* 导航菜单样式 */
+.ivu-menu-light.ivu-menu-horizontal .ivu-menu-item-active, 
+.ivu-menu-light.ivu-menu-horizontal .ivu-menu-item:hover, 
+.ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu-active, 
+.ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu:hover{
+    color: #495060;
+    border-bottom: 2px solid #df3235;
+}
+
+.ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu){
+    color: #495060;
+    border-right: 2px solid #df3235;
+}
 
 /* card样式 */
 .ivu-card:hover{
     box-shadow: none;
-    /* border-color:none; */
     }
 .ivu-card-body{
     padding: 14px 0;
+}
+.ivu-card-extra{
+    right: 0px;
 }
 
 /* 弹框背景 */
@@ -82,6 +100,19 @@ li{
 button {
     outline: none;
 }
+
+/* 时间轴 */
+.int .ivu-timeline-item-head{
+    background: #df3235;
+    border-color: #df3235;
+}
+.ivu-timeline-item-head{
+    border-color: #bababa;
+}
+.line-top .ivu-timeline-item-head{
+    border-color: transparent; 
+}
+
 .tac{text-align:center !important;}
 .tal{text-align:left !important;}
 .tar{text-align:right !important;}

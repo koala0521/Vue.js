@@ -26,6 +26,24 @@
     .content{
         padding-left: 5px;
     }
+   .item-title{
+	   line-height: 2em;
+       font-size: 1.1em;
+       font-weight: bold;
+       padding-right: 20px;
+   }
+   .item-summary{
+	   line-height: 2.2em;
+	   font-size: 1em;
+	   padding-bottom: 0.5em;
+   }
+   .item-text{
+	   line-height: 2em;
+   }
+   .team-item{
+       border-bottom: 1px solid #e9eaec;
+       padding: 10px 0;
+   }
 </style>
 
 <template>
@@ -41,32 +59,83 @@
                 class="cotent-item"
             >
             </cardList>
-            
-            <cardList class="cotent-item" id="company_dev" title="评论管理" ></cardList>
-            <cardList class="cotent-item" id="company_board" title="举报管理" ></cardList>
+
             <!-- 时间轴 -->
-            <Timeline>
-                <TimelineItem>
-                    <p class="time">1976年</p>
-                    <p class="content">Apple I 问世</p>
-                </TimelineItem>
-                <TimelineItem>
-                    <p class="time">1984年</p>
-                    <p class="content">发布 Macintosh</p>
-                </TimelineItem>
-                <TimelineItem>
-                    <p class="time">2007年</p>
-                    <p class="content">发布 iPhone</p>
-                </TimelineItem>
-                <TimelineItem>
-                    <p class="time">2010年</p>
-                    <p class="content">发布 iPad</p>
-                </TimelineItem>
-                <TimelineItem>
-                    <p class="time">2011年10月5日</p>
-                    <p class="content">史蒂夫·乔布斯去世</p>
-                </TimelineItem>
-            </Timeline>
+            <Card 
+			 	:bordered="false"
+				dis-hover 
+				class="cotent-item" 
+			>
+
+                <p slot="title">
+					<!-- <Icon type="ios-film-outline"></Icon> -->
+					{{ TimelineData.title }}
+                    
+				</p>
+                <div class="card-cont" > 
+                    <Timeline>
+
+                        <TimelineItem class="line-top" >  
+                        </TimelineItem>
+
+                        <TimelineItem 
+                            v-for="item , index in TimelineData.list"
+                            :class="{ int : !!item.time }"
+                            :key="index"
+                        >  
+                            <p v-if=" !!item.time " class="time">{{ item.time }}</p>
+                            <p v-if=" !!item.content "  class="content">{{ item.content }}</p>
+                        </TimelineItem>
+                    </Timeline>
+                </div>
+            </Card>
+
+            <Card
+
+                :bordered="false"
+				dis-hover 
+				class="cotent-item last" 
+            >
+                <p slot="title">
+					<!-- <Icon type="ios-film-outline"></Icon> -->
+					{{ team.title }}
+                    
+				</p>
+                <div class="card-cont" > 
+                    <p>
+                        <span class="item-title" >{{ team.leader }} </span> 
+                        <span class="item-summary" >{{ team.JobTitle }}</span>
+                    </p>
+                    <p class="item-text team-item">
+                        {{ team.description }}
+                    </p>
+                    <ul>
+                        <li 
+                            class="team-item" 
+                            v-for="item , index in team.leaderList"
+                            :key="index"
+                        >
+                            <span class="item-title" >{{ item.name }} </span> 
+                            <span class="item-summary" >{{ item.JobTitle }}</span>
+                        </li>
+
+                        <!-- <li class="team-item" >
+                            <span class="item-title" >高第男 </span> 
+                            <span class="item-summary" >主要创办人，董事会主席兼CEO</span>
+                        </li>
+                        <li class="team-item" >
+                            <span class="item-title" >高第男 </span> 
+                            <span class="item-summary" >主要创办人，董事会主席兼CEO</span>
+                        </li>
+                        <li class="team-item" >
+                            <span class="item-title" >高第男 </span> 
+                            <span class="item-summary" >主要创办人，董事会主席兼CEO</span>
+                        </li> -->
+                    </ul>
+                </div>
+
+            </Card>
+
         </div>          
     </div>
 </template>
@@ -74,21 +143,27 @@
 <script>
     import cardList from '../components/card';
     import siderMenu from '../components/siderMenu';    
-    import { Timeline , TimelineItem } from 'iview';
+    import { Timeline , TimelineItem , Card , Icon } from 'iview';
 
     export default {
         data(){
             return {
 
                 // 左侧菜单数据
-                siderMenuData:this.$t("content")[0].ABOUT.siderMenu
+                siderMenuData : this.$t("content")[0].ABOUT.siderMenu,
+                // 发展历程
+                TimelineData : this.$t("content")[0].ABOUT.Timeline,
+                // 管理团队
+                team : this.$t("content")[0].ABOUT.team,
             }
         },
         components:{
             cardList,
             siderMenu,
             Timeline , 
-            TimelineItem 
+            TimelineItem,
+            Card,
+            Icon
         },
         computed:{
             trendUrl(){
