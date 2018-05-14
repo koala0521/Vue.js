@@ -5,8 +5,11 @@
  * */  
 export default{
     'zh-CN': {
-        // 'title':'你好 view',
+
+        // 主菜单
         'menu':['公司信息','企业文化',' 业务体系','投资者关系'],
+        
+        // 底部
         'footerText':[{
             'attention':{
                 'title':'关注我们',
@@ -23,6 +26,122 @@ export default{
             'copyright':{
                 '1':'Copyright © 1998 - '+ (new Date).getFullYear() +' 玩咖公司 版权所有'
             }
+        }],
+
+        // 主页面内容配置
+        'content':[{
+
+            // '公司信息'
+            'ABOUT':{
+                'siderMenu':{
+                    'mainTitle':'公司信息',
+                    'list':[
+                        {
+                            'title' : '公司动态', 
+                            'name' : 'company_charity'
+                        },
+                        {
+                            'title' : '发展历程', 
+                            'name' : 'company_dev'
+                        },
+                        {
+                            'title' : '管理团队', 
+                            'name' : 'company_board'
+                        }
+                    ]
+                },
+            },
+            // 企业文化
+            'CULTURE':{
+                'siderMenu':{
+                    'mainTitle':'企业文化',
+                    'list':[
+                        {
+                            'title': '核心理念',
+                            'name': 'core_idea'
+                        },
+                        {
+                            'title': '员工活动',
+                            'name': 'employe_activity'
+                        }
+                    ]
+                }, 
+                'core':{
+                    'title':'核心理念',
+                    'list':[
+                        {
+                            'title':'愿景',
+                            'summary':'成为中国移动互联网商业化服务平台的标杆企业',
+                            'text':'如果中方就美国制裁中兴一事报复，决定以国家安全为理由禁止苹果产品在中国销售，会怎样呢？巴普蒂斯特·苏说，出现这种局面，苹果将失'
+                        },{
+                            'title':'使命',
+                            'summary':'成为中国移动互联网商业化服务平台的标杆企业',
+                            'text':'如果中方就美国制裁中兴一事报复，决定以国家安全为理由禁止苹果产品在中国销售，会怎样呢？巴普蒂斯特·苏说，出现这种局面，苹果将失'
+                        },{
+                            'title':'管理理念',
+                            'summary':'成为中国移动互联网商业化服务平台的标杆企业',
+                            'text':'如果中方就美国制裁中兴一事报复，决定以国家安全为理由禁止苹果产品在中国销售，会怎样呢？巴普蒂斯特·苏说，出现这种局面，苹果将失'
+                        },{
+                            'title':'价值观',
+                            'summary':'成为中国移动互联网商业化服务平台的标杆企业',
+                            'text':'如果中方就美国制裁中兴一事报复，决定以国家安全为理由禁止苹果产品在中国销售，会怎样呢？巴普蒂斯特·苏说，出现这种局面，苹果将失'
+                        }
+                    ]
+                }         
+            },
+            // 业务体系
+            'PRODUCTS':{
+                'siderMenu':{
+                    'mainTitle':'业务体系',
+                    'list':[
+                        {
+                            'title': '业务体系1',
+                            'name': 'core_idea'
+                        },
+                        {
+                            'title': '业务体系2',
+                            'name': 'employe_activity1'
+                        },
+                        {
+                            'title': '业务体系3',
+                            'name': 'employe_activity2'
+                        },
+                        {
+                            'title': '业务体系4',
+                            'name': 'employe_activity3'
+                        }
+                    ]
+                },                
+            },
+            // 投资者关系
+            'INVESTOR':{
+                'siderMenu':{
+                    'mainTitle':'投资者关系',
+                    'list':[
+                        {
+                            'title': '企业管制',
+                            'name': 'core_idea'
+                        },
+                        {
+                            'title': '财务新闻稿',
+                            'name': 'employe_activity'
+                        },{
+                            'title':'公司公告',
+                            'name': 'employe_activity'
+                        },{
+                            'title':'财务报告',
+                            'name': 'employe_activity'
+                        },{
+                            'title':'投资者关系动态',
+                            'name': 'employe_activity'
+                        },{
+                            'title':'联系方式',
+                            'name': 'employe_activity'
+                        }
+                    ]
+                },                
+            },            
+
         }]
     },
     'en-US': {

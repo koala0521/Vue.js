@@ -24,7 +24,7 @@
     <div class="layout">
         <Layout> 
             <wHeader  class="cont-width"  ></wHeader>
-            <Content class="" :style="{margin: '64px auto', minHeight: '500px'}" >
+            <Content class="" :style="{margin: '64px auto 0', minHeight: '500px'}" >
 
                 <router-view></router-view>
             

@@ -2,9 +2,6 @@
    .wrap{
        padding-top: 30px;
    }
-   .menu-wrap{
-       /* text-align: right; */
-   }
    .menu-title{
        padding: 14px 24px;
        border: none;
@@ -18,10 +15,6 @@
         top: 94px;
         width: 200px;
         text-align: right;
-    }
-    .sub_cont{
-        margin-left: 200px;
-        padding-left: 30px;
     }
     .part{
         height: 500px;
@@ -38,7 +31,7 @@
 <template>
     <div class="wrap cont-width" > 
 
-        <siderMenu :list="siderMenuData" ></siderMenu>
+        <siderMenu :list="siderMenuData.list" :mainTitle="siderMenuData.mainTitle" ></siderMenu>
         <div class="sub_cont" >
             <cardList 
                 title="公司动态" 
@@ -88,26 +81,14 @@
             return {
 
                 // 左侧菜单数据
-                siderMenuData:[
-                    {
-                        title : "公司动态", 
-                        name : "company_charity"
-                    },
-                    {
-                        title : "发展历程", 
-                        name : "company_dev"
-                    },
-                    {
-                        title : "管理团队", 
-                        name : "company_board"
-                    }
-                ]
-            };
+                siderMenuData:this.$t("content")[0].ABOUT.siderMenu
+            }
         },
         components:{
             cardList,
             siderMenu,
-            Timeline , TimelineItem 
+            Timeline , 
+            TimelineItem 
         },
         computed:{
             trendUrl(){

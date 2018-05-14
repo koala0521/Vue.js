@@ -2,7 +2,7 @@
 
 .news_sub_list{
     height: auto;
-    padding: 0 16px;
+    /* padding: 0 16px; */
 }
 .news_sub_list li{
     overflow: hidden;
@@ -36,7 +36,7 @@ a.txt{
         </router-link>
 
         <ul class="news_sub_list" >
-            <li v-for="item in list ">
+            <li v-for="item in list " :key="item.id" >
                 <a class="txt" :href="item.url" target="_blank">{{ item.title }}</a>
                 <span class="item_time" >
                     {{ item.ctime }}

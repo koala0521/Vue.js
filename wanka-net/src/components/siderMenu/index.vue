@@ -16,7 +16,7 @@
 <template>
     <div class="sub-sider" >
         <div class="menu-title ivu-card-head" >
-            <p>公司信息</p>
+            <p>{{ mainTitle }}</p>
         </div>
         <Menu 
             :active-name="cName"
@@ -31,22 +31,6 @@
             >
                 {{ item.title }}
             </MenuItem>
-
-            <!-- <a href="#company_charity">
-                <MenuItem name="1-1">
-                    公司动态
-                </MenuItem>
-            </a> -->
-            <!-- <a href="#company_dev">
-                <MenuItem name="1-2">   
-                    发展历程
-                </MenuItem>
-            </a>
-            <a href="#company_board">
-                <MenuItem name="1-3">
-                    管理团队
-                </MenuItem> 
-            </a> -->
         </Menu>  
     </div>
 </template>
@@ -60,7 +44,7 @@
         components:{
             MenuItem ,Menu
         },
-        props:["list"],
+        props:["list",'mainTitle'],
         data(){
             return {
                 cName:0,
@@ -74,7 +58,9 @@
             changeMenu(name){
                 
                 let cItem = this.contItems[name];
-                let elTop = cItem.getBoundingClientRect().top;
+                if( !cItem ) return;
+
+                let elTop = cItem && cItem.getBoundingClientRect().top;
                 if( this.cName === name || !cItem ) return;            
                 this.cName = name;
                 scrollToTar( 600 , elTop - 65 );

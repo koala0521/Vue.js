@@ -9,17 +9,38 @@ li{
 
 .sub_cont{
     width: 800px;
+    margin-left: 200px;
+    padding-left: 40px;
 }
 .cont-width{
     width: 1200px;
     min-width: 1200px;
     margin: 0 auto;
 }
+.ivu-card-head{
+    border-bottom: none;
+}
+.cotent-item{
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-radius: 0;
+}
+.cotent-item .ivu-card-head{
+    padding: 14px 0;
+}
+
+.cotent-item:not(.last){ 
+    border-bottom: 1px solid #e9eaec !important;
+}
+.cotent-item  .item-col:not(.last){
+    padding-bottom: 30px;
+}
+
 
 /* card样式 */
 .ivu-card:hover{
     box-shadow: none;
-    border-color:none;
+    /* border-color:none; */
     }
 .ivu-card-body{
     padding: 14px 0;
@@ -61,3 +82,21 @@ li{
 button {
     outline: none;
 }
+.tac{text-align:center !important;}
+.tal{text-align:left !important;}
+.tar{text-align:right !important;}
+
+.full{height:100%;width:100%;}
+.wfull{width:100%;}
+.hfull{height:100%;}
+
+.breakword{word-wrap:break-word;word-break:break-all;}
+
+/*快捷补丁*/
+.p2{padding:2px;}.p4{padding:4px;}.p6{padding:6px;}.p8{padding:8px;}.p10{padding:10px;}.p12{padding:12px;}.p16{padding:16px;}.p20{padding:20px;}.p24{padding:24px;}.p28{padding:28px;}.p30{padding:30px;}.p32{padding:32px;}.p36{padding:36px;}.p40{padding:40px;}.p48{padding:48px;}.p50{padding:50px;}.p56{padding:56px;}.p60{padding:60px;}.p64{padding:64px;}
+.pt2{padding-top:2px;}.pt4{padding-top:4px;}.pt6{padding-top:6px;}.pt8{padding-top:8px;}.pt10{padding-top:10px;}.pt12{padding-top:12px;}.pt16{padding-top:16px;}.pt20{padding-top:20px;}.pt24{padding-top:24px;}.pt28{padding-top:28px;}.pt30{padding-top:30px;}.pt32{padding-top:32px;}.pt36{padding-top:36px;}.pt40{padding-top:40px;}.pt48{padding-top:48px;}.pt50{padding-top:50px;}.pt56{padding-top:56px;}.pt60{padding-top:60px;}.pt64{padding-top:64px;}
+.pr1{padding-right:1px;}.pr2{padding-right:2px;}.pr4{padding-right:4px;}.pr6{padding-right:6px;}.pr8{padding-right:8px;}.pr10{padding-right:10px;}.pr12{padding-right:12px;}.pr16{padding-right:16px;}.pr20{padding-right:20px;}.pr24{padding-right:24px;}.pr28{padding-right:28px;}.pr30{padding-right:30px;}.pr32{padding-right:32px;}.pr36{padding-right:36px;}.pr40{padding-right:40px;}.pr48{padding-right:48px;}.pr50{padding-right:50px;}.pr56{padding-right:56px;}.pr60{padding-right:60px;}.pr64{padding-right:64px;}
+.pb2{padding-bottom:2px;}.pb4{padding-bottom:4px;}.pb6{padding-bottom:6px;}.pb8{padding-bottom:8px;}.pb10{padding-bottom:10px;}.pb12{padding-bottom:12px;}.pb16{padding-bottom:16px;}.pb20{padding-bottom:20px;}.pb24{padding-bottom:24px;}.pb28{padding-bottom:28px;}.pb30{padding-bottom:30px;}.pb32{padding-bottom:32px;}.pb36{padding-bottom:36px;}.pb40{padding-bottom:40px;}.pb48{padding-bottom:48px;}.pb50{padding-bottom:50px;}.pb56{padding-bottom:56px;}.pb60{padding-bottom:60px;}.pb64{padding-bottom:64px;}
+.pl1{padding-left:1px;}.pl2{padding-left:2px;}.pl4{padding-left:4px;}.pl6{padding-left:6px;}.pl8{padding-left:8px;}.pl10{padding-left:10px;}.pl12{padding-left:12px;}.pl16{padding-left:16px;}.pl20{padding-left:20px;}.pl24{padding-left:24px;}.pl28{padding-left:28px;}.pl30{padding-left:30px;}.pl32{padding-left:32px;}.pl36{padding-left:36px;}.pl40{padding-left:40px;}.pl48{padding-left:48px;}.pl50{padding-left:50px;}.pl56{padding-left:56px;}.pl60{padding-left:60px;}.pl64{padding-left:64px;}
+.ptb2{padding-top:2px;padding-bottom:2px;}.ptb4{padding-top:4px;padding-bottom:4px;}.ptb6{padding-top:6px;padding-bottom:6px;}.ptb8{padding-top:8px;padding-bottom:8px;}.ptb10{padding-top:10px;padding-bottom:10px;}.ptb12{padding-top:12px;padding-bottom:12px;}.ptb16{padding-top:16px;padding-bottom:16px;}.ptb20{padding-top:20px;padding-bottom:20px;}.ptb24{padding-top:24px; padding-bottom:24px;}.ptb28{padding-top:28px;padding-bottom:28px;}.ptb30{padding-top:30px;padding-bottom:30px;}.ptb32{padding-top:32px;padding-bottom:32px;}.ptb36{padding-top:36px;padding-bottom:36px;}.ptb40{padding-top:40px;padding-bottom:40px;}.ptb48{padding-top:48px;padding-bottom:48px;}.ptb50{padding-top:50px;padding-bottom:50px;}.ptb56{padding-top:56px;padding-bottom:56px;}.ptb60{padding-top:60px;padding-bottom:60px;}.ptb64{padding-top:64px;padding-bottom:64px;}
+.prl1{padding-right:1px;padding-left:1px;}.prl2{padding-right:2px;padding-left:2px;}.prl4{padding-right:4px;padding-left:4px;}.prl6{padding-right:6px;padding-left:6px;}.prl8{padding-right:8px;padding-left:8px;}.prl10{padding-right:10px;padding-left:10px;}.prl12{padding-right:12px;padding-left:12px;}.prl16{padding-right:16px;padding-left:16px;}.prl20{padding-right:20px;padding-left:20px;}.prl24{padding-right:24px; padding-left:24px;}.prl28{padding-right:28px;padding-left:28px;}.prl30{padding-right:30px;padding-left:30px;}.prl32{padding-right:32px;padding-left:32px;}.prl32{padding-right:36px;padding-left:36px;}.prl40{padding-right:40px;padding-left:40px;}.prl48{padding-right:48px;padding-left:48px;}.prl50{padding-right:50px;padding-left:50px;}.prl56{padding-right:56px;padding-left:56px;}.prl60{padding-right:60px;padding-left:60px;}.prl64{padding-right:64px;padding-left:64px;}

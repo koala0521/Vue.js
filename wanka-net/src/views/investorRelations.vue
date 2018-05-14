@@ -1,30 +1,39 @@
 //  投资者关系
+// 企业文化
+
+<style scoped >
+
+   .wrap{
+       padding-top: 30px;
+   }
+
+</style>
+
 <template>
-  <div  class="cont-width" >
-    投资者关系
-    <div>
-      <router-link  to="/investor/contact" > 联系我们 </router-link>
-      <br>
-      <router-link  to="/investor/control" > 企业管制 </router-link>
-      <br>
-      <router-link to="/investor/member"> 董事会成员 </router-link>
-      <br>
-      <router-link to="/investor/financenews"> 财务新闻稿 </router-link>
-      <br>
-      <router-link to="/investor/news"> 公司公告 </router-link>
-      <br>
-      <router-link to="/investor/financereport"> 财务报告 </router-link>
-      <br>
-      <router-link to="/investor/investortrend"> 投资者关系动态 </router-link>
+	<div class="wrap cont-width" >  
+		<sider-menu :list="siderMenuData.list"  :mainTitle="siderMenuData.mainTitle"  ></sider-menu>
+		<div class="sub_cont" >
+			<card-list class="cotent-item"  title="核心理念" ></card-list>
+			<card-list class="cotent-item"  title="员工活动" ></card-list>
+		</div>
+	</div>
 
-
-    </div>
-
-  </div>
 </template>
 <script>
-    export default{
+import cardList from "../components/card";
+import siderMenu from "../components/siderMenu";
 
-    };
-    
+export default {
+	components:{
+		siderMenu,
+		cardList
+	},
+	data() {
+		return {
+			// 左侧菜单数据
+			siderMenuData: this.$t("content")[0].INVESTOR.siderMenu
+                
+		};
+	}
+};
 </script>
