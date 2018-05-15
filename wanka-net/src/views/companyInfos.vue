@@ -44,6 +44,7 @@
        border-bottom: 1px solid #e9eaec;
        padding: 10px 0;
    }
+
 </style>
 
 <template>

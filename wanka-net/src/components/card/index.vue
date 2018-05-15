@@ -2,7 +2,6 @@
 
 .news_sub_list{
     height: auto;
-    /* padding: 0 16px; */
 }
 .news_sub_list li{
     overflow: hidden;
@@ -21,7 +20,9 @@ a.txt{
     max-width: 500px;
     height: 30px;
 }
-
+a.txt:hover{
+    color: #2d8cf0;
+}
 </style>
 
 <template>
