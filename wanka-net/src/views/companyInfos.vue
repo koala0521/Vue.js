@@ -27,10 +27,10 @@
         padding-left: 5px;
     }
    .item-title{
-	   line-height: 2em;
-       font-size: 1.1em;
-       font-weight: bold;
-       padding-right: 20px;
+        line-height: 2em;
+        font-size: 1.1em;
+        font-weight: bold;
+        padding-right: 20px;
    }
    .item-summary{
 	   line-height: 2.2em;
@@ -51,11 +51,12 @@
 
         <siderMenu :list="siderMenuData.list" :mainTitle="siderMenuData.mainTitle" ></siderMenu>
         <div class="sub_cont" >
+            <!-- 公司动态 -->
             <cardList 
-                title="公司动态" 
-                btntext="查看更多" 
+                :title="news.title" 
+                :btntext="news.btnText" 
                 :url="trendUrl"
-                id="company_charity"
+                :list="news.list"
                 class="cotent-item"
             >
             </cardList>
@@ -63,8 +64,8 @@
             <!-- 时间轴 -->
             <Card 
 			 	:bordered="false"
-				dis-hover 
 				class="cotent-item" 
+				dis-hover 
 			>
 
                 <p slot="title">
@@ -118,19 +119,6 @@
                             <span class="item-title" >{{ item.name }} </span> 
                             <span class="item-summary" >{{ item.JobTitle }}</span>
                         </li>
-
-                        <!-- <li class="team-item" >
-                            <span class="item-title" >高第男 </span> 
-                            <span class="item-summary" >主要创办人，董事会主席兼CEO</span>
-                        </li>
-                        <li class="team-item" >
-                            <span class="item-title" >高第男 </span> 
-                            <span class="item-summary" >主要创办人，董事会主席兼CEO</span>
-                        </li>
-                        <li class="team-item" >
-                            <span class="item-title" >高第男 </span> 
-                            <span class="item-summary" >主要创办人，董事会主席兼CEO</span>
-                        </li> -->
                     </ul>
                 </div>
 
@@ -151,6 +139,38 @@
 
                 // 左侧菜单数据
                 siderMenuData : this.$t("content")[0].ABOUT.siderMenu,
+                // 公司动态静态数据
+                news : {                    
+                    title : this.$t("content")[0].ABOUT.news.title,
+                    btnText : this.$t("content")[0].ABOUT.news.btnText,
+                    list:[
+                        {
+                            "title": "玩咖公布2018第四季度及全年业绩",
+                            "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                            "ctime": "1525342411"
+                        },
+                        {
+                            "title": "玩咖公布2018第三季度业绩",
+                            "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                            "ctime": "1525342411"
+                        },
+                        {
+                            "title": "玩咖公布2018第二季度及中期业绩",
+                            "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                            "ctime": "1525342411"
+                        },{
+                            "title": "玩咖公布2018第四季度及全年业绩",
+                            "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                            "ctime": "1525342411"
+                        },
+                        {
+                            "title": "玩咖公布2018第三季度业绩",
+                            "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                            "ctime": "1525342411"
+                        }
+                    ]
+
+                },
                 // 发展历程
                 TimelineData : this.$t("content")[0].ABOUT.Timeline,
                 // 管理团队
