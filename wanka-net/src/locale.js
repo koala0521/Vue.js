@@ -31,7 +31,6 @@ export default{
 
         // 主页面内容配置
         'content':[{
-
             // '公司信息'
             'ABOUT':{
                 'siderMenu':{
@@ -352,15 +351,33 @@ export default{
                         'name':'高第男',
                         'JobTitle':'董事长',
                         'description':' 45岁，执行董事、董事会主席兼本公司行政总裁。马先生全面负责本集团的策略规划、定位和管理。马先生是主要创办人之一，自一九九九 副本'
-
                     },{
                         'name':'小明',
                         'JobTitle':'总经理',
                         'description':' 45岁，执行董事、董事会主席兼本公司行政总裁。马先生全面负责本集团的策略规划、定位和管理。马先生是主要创办人之一，自一九九九 副本'
-
                     }
                 ],
                 'updateTime':'最后更新日期：2017年5月17日'
+            },
+            // 投资者关系 >> 联系我们
+            'contactUs':{
+                'BreadcrumbList':[
+                    {'title':'投资者关系'},
+                    {'title':'联系我们'}
+                ],
+                'title':'联系我们',
+                'html':`
+                    <div class="pt10 pb24" style="border-bottom:1px solid #dddee1" >
+                        <p class="item-title" style="font-weight:600" > 业务联系方式 </p> 
+                        <p class="pt10" >联系电话：(86-755)86013388 转 72000 </p> 
+                        <p class="pt10" >电子邮箱：cosec@gm825.com </p> 
+                    </div>
+                    <div class="ptb24" >
+                        <p class="item-title" style="font-weight:600" > 市场联系方式 </p> 
+                        <p class="pt10" >联系电话：(86-755)86013388 转 72000 </p> 
+                        <p class="pt10" >电子邮箱：cosec@gm825.com </p> 
+                    </div>  
+                `
             }
         }]
     },

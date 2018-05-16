@@ -20,9 +20,7 @@ p{
     min-width: 1200px;
     margin: 0 auto;
 }
-.ivu-card-head{
-    border-bottom: none;
-}
+
 .cotent-item{
     padding-bottom: 30px;
     margin-bottom: 30px;
@@ -62,6 +60,12 @@ p{
 }
 .ivu-card-extra{
     right: 0px;
+}
+.ivu-card-head{
+    border-bottom: none;
+}
+.contact-us .ivu-card-head{
+    border-bottom: 1px solid #dddee1;
 }
 
 /* 弹框背景 */
