@@ -359,6 +359,71 @@ export default{
                 ],
                 'updateTime':'最后更新日期：2017年5月17日'
             },
+
+            // 投资者关系 >> 企业管制
+            'ctrl':{
+
+                'BreadcrumbList':[
+                    {'title':'投资者关系'},
+                    {'title':'企业管制'}
+                ],
+                //股东
+                'shareholder':{
+                    'title':'股东',
+                    'html':`
+                        <p>
+                            数字整合营销时代的营销专家。贯穿营销策略、客户服务、数字媒介、媒体运营、互动创意、数据分析等360°全营销链条的服务能力， 数字整合营销时代的营销专家。贯穿营销策略、客户服务、数字媒介、媒体运营、互动创意、数据分析等360°全营销链条的服务能力，能
+                        </p>
+                        <p>
+                            腾讯控股：腾讯控股有限公司(「腾讯」或「本公司」
+                        </p> 
+                        <p>
+                            腾讯控股：腾讯控股有限公司(「腾讯」或「本公司」
+                        </p> 
+                        <p class="link mt20 pl10 pt6" style="width:700px" > 
+                            <a href="http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf" target="_blank" class="mr40" > • 经修订及重列组织章程大纲及组织章程细则 file】</a> 
+                            <a href="http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf" target="_blank" class="mr40"  > • 股东提名选举董事程序 </a> 
+                        
+                        </p> 
+                        <p class="link pl10 pb6" style="width:700px"  > 
+                            <a href="http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf" target="_blank" > • 股东通讯政策 </a> 
+                            
+                        </p> 
+                    `
+                },
+                // 董事会
+                'boardDirectors':{
+                    'title':'董事会',
+                    'html':`
+                        <p class="mb20" >
+                            腾讯建立了单一董事会。本公司的独立非执行董事占本公司的董事会人数三分之一以上，而非执行董事亦使董事会具备各种业务及财务经验。董事会： 
+                        </p>
+                        <p class="pl20" >
+                            • 腾讯控股：腾讯控股有限公司(「腾讯」或「本公司」。
+                        </p> 
+                        <p class="pl20" >
+                            • 腾讯控股：腾讯控股有限公司(「腾讯」或「本公司」。
+                        </p> 
+                        <p class="pl20" >
+                            • 腾讯控股：腾讯控股有限公司(「腾讯」或「本公司」。
+                        </p> 
+                        <p class="pl20" >
+                            • 腾讯控股：腾讯控股有限公司(「腾讯」或「本公司」。
+                        </p>                         
+                    `                    
+                },
+                // 董事委员会
+                'BoardMember':{
+                    'title':'董事委员会',
+                    'html':`
+                        <p class="mb20" >
+                            本集团引进内部监控制度让管理人员及董事会能确保本集团的财务状况、保障资产(包括资讯)及遵照监管规定。内部及外聘核数师负责监察内。
+                            然而， 内部及外聘核数师负责监察内。
+                        </p>                       
+                    `  
+                }
+            },
+
             // 投资者关系 >> 联系我们
             'contactUs':{
                 'BreadcrumbList':[

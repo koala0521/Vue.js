@@ -55,7 +55,7 @@
         padding-right: 40px;
     }
     .news-list .swiper-active-switch{
-        background:red;
+        background:#df3235;
     }
     .news-list .title-wrap{
         text-align: right;

@@ -126,6 +126,10 @@ button {
     content: "...";
 } */
 
+.link{
+    background: #f3f3f3;
+}
+
 .tac{text-align:center !important;}
 .tal{text-align:left !important;}
 .tar{text-align:right !important;}

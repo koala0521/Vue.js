@@ -10,10 +10,6 @@
 	   border-left: 5px solid #df3235;
 	   padding-left: 30px;
    }
-   .link{
-	   background: #f3f3f3;
-   }
-
 .news_sub_list{
     height: auto;
 }
