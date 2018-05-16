@@ -11,9 +11,14 @@
 <template>
     <div class="cont-width" >
         <div class="ptb20" >
-            <Breadcrumb separator=">">
-                <BreadcrumbItem to="/">首页</BreadcrumbItem>
-                <BreadcrumbItem>公司介绍</BreadcrumbItem>
+            <Breadcrumb separator=">" >
+                <BreadcrumbItem 
+                    v-for="item , index in BreadcrumbList"
+                    :key="index"
+                    :to="item.path"
+                >
+                    {{ introduce.BreadcrumbList[index].title }}
+                </BreadcrumbItem>
             </Breadcrumb>
         </div>
 
@@ -24,12 +29,12 @@
                 class="cotent-item last" 
             >
                 <p slot="title" >
-                    <!-- {{ contactUs.title }}  -->
-                    公司信息
+                    {{ introduce.title }} 
+                    
                 </p>
-                <!-- <div class="card-cont" v-html="contactUs.html" ></div> -->
-                    <p class="pb20" > 45岁，执行董事、董事会主席兼本公司行政总裁。马先生全面负责本集团的策略规划、定位和管理。马先生是主要创办人之一，自一九九九</p>
-                    <p> 45岁，执行董事、董事会主席兼本公司行政总裁。马先生全面负责本集团的策略规划、定位和管理。马先生是主要创办人之一，自一九九九</p>
+                <div class="card-cont" v-html="introduce.html" >
+
+                </div>
 
             </Card>
         </div>
@@ -46,19 +51,21 @@
             BreadcrumbItem,
             Card
         },
-        computed:{
-            breadcrumbList(){
-                return this.$route.matched
+        data(){
+            return {
+                // 面包屑数据
+                BreadcrumbList : [
+                    {
+                        path:'/'
+                    },
+                    {
+                        path:''
+                    }
+                ],
+                // 语言包
+                introduce : this.$t("content")[0].indexIntroduce,
+
             }
-        },
-        mounted(){
-            let arr = this.$route.path.split('/');
-            arr.shift();
-            let router = '';
-            let list = arr.map(item=>{
-                router += '/' +item;
-                return  router;
-             });
         }
     };
     

@@ -129,7 +129,9 @@ button {
 .full{height:100%;width:100%;}
 .wfull{width:100%;}
 .hfull{height:100%;}
-
+.pointer{
+    cursor: pointer;
+}
 .breakword{word-wrap:break-word;word-break:break-all;}
 
 /*快捷补丁*/
