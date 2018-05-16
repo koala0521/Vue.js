@@ -8,7 +8,7 @@ export default{
     'zh-CN': {
 
         // 主菜单
-        'menu':['公司信息','企业文化',' 业务体系','投资者关系'],
+        'menu':['首页','公司信息','企业文化',' 业务体系','投资者关系'],
         
         // 底部
         'footerText':[{
@@ -229,33 +229,96 @@ export default{
                     'list':[
                         {
                             'title': '企业管制',
-                            'name': 'core_idea'
+                            'name': 'control'
                         },
                         {
                             'title': '财务新闻稿',
-                            'name': 'employe_activity'
+                            'name': 'news'
                         },{
                             'title':'公司公告',
-                            'name': 'employe_activity'
+                            'name': 'employe_activity1'
                         },{
                             'title':'财务报告',
-                            'name': 'employe_activity'
+                            'name': 'employe_activity2'
                         },{
                             'title':'投资者关系动态',
-                            'name': 'employe_activity'
+                            'name': 'employe_activity3'
                         },{
                             'title':'联系方式',
-                            'name': 'employe_activity'
+                            'name': 'employe_activity4'
                         }
                     ]
-                },                
-            },            
+                }, 
+                
+                // 企业管制
+                'control':{
+                    'title':'企业管制',
+                    
+                    'text' : `
+                        <p> 腾讯控股有限公司(「腾讯」或「本公司」，连同其附属公司及为会计目的而综合入账的公司合共称为「本集团」)为中国领先的互联网增值服 </p>
+                        <p> 腾讯控股为中国领先的互联网增值服 </p> 
+                        <p> 腾讯为中国领先的互联网增值服 </p> 
+                        
+                        <p class="router-link link mt20 ptb6" >  
+                            <a class="mr20" href="/investor/control">企业管治</a>  
+                            <a href="/investor/member" >董事会成员</a> 
+                        </p> 
+                        
+                        <p class="mt20" >
+                            腾讯控股有限公司(「腾讯」或「本公司」，连同其附属公司及为会计目的而综合入账的公司合共称为「本集团」)为中国领先的互联网增值服
+                        </p> 
+                        <p class="link mt20 pl10 pt6" > 
+                            <a href="http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf" target="_blank" >审核委员会职权范围【PDF file】</a> 
+                            <a href="http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf" target="_blank" >企业管治委员会职权范围【PDF file】 </a> 
+                        
+                        </p> 
+                        <p class="link pl10 pb6" > 
+                            <a href="http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf" target="_blank" >管治委员会职权范围【PDF file】 </a> 
+                            <a href="http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf" target="_blank" > 企业管治委员会职权范围【PDF file】 </a> 
+                        </p>                    
+                    
+                    `
+                },  
+                // 财务新闻稿
+                'financeNews' : {
 
+                    'title':'财务新闻稿',
+                    'btnText':'查看更多',
+                    'SecondaryTitle':{
+                        '1':'业绩新闻',
+                        '2':'其他新闻'
+                    }
+                },
+                // 公司公告
+                'compNews' : {
+                    'title':'公司公告',
+                    'btnText':'查看更多'
+                },
+                // 财务报告
+                'financeReport' : {
+                    'title':'财务报告',
+                    'btnText':'查看更多'                    
+                },  
+                // 投资者关系动态
+                'contactTrend' : {
+                    'title':'投资者关系动态',
+                    'btnText':'查看更多'                        
+                },
+                // 联系我们
+                'contactUs':{
+                    'title':'欢迎您与我们取得联系！',
+                    'html':`
+                        <p> 个人投资者查询 </p> 
+                        <p  class="pt10" > 电话：(86-755)86013388 转 72000 </p> 
+                        <p  class="pt10" > 电子邮箱：cosec@gm825.com </p> 
+                    `
+                }
+            },            
         }]
     },
     'en-US': {
         // 'title':'hello view',
-        'menu':['ABOUT','CULTURE',' PRODUCTS & SERVICES','INVESTOR RELATIONS'],
+        'menu':['HOME','ABOUT','CULTURE',' PRODUCTS & SERVICES','INVESTOR RELATIONS'],
         'footerText':[{
             'attention':{
                 'title':'Follow Us',
@@ -276,7 +339,7 @@ export default{
     },
     'zh-TW': {
         // 'title':'倪好， ivew',
-        'menu':['公司信息','企業文化','業務體係','投資者關係'],
+        'menu':['首頁','公司信息','企業文化','業務體係','投資者關係'],
         'footerText':[{
             'attention':{
                 'title':'關注我們',

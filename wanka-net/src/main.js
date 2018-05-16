@@ -44,15 +44,12 @@ Vue.locale('en-US', mergeEN);
 const RouterConfig = {
     mode: 'history',
     routes: Routers,
-    scrollBehavior (to, from, savedPosition) {
-        console.log( 'to >>>>>>' , to  );
-        console.log( 'savedPosition >>>>>>' , savedPosition );
-        
+    scrollBehavior (to, from) {
         if (to.hash) {
-          return { 
-            'selector': to.hash,
-            'offset':{ x:0 , y :64 }
-          }
+            return { 
+                'selector': to.hash,
+                'offset':{ x:0 , y :64 }
+            };
         }
     }
 };

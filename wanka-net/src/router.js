@@ -26,7 +26,6 @@ const routers = [
         component: (resolve) => require(['./views/index.vue'], resolve)
     }
     
-    // 二级路由
     ,{
         path:Infos,
         name:'infos',
@@ -61,7 +60,7 @@ const routers = [
 
     } 
 
-    // 三级路由
+    // 二级路由
 
     ,{
         path: Index + '/statement',
