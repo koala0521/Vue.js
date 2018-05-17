@@ -45,7 +45,7 @@
             <Breadcrumb separator=">" >
 
                 <BreadcrumbItem 
-                    v-for="item , index in BreadcrumbList"
+                    v-for="(item , index) in BreadcrumbList"
                     :key="index"
                     :to="item.path"
                 >
@@ -110,8 +110,7 @@
     </div>
 </template>
 <script>
-    import { Breadcrumb , BreadcrumbItem } from 'iview';
-    import { Card , Tooltip , Button } from 'iview';
+    import { Breadcrumb , BreadcrumbItem , Card , Tooltip , Button  } from 'iview';
 
     export default{
         components:{
@@ -199,6 +198,9 @@
             // 文字溢出处理
             textClip( text , len ){
                 len  = len || text.length;
+                if( len && text.length <= len ){
+                    return text
+                }
                 return text.substr( 0 , len ) + '...'
             },
             loadMore(){

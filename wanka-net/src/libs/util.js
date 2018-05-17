@@ -70,10 +70,6 @@ function formatDate( time , Delimiter ) {
     return year+ Delimiter + month + Delimiter + date + " " + hour+":"+minute+":"+second; 
 } 
 
-// function clipText( text , len ){
-//     return text.subString(len) + '...';
-// }
-
 export {
 
     scrollToTar,
