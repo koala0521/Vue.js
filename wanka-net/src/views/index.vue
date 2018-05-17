@@ -1,3 +1,4 @@
+// 首页
 <style scoped lang="less" >
     .cont-width{
         width: 1200px;
@@ -76,19 +77,18 @@
                 </WCarousel>  
             </Col>  
         </Row>
-        <Row class="cont-width part">        
+        <Row class="cont-width part">  
+
+            <!-- 简介 -->
             <Col span="7" class="item" >
-                <Card title="标题" :bordered="false" :shadow="false" >
-                    <p slot="title">玩咖简介</p>
+                <Card :bordered="false" :shadow="false" >
+                    <p slot="title"> {{ localData.aboutUs.title }} </p>
                     <p>
-                        腾讯成立于1998年11月，是目前中国领先的互联网增值服务提供商之一。
-                        成立10多年来，腾讯一直秉承“一切以用户价值为依归”的经营理念，
-                        为亿级海量用户提供稳定优质的各类服务，始终处于稳健发展状态。
-                        2004年6月16日，腾讯控股有限公司在香港联交所主板公开上市(股票代号700)。
+                        {{ localData.aboutUs.text }}
                     </p>
                     <a href="#" slot="extra" >                            
                         <router-link to="/index/introduce" >
-                            更多 
+                            {{ localData.aboutUs.more }} 
                             <Icon type="ios-arrow-forward"></Icon>
                             <Icon type="ios-arrow-forward"></Icon>                            
                         </router-link>     
@@ -97,23 +97,22 @@
                 </Card>                             
             </Col>
 
+            <!-- 愿景 -->
             <Col span="7"  class="ofset"  >
                 <Card :bordered="false" :shadow="false" >
-                    <p slot="title">腾讯简介</p>
-                    <p>
-                        腾讯成立于1998年11月，是目前中国领先的互联网增值服务提供商之一。
-                        成立10多年来，腾讯一直秉承“一切以用户价值为依归”的经营理念，
-                        为亿级海量用户提供稳定优质的各类服务，始终处于稳健发展状态。
-                        2004年6月16日，腾讯控股有限公司在香港联交所主板公开上市(股票代号700)。
+                    <p slot="title">
+                        {{ localData.ourVision.title }}
                     </p>
-                    <!-- <a href="#" slot="extra" >
-                        更多>>
-                    </a> -->
+                    <p>
+                        {{ localData.ourVision.text }}
+                    </p>
                 </Card>                             
             </Col>
             <Col span="7" class="ofset"  >
                 <Card :bordered="false" :shadow="false" >
-                    <p slot="title">视频简介</p>
+                    <p slot="title">
+                        {{ localData.videoTitle }}
+                    </p>
 
                     <img class="bg-video" src="../assets/img/bg-video.jpg" alt=""/>
                     <span id="icon-play"  @click="showPlayer"  ></span>
@@ -182,6 +181,7 @@ import index from 'vue';
         },
         data(){
             return {
+                // 轮播列表
                 banner:[
                     {src: require('../assets/img/1.jpg')},
                     {src:require('../assets/img/2.png')},
@@ -256,6 +256,8 @@ import index from 'vue';
                 isShowPlayer:false,
                 // 是否可滚动
                 scrollable:false,
+                // 语言包
+                localData:this.$t("content")[0].HOME,
             }
         },
         computed:{

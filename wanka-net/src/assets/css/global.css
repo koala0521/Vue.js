@@ -129,10 +129,18 @@ button {
 .link{
     background: #f3f3f3;
 }
+.router-link{
+    border-left: 5px solid #df3235;
+    padding-left: 30px;
+}
 
 .tac{text-align:center !important;}
 .tal{text-align:left !important;}
 .tar{text-align:right !important;}
+
+.fl{float: left;}
+.fr{float: right;}
+.clear-both:after{content:"";clear:both;display:block;}
 
 .full{height:100%;width:100%;}
 .wfull{width:100%;}

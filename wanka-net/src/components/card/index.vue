@@ -32,7 +32,7 @@ a.txt:hover{
             <slot name="titles" ></slot>
         </p>
         <router-link v-if="!!btntext" slot="extra" :to="url" >
-            <Icon type="ios-loop-strong"></Icon>
+            <!-- <Icon type="ios-loop-strong"></Icon> -->
             {{ btntext }}
         </router-link>
 
@@ -40,7 +40,7 @@ a.txt:hover{
             <li v-for="item in list " :key="item.id" >
                 <a class="txt" :href="item.url" target="_blank">{{ item.title }}</a>
                 <span class="item_time" >
-                    {{ item.ctime }}
+                    {{ formatTime(item.ctime) }}
                 </span>
             </li>
         </ul>
@@ -50,6 +50,8 @@ a.txt:hover{
 </template>
 <script>
     import { Card , Icon } from 'iview';
+    import { formatDate } from '../../libs/util';
+
     let dataList = [
         {
             title: '肖申克的救赎',
@@ -107,8 +109,9 @@ a.txt:hover{
             Card , Icon
         },
         methods:{
-            changeLimit(){
-
+            formatTime(ctime){
+                let time = ctime*1000;
+                return formatDate(time , '/' ).split(' ')[0]
             }
         }
     };

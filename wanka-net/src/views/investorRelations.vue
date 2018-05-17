@@ -1,43 +1,36 @@
 //  投资者关系
-// 企业文化
-
 <style scoped >
 
    .wrap{
        padding-top: 30px;
    }
-   .router-link{
-	   border-left: 5px solid #df3235;
-	   padding-left: 30px;
-   }
-.news_sub_list{
-    height: auto;
-}
-.news_sub_list li{
-    overflow: hidden;
-}
-.item_time{
-    float: right;
-}
-a.txt{
-    float: left;
-    line-height: 30px;
-    color: #5e6267;
-    font-size: 14px;
-    text-decoration: none;
-    -webkit-transition: color .3s;
-    transition: color .3s;
-    max-width: 500px;
-    height: 30px;
-}   
-a.txt:hover{
-	color: #2d8cf0;
-}
-.small-title{
-	font-weight: 600;
-	padding: 10px 0;
-}
-
+	.news-sub-list{
+		height: auto;
+	}
+	.news-sub-list li{
+		overflow: hidden;
+	}
+	.item_time{
+		float: right;
+	}
+	a.txt{
+		float: left;
+		line-height: 30px;
+		color: #5e6267;
+		font-size: 14px;
+		text-decoration: none;
+		-webkit-transition: color .3s;
+		transition: color .3s;
+		max-width: 500px;
+		height: 30px;
+	}   
+	a.txt:hover{
+		color: #2d8cf0;
+	}
+	.small-title{
+		font-weight: 600;
+		padding: 10px 0;
+	}
 
 </style>
 
@@ -71,22 +64,23 @@ a.txt:hover{
 					{{ financeNews.more }} 
 				</router-link>
 				<div class="card-cont">
-
 					<p  class="small-title"  > {{ financeNews.SecondaryTitle[1] }} </p>
-					<ul class="news_sub_list" >
-						<li v-for="item in PerformanceNews " :key="item.id" >
+					<ul class="news-sub-list" >
+						<li v-for="(item , index) in PerformanceNews " :key="index" >
 							<a class="txt" :href="item.url" target="_blank">{{ item.title }}</a>
 							<span class="item_time" >
-								{{ item.ctime }}
+								{{ formatTime(item.ctime) }}
 							</span>
 						</li>
 					</ul>
-					<p  class="small-title"  > {{ financeNews.SecondaryTitle[2] }} </p>
-					<ul class="news_sub_list" >
-						<li v-for="item in otherNews " :key="item.id" >
-							<a class="txt" :href="item.url" target="_blank">{{ item.title }}</a>
+					<p class="small-title" > {{ financeNews.SecondaryTitle[2] }} </p>
+					<ul class="news-sub-list" >
+						<li v-for="(item , index) in otherNews " :key="index" >
+							<a class="txt" :href="item.url" target="_blank">
+								{{ item.title }}
+							</a>
 							<span class="item_time" >
-								{{ item.ctime }}
+								{{ formatTime(item.ctime) }}
 							</span>
 						</li>
 					</ul>					
@@ -122,7 +116,7 @@ a.txt:hover{
 						<Col 
 							class="tac prl10" 
 							span="6" 
-							v-for="item , index in financeReport.list"
+							v-for="(item , index) in financeReport.list"
 							:key="index"
 						>
 						<a :href="item.url" target="_blank" >
@@ -164,6 +158,8 @@ a.txt:hover{
 import cardList from "../components/card";
 import siderMenu from "../components/siderMenu";
 import { Card , Row ,Col } from 'iview';
+
+import { formatDate } from '../libs/util';
 
 export default {
 	components : {
@@ -367,8 +363,14 @@ export default {
 			return this.financeNews.list.filter(item=>{
 				return item.type === 2
 			});
+		}		
+	},
+	methods:{
+
+		formatTime(ctime){
+			let time = ctime*1000;
+			return formatDate(time , '/' ).split(' ')[0]
 		}
-		
 	}
 };
 </script>

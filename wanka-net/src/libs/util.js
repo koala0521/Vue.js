@@ -45,10 +45,39 @@ const scrollToTar = function ( scrollDuration , target ){
     },intervalTime);
     
 }
+/** 
+ * 时间戳格式化
+ * @param time:时间戳13位 ; Delimiter : 分隔符（ 例子： '-' , '/' ）
+ * */ 
+function formatDate( time , Delimiter ) { 
+    Delimiter = Delimiter || '-';
+    var now = new Date(time); 
+
+    var year=now.getFullYear() + ''; 
+    var month=now.getMonth()+1 + ''; 
+    var date=now.getDate() + ''; 
+    var hour=now.getHours() + ''; 
+    var minute=now.getMinutes() + ''; 
+    var second=now.getSeconds() + ''; 
+
+    // 补0
+    month = month.length < 2 ? '0' + month : month;
+    date = date.length < 2 ? '0' + date : date;
+    hour = hour.length < 2 ? '0' + hour : hour;
+    minute = minute.length < 2 ? '0' + minute : minute;
+    second = second.length < 2 ? '0' + second : second;
+
+    return year+ Delimiter + month + Delimiter + date + " " + hour+":"+minute+":"+second; 
+} 
+
+// function clipText( text , len ){
+//     return text.subString(len) + '...';
+// }
 
 export {
 
-    scrollToTar
+    scrollToTar,
+    formatDate
 }
 
 export default util;

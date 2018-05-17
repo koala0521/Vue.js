@@ -31,6 +31,19 @@ export default{
 
         // 主页面内容配置
         'content':[{
+            // 首页
+            'HOME':{
+                'aboutUs':{
+                    'title':'玩咖简介',
+                    'more':'更多',
+                    'text':'玩咖传媒，全称“玩咖欢聚文化传媒（北京）有限公司”，于2014年在北京成立。基于手机用户大数据为移动互联网企业提供增值服务，并致力于成为中国最大的移动互联网（安卓智能手机）商业流量优化服务平台。'
+                },
+                'ourVision':{
+                    'title':'玩咖愿景',
+                    'text':'玩咖传媒，全称“玩咖欢聚文化传媒（北京）有限公司”，于2014年在北京成立。基于手机用户大数据为移动互联网企业提供增值服务，并致力于成为中国最大的移动互联网（安卓智能手机）商业流量优化服务平台。'
+                },
+                'videoTitle':'视频简介'
+            },
             // '公司信息'
             'ABOUT':{
                 'siderMenu':{
@@ -251,8 +264,7 @@ export default{
                 
                 // 企业管制
                 'control':{
-                    'title':'企业管制',
-                    
+                    'title':'企业管制',        
                     'text' : `
                         <p> 腾讯控股有限公司(「腾讯」或「本公司」，连同其附属公司及为会计目的而综合入账的公司合共称为「本集团」)为中国领先的互联网增值服 </p>
                         <p> 腾讯控股为中国领先的互联网增值服 </p> 
@@ -326,6 +338,7 @@ export default{
                     <p> 45岁，执行董事、董事会主席兼本公司行政总裁。马先生全面负责本集团的策略规划、定位和管理。马先生是主要创办人之一，自一九九九</p>
                 `
             },
+
             // 首页 >> 公司介绍
             'indexStatement':{
                 'BreadcrumbList':[
@@ -426,11 +439,12 @@ export default{
 
             // 投资者关系 >> 联系我们
             'contactUs':{
+                
+                'title':'联系我们',
                 'BreadcrumbList':[
                     {'title':'投资者关系'},
                     {'title':'联系我们'}
                 ],
-                'title':'联系我们',
                 'html':`
                     <div class="pt10 pb24" style="border-bottom:1px solid #dddee1" >
                         <p class="item-title" style="font-weight:600" > 业务联系方式 </p> 
@@ -443,8 +457,23 @@ export default{
                         <p class="pt10" >电子邮箱：cosec@gm825.com </p> 
                     </div>  
                 `
+            },
+            // 投资者关系 >> 财务报告
+            'financeReport':{
+
+                'title':'财务报告',
+                'BreadcrumbList':[
+                    {'title':'投资者关系'},
+                    {'title':'财务报告'}    
+                ],            
             }
-        }]
+        }],
+
+        // 查看更多
+        'SeeMore':'查看更多',
+
+        // 点击查看更多按钮
+        'clickToSeeMore':'点击查看更多'      
     },
     'en-US': {
         // 'title':'hello view',
