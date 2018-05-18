@@ -51,7 +51,6 @@
 
 								</p> 
 								<p class="breakword item-text" >
-
 									{{ coreIdea.list[0].text }}
 								</p>
 							</div>
@@ -68,7 +67,6 @@
 
 								</p> 
 								<p class="breakword item-text" >
-
 									{{ coreIdea.list[1].text }}
 								</p>
 							</div>
@@ -115,8 +113,6 @@
 				</div>
 			</Card>
 
-			<!-- <card-list class="cotent-item last"  title="员工活动" ></card-list> -->
-
 			<Card 
 			 	:bordered="false"
 				dis-hover 
@@ -132,73 +128,20 @@
 						<Col 
 							span="7" 
 							class="item-col last"
-							v-for=" item , index in activity.list" 
+							v-for=" (item , index) in activity.list" 
 							:key="index"
-							:class="{ofset : ( index !== 0 )}"
+							:class="{'ofset' : ( index%3 !== 0 ) , 'mb30' : index <= (activity.list.length - 3) }"
 						>  
 							<img class="wfull" :src="item.img" alt=""/>
 							<div>
-								<h4  class="item-title" > 
+								<p  class="item-title" > 
 									{{ item.title }} 
-								</h4>
-								<p class="breakword item-text" >
-
-									{{ item.description }}
+								</p>
+								<p class="breakword item-text" :title="item.description" >
+									{{ textClip( item.description , 28 ) }}
 								</p>
 							</div>
 						</Col>
-
-
-						<!-- <Col span="7" class="item-col last" >  
-							<img class="wfull" src="../assets/img/act_1.jpg" alt=""/>
-							<div>
-								<h4  class="item-title" > 
-									{{ coreIdea.list[2].title }} 
-								</h4>
-								<p class="item-summary" >
-
-									{{ coreIdea.list[2].summary }}
-
-								</p> 
-								<p class="breakword item-text" >
-
-									{{ coreIdea.list[2].text }}
-								</p>
-							</div>
-						</Col>
-
-						<Col span="7" class="item-col last ofset" >  
-							<img class="wfull" src="../assets/img/act_2.jpg" alt=""/>
-							<div>
-								<h4  class="item-title" > 
-									{{ coreIdea.list[2].title }} 
-								</h4>
-								<p class="item-summary" >
-									{{ coreIdea.list[2].summary }}
-								</p> 
-								<p class="breakword item-text" >
-									{{ coreIdea.list[2].text }}
-								</p>
-							</div>
-						</Col>
-
-						<Col span="7" class="item-col last ofset" >  
-							<img class="wfull" src="../assets/img/act_3.jpg" alt=""/>
-							<div>
-								<h4  class="item-title" > 
-									{{ coreIdea.list[3].title }} 
-								</h4>
-								<p class="item-summary" >
-
-									{{ coreIdea.list[3].summary }}
-
-								</p> 
-								<p class="breakword item-text" >
-
-									{{ coreIdea.list[3].text }}
-								</p>
-							</div>
-						</Col> -->
 					</Row>
 
 				</div>
@@ -212,6 +155,7 @@
 import cardList from "../components/card";
 import siderMenu from "../components/siderMenu";
 import { Card , Icon , Row , Col } from 'iview';
+import { textClip } from '../libs/util';
 
 export default {
 	components:{
@@ -248,11 +192,25 @@ export default {
 						"title": "公司年会",
 						"img": "http://filemha.wankacn.com/20180402/15b6b296b8b374c27ddb3b673b7bf14a.jpg",
 						"description": "当你开始考虑是否要看场电影，手机会像训练有素的管家一样，帮你查看影评信息，快速订票，购买的电影票二维码直接显示在手机负一屏；在电影开场前两小时，手机自动弹出闹钟提醒；随后根据你的日常习惯，弹出叫车或导航快应用，显示商场附近停车场及可用停车位；进入商场后，连接商场WiFi，自动识别是否为第一次到访，即时弹出商场信息"
+					},
+					{
+						"title": "公司年会",
+						"img": "http://filemha.wankacn.com/20180402/15b6b296b8b374c27ddb3b673b7bf14a.jpg",
+						"description": "当你开始考虑是否要看场电影，手机会像训练有素的管家一样，帮你查看影评信息，快速订票，购买的电影票二维码直接显示在手机负一屏；在电影开场前两小时，手机自动弹出闹钟提醒；随后根据你的日常习惯，弹出叫车或导航快应用，显示商场附近停车场及可用停车位；进入商场后，连接商场WiFi，自动识别是否为第一次到访，即时弹出商场信息"
+					},
+					{
+						"title": "公司年会",
+						"img": "http://filemha.wankacn.com/20180402/15b6b296b8b374c27ddb3b673b7bf14a.jpg",
+						"description": "当你开始考虑是否要看场电影，手机会像训练有素的管家一样，帮你查看影评信息，快速订票，购买的电影票二维码直接显示在手机负一屏；在电影开场前两小时，手机自动弹出闹钟提醒；随后根据你的日常习惯，弹出叫车或导航快应用，显示商场附近停车场及可用停车位；进入商场后，连接商场WiFi，自动识别是否为第一次到访，即时弹出商场信息"
 					}
 				]
 			}
                 
 		};
+	},
+	
+	methods:{
+		textClip : textClip
 	}
 };
 </script>

@@ -1,6 +1,4 @@
 // 投资者关系 > 财务新闻稿
-
-// 投资者关系 > 公司公告
 <style scoped>
 .content {
   width: 900px;
@@ -58,6 +56,13 @@ a.txt {
 a.txt:hover {
   color: #2d8cf0;
 }
+.small-title{
+
+	font-weight: 600;
+	padding: 10px 0;
+}
+
+
 </style>
 
 <template>
@@ -75,8 +80,6 @@ a.txt:hover {
         </Breadcrumb>
     </div>
     <div class="content" >
-        <!-- <time-line-card :list="list" :title="localData.title" ></time-line-card> -->
-
         <Card
             :bordered="false"
             dis-hover 
@@ -95,28 +98,58 @@ a.txt:hover {
                 >
                     <div class="header">{{ item.year }}</div>
                     <div class="list-wrap">
-                        <ul 
-                            class="list" 
-                            :class="{ last: index === list.length - 1 }" 
-                        >
-                            <li 
-                                class="clear-both" 
-                                v-for="val in item.list " 
-                                :key="val.id"                                 
-                            >
-                                <a 
-                                    class="txt" 
-                                    target="_blank" 
-                                    :href="val.url" 
-                                    :title="val.title" 
-                                >
-                                    {{ textClip(val.title , 32) }}
-                                </a>
-                                <span class="item_time" >
-                                    {{ formatTime(val.ctime) }}
-                                </span>
-                            </li>
-                        </ul>
+						<!-- 业绩新闻 -->
+						<div v-if=" !!filterList(item.list , 1).length " >
+							<p class="small-title" >{{ localData.listType[1] }}</p>
+							<ul>
+								<li 
+									class="clear-both" 
+									v-for="val in filterList(item.list , 1)" 
+									:key="val.id"                                 
+								>
+									<a 
+										class="txt" 
+										target="_blank" 
+										:href="val.url" 
+										:title="val.title" 
+									>
+										{{ textClip(val.title , 32) }}
+									</a>
+									<span class="item_time" >
+										{{ formatTime(val.ctime) }}
+									</span>
+								</li>
+							</ul>							
+						</div>
+						<!-- 其他新闻 -->
+						<div 
+							:class="{ last: index === list.length - 1 }" 
+							class="list" 
+							v-if=" !!filterList(item.list , 2).length " 
+						>
+							<p class="small-title" >{{ localData.listType[2] }}</p>
+							<ul>
+								<li 
+									class="clear-both" 
+									v-for="val in filterList(item.list , 2)" 
+									:key="val.id"                                 
+								>
+									<a 
+										class="txt" 
+										target="_blank" 
+										:href="val.url" 
+										:title="val.title" 
+									>
+										{{ textClip(val.title , 32) }}
+									</a>
+									<span class="item_time" >
+										{{ formatTime(val.ctime) }}
+									</span>
+								</li>
+							</ul>							
+						</div>
+
+
                     </div>
 
                 </div>
@@ -140,149 +173,160 @@ a.txt:hover {
 </template>
 <script>
 import { Breadcrumb, BreadcrumbItem, Card, Tooltip, Button, Spin } from "iview";
-import { formatDate } from "../libs/util";
+import { formatDate , textClip } from "../libs/util";
 // import timeLineCard from '../components/timeLineCard';
 
+
 export default {
-  components: {
-    Breadcrumb,
-    BreadcrumbItem,
-    Card,
-    Tooltip,
-    Button,
-    Spin
-  },
-  data() {
-    return {
-      // 面包屑数据
-      BreadcrumbList: [
-        {
-          path: "/investor"
-        },
-        {
-          path: ""
-        }
-      ],
+	components: {
+		Breadcrumb,
+		BreadcrumbItem,
+		Card,
+		Tooltip,
+		Button,
+		Spin
+	},
+	data() {
+		return {
+		// 面包屑数据
+		BreadcrumbList: [
+			{
+			path: "/investor"
+			},
+			{
+			path: ""
+			}
+		],
 
-      list: [
-        {
-          year: "2018",
-          list: [
-            {
-              child_programa_name: "",
-              child_programa_id: "",
-              title: "玩咖公布第四季度及全年业绩",
-              img:
-                "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-              url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
-              ctime: "1462590847"
-            },
-            {
-              child_programa_name: "",
-              child_programa_id: "",
-              title: "玩咖公布第三季度业绩",
-              img:
-                "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-              url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
-              ctime: "1462590847"
-            },
-            {
-              child_programa_name: "",
-              child_programa_id: "",
-              title: "玩咖公布第一季度业绩",
-              img:
-                "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-              url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
-              ctime: "1462590847"
-            }
-          ]
-        },
-        {
-          year: "2017",
-          list: [
-            {
-              child_programa_name: "",
-              child_programa_id: "",
-              title: "玩咖公布第二季度业绩",
-              img:
-                "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-              url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
-              ctime: "1462590847"
-            },
-            {
-              child_programa_name: "",
-              child_programa_id: "",
-              title:
-                "玩咖公布第一季度业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩",
-              img:
-                "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-              url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
-              ctime: "1462590847"
-            }
-          ]
-        }
-      ],
-      // 记录页码
-      cPage: 1,
+		list: [
+			{
+			year: "2018",
+			list: [
+				{
+					child_programa_name: "",
+					child_programa_id: "",
+					title: "玩咖公布第四季度及全年业绩",
+					img:
+						"http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
+					url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+					ctime: "1462590847",
+					type:1
+				},
+				{
+					child_programa_name: "",
+					child_programa_id: "",
+					title: "玩咖公布第三季度业绩",
+					img:
+						"http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
+					url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+					ctime: "1462590847",
+					type:1
+				},
+				{
+					child_programa_name: "",
+					child_programa_id: "",
+					title: "玩咖公布第一季度业绩",
+					img:
+						"http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
+					url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+					ctime: "1462590847",
+					type:2
+				}
+			]
+			},
+			{
+			year: "2017",
+			list: [
+				{
+					child_programa_name: "",
+					child_programa_id: "",
+					title: "玩咖公布第二季度业绩",
+					img:
+						"http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
+					url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+					ctime: "1462590847",
+					type:2
+				},
+				{
+					child_programa_name: "",
+					child_programa_id: "",
+					title:
+						"玩咖公布第一季度业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩",
+					img:
+						"http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
+					url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+					ctime: "1462590847",
+					type:1
+				}
+			]
+			}
+		],
+		// 记录页码
+		cPage: 1,
 
-      // 是否显示查看更多
-      hasMore: true,
-      // 加载中
-      loading: false,
+		// 是否显示查看更多
+		hasMore: true,
+		// 加载中
+		loading: false,
 
-      // 语言包
-      localData: this.$t("content")[0].FinanceNews,
+		// 语言包
+		localData: this.$t("content")[0].FinanceNews,
 
-      // 点击查看更多语言包
-      clickMoreLocal: this.$t("clickToSeeMore")
-    };
-  },
-  methods: {
-    formatTime(ctime) {
-      let time = ctime * 1000;
-      return formatDate(time, "/").split(" ")[0];
-    },
-    // 文字溢出处理
-    textClip(text, len) {
-      len = len || text.length;
-      if (len && text.length <= len) {
-        return text;
-      }
-      return text.substr(0, len) + "...";
-    },
-    loadMore() {
-      ++this.cPage;
-      this.list.push({
-        year: "2016",
-        list: [
-          {
-            child_programa_name: "",
-            child_programa_id: "",
-            title: "玩咖公布第二季度业绩",
-            img:
-              "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-            url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
-            ctime: "1462590847"
-          },
-          {
-            child_programa_name: "",
-            child_programa_id: "",
-            title:
-              "玩咖公布第一季度业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩",
-            img:
-              "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-            url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
-            ctime: "1462590847"
-          }
-        ]
-      });
+		// 点击查看更多语言包
+		clickMoreLocal: this.$t("clickToSeeMore")
+		};
+	},
+	methods: {
+		formatTime(ctime) {
+		let time = ctime * 1000;
+		return formatDate(time, "/").split(" ")[0];
+		},
+		// 文字溢出处理
+		textClip : textClip,
 
-      this.loading = true;
+		// 按照数据类型查分数组
+		filterList( list , type ){
+			list = list || [];
+			return list.filter(item=>{
+				return item.type === type
+			})
+		},
 
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
-    }
-  }
+		loadMore() {
+			++this.cPage;
+			this.list.push({
+				year: "2016",
+				list: [
+				{
+					child_programa_name: "",
+					child_programa_id: "",
+					title: "玩咖公布第二季度业绩",
+					img:
+					"http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
+					url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+					ctime: "1462590847",
+					type:2
+				},
+				{
+					child_programa_name: "",
+					child_programa_id: "",
+					title:
+					"玩咖公布第一季度业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩",
+					img:
+					"http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
+					url: "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+					ctime: "1462590847",
+					type:2
+				}
+				]
+			});
+
+			this.loading = true;
+
+			setTimeout(() => {
+				this.loading = false;
+			}, 2000);
+		}
+	}
 };
 </script>

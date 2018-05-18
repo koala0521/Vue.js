@@ -507,7 +507,11 @@ export default{
                 'BreadcrumbList':[
                     {'title':'投资者关系'},
                     {'title':'财务新闻稿'}    
-                ],  
+                ],
+                'listType':{
+                    '1':'业绩新闻',
+                    '2':'其他新闻'
+                }  
             }
 
         }],

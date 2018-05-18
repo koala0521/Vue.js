@@ -87,7 +87,6 @@
 
 				</div>
 			</Card>
-
 			<!-- 公司公告  -->
 			<card-list 
 				class="cotent-item"  
@@ -119,9 +118,9 @@
 							v-for="(item , index) in financeReport.list"
 							:key="index"
 						>
-						<a :href="item.url" target="_blank" >
+						<a :href="item.url" target="_blank" :title="item.title" >
 							<img class="pdf-img" :src="item.img" alt="" srcset="">
-							<p class="pdf-title" >{{ item.title }}</p>						
+							<p class="pdf-title" >{{ textClip(item.title , 10 ) }}</p>						
 						</a>
 						</Col>
 					</Row>
@@ -159,7 +158,7 @@ import cardList from "../components/card";
 import siderMenu from "../components/siderMenu";
 import { Card , Row ,Col } from 'iview';
 
-import { formatDate } from '../libs/util';
+import { formatDate , textClip } from '../libs/util';
 
 export default {
 	components : {
@@ -370,7 +369,9 @@ export default {
 		formatTime(ctime){
 			let time = ctime*1000;
 			return formatDate(time , '/' ).split(' ')[0]
-		}
+		},
+		// 文字超出处理
+		textClip:textClip
 	}
 };
 </script>

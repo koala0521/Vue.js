@@ -68,12 +68,28 @@ function formatDate( time , Delimiter ) {
     second = second.length < 2 ? '0' + second : second;
 
     return year+ Delimiter + month + Delimiter + date + " " + hour+":"+minute+":"+second; 
-} 
+}
+
+/** 
+ * 文字溢出处理
+ * @param text : string
+ * @param len : number
+ * 
+ * */ 
+function textClip(text, len) {
+    len = len || text.length;
+    if (len && text.length <= len) {
+        return text;
+    }
+    return text.substr(0, len) + '…';
+}
+
 
 export {
 
     scrollToTar,
-    formatDate
+    formatDate,
+    textClip
 }
 
 export default util;
