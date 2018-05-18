@@ -172,7 +172,6 @@
     import { videoPlayer } from 'vue-video-player';
     import ListCard from '../components/card';
     import util from '../libs/util';
-import index from 'vue';
 
     export default {
         components:{
@@ -317,6 +316,31 @@ import index from 'vue';
                 console.log('播放结束了', player);
                 player.currentTime(0);
             }
+        },
+        created(){
+            
+            // 数据请求
+            
+            console.log( '声明周期created' );
+            // setTimeout(() => {
+            //     this.banner.push(
+            //         {src:require('../assets/img/2.png')},
+            //     );
+
+            // }, 500);
+
+            util.ajax.get(`v1/topics?page=${ 1 }&tab=${ 'good' }&limit=15`)
+            
+            .then(( res )=>{
+                console.log( '请求成功' , res );
+                
+                
+            })
+            .catch(( err )=>{
+                console.log( '请求失败' , res );
+                
+            })
+
         }
     };
 </script>

@@ -69,8 +69,6 @@ import '../../libs/swiper/css/idangerous.swiper.css';
                 pagination : '.pagination',   
                 paginationClickable :true, 
                 onSlideChangeStart: function(swiper){
-                    console.log('图片切换了：', swiper );
-                    
                     //some code
                 }
                 //其他设置
