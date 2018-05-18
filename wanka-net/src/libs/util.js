@@ -20,6 +20,7 @@ util.ajax = axios.create({
     timeout: 30000
 });
 
+
     // 窗口平滑滚动到目标位置
 const scrollToTar = function ( scrollDuration , target ){
     console.log( window.scrollY , target );

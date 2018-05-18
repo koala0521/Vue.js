@@ -108,8 +108,12 @@
 
                 <Col span="12"   class="footer-part footer-copyright-wrap" >
                     <div class="footer-copyright" >
-                        <p>Copyright © 1998 - 2018 Tencent. All Rights Reserved.玩咖公司 版权所有</p>
-                        <p>京公网安备11010502027357</p>
+                        <p>
+                            {{ footerText.copyright[1] }}
+                        </p>
+                        <p>
+                            {{ footerText.copyright[2] }}
+                        </p>
                     </div>
                      
                 </Col>
