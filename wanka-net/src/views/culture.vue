@@ -33,7 +33,7 @@
 				class="cotent-item pb30" 
 			>
 				<p slot="title">
-					<Icon type="ios-film-outline"></Icon>
+					<!-- <Icon type="ios-film-outline"></Icon> -->
 					{{ coreIdea.title }}
 				</p>
 
@@ -119,7 +119,7 @@
 				class="cotent-item last" 
 			>
 				<p slot="title">
-					<Icon type="ios-film-outline"></Icon>
+					<!-- <Icon type="ios-film-outline"></Icon> -->
 					{{ activity.title }}
 				</p>
 
@@ -170,9 +170,10 @@ export default {
 		return {
 			// 左侧菜单数据
 			siderMenuData : this.$t("content")[0].CULTURE.siderMenu,
-
 			// 核心理念
 			coreIdea : this.$t("content")[0].CULTURE.core,
+			// 核心理念
+			coreIdea : this.$t("content")[0].CULTURE.core,			
 			
 			// 员工活动
 			activity:{

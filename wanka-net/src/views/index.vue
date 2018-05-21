@@ -5,6 +5,9 @@
         min-width: 1200px;
         margin: 0 auto;
     }
+    .cont-width.last{
+        margin-bottom: 30px;
+    }
     .layout-nav{
         width: 420px;
         margin: 0 auto;
@@ -55,9 +58,24 @@
     .part .item:not(.last){
         padding-right: 40px;
     }
-    .news-list .swiper-active-switch{
-        background:#df3235;
+    .swiper-pagination-switch{
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        background: #555;
+        margin: 0 5px;
+        opacity: 0.9;
+        border: 1px solid #fff;
+        cursor: pointer;
+        outline: none;
     }
+    .swiper-active-switch {
+        width: 35px;
+        background:#df3235;
+        opacity: 1;
+        transition: width .4s ease-in;
+    }    
     .news-list .title-wrap{
         text-align: right;
     }
@@ -119,7 +137,7 @@
                 </Card>                
             </Col>                                                
         </Row>
-        <Row class="cont-width part">
+        <Row class="cont-width part last">
             <Col span="7" :class="{ofset: (index !== 0) }" v-for="item ,index in thumb" :key="item.id" >
                 <a :href="item.url" target="_blank" >
                     <Card :bordered="false" :shadow="false" >
@@ -182,9 +200,6 @@
             return {
                 // 轮播列表
                 banner:[
-                    {src: require('../assets/img/1.jpg')},
-                    {src:require('../assets/img/2.png')},
-                    {src:require('../assets/img/3.jpg')}
                 ],
                 thumb:[
                     {
@@ -329,12 +344,32 @@
 
             // }, 500);
 
-            util.ajax.get(`v1/topics?page=${ 1 }&tab=${ 'good' }&limit=15`)
+            util.ajax.get(`https://cnodejs.org/api/v1/topics?page=${ 1 }&tab=${ 'good' }&limit=15`)
             
             .then(( res )=>{
-                console.log( '请求成功' , res );
-                
-                
+
+                console.log( '请求成功' , this );
+
+                this.banner = [
+                    {
+                        "title": "国内领先的人工智能商业化服务平台",
+                        "img": "http://filemha.wankacn.com/20170712/68a7a04e06a182486dcc497be1a1ecc4.jpg",
+                        "description": " intelligence commercial service platform"
+                    },
+                    {
+                        "title": "聚合主流应用市场及信息流媒体资源",
+                        "img": "http://filemha.wankacn.com/20170712/68a7a04e06a182486dcc497be1a1ecc4.jpg",
+                        "description": "intelligence commercial service platform"
+                    }
+                ];
+                this.list.push(
+                    {
+                        "title": "测试请求",
+                        "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                        "ctime": "1525342411"
+                    }
+                );
+                                
             })
             .catch(( err )=>{
                 console.log( '请求失败' , res );

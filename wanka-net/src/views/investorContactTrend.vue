@@ -76,7 +76,7 @@
                                 "child_programa_id": "",
                                 "title": "玩咖公布第四季度及全年业绩",
                                 "img": "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-                                "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                                "id": Math.random() ,
                                 "ctime": "1462590847"
                             },
                             {
@@ -84,7 +84,7 @@
                                 "child_programa_id": "",
                                 "title": "玩咖公布第三季度业绩",
                                 "img": "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-                                "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                                "id": Math.random() ,
                                 "ctime": "1462590847"
                             },
                             {
@@ -92,7 +92,7 @@
                                 "child_programa_id": "",
                                 "title": "玩咖公布第一季度业绩",
                                 "img": "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-                                "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                                "id": Math.random() ,
                                 "ctime": "1462590847"
                             }                    
                         ]
@@ -105,7 +105,7 @@
                                 "child_programa_id": "",
                                 "title": "玩咖公布第二季度业绩",
                                 "img": "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-                                "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                                "id": Math.random() ,
                                 "ctime": "1462590847"
                             },
                             {
@@ -113,7 +113,7 @@
                                 "child_programa_id": "",
                                 "title": "玩咖公布第一季度业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩",
                                 "img": "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-                                "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                                "id": Math.random() ,
                                 "ctime": "1462590847"
                             }  
                         ]
@@ -149,7 +149,7 @@
                             "child_programa_id": "",
                             "title": "玩咖公布第二季度业绩",
                             "img": "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-                            "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                            "id": Math.random() ,
                             "ctime": "1462590847"
                         },
                         {
@@ -157,7 +157,7 @@
                             "child_programa_id": "",
                             "title": "玩咖公布第一季度业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩玩咖公布第四季度及全年业绩",
                             "img": "http://filemha.wankacn.com/20180402/77f17e87897efb73457d42071b34d820.jpg",
-                            "url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+                            "id": Math.random() ,
                             "ctime": "1462590847"
                         }  
                     ]

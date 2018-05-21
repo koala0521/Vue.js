@@ -59,24 +59,24 @@
            
             <div class="layout-nav">
                 <MenuItem name="infos">
-                    <Icon type="stats-bars"></Icon>
+                    <!-- <Icon type="stats-bars"></Icon> -->
                     <!-- 公司信息             -->
                     {{ menu[1] }}            
                 </MenuItem>
                 <MenuItem name="culture">
-                    <Icon type="stats-bars"></Icon>
+                    <!-- <Icon type="stats-bars"></Icon> -->
                     <!-- 企业文化 -->
                     {{ menu[2] }}            
 
                 </MenuItem>
                 <MenuItem name="system">
-                    <Icon type="stats-bars"></Icon>
+                    <!-- <Icon type="stats-bars"></Icon> -->
                     <!-- 业务体系 -->
                     {{ menu[3] }}            
                 </MenuItem>
 
                 <MenuItem name="investor">
-                    <Icon type="stats-bars"></Icon> 
+                    <!-- <Icon type="stats-bars"></Icon>  -->
                     <!-- 投资者关系           -->
                     {{ menu[4] }}              
                 </MenuItem>

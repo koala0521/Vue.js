@@ -114,7 +114,7 @@
                     <ul>
                         <li 
                             class="team-item" 
-                            v-for="item , index in team.leaderList"
+                            v-for="(item , index) in team.leaderList"
                             :key="index"
                         >
                             <span class="item-title" >{{ item.name }} </span> 
@@ -143,7 +143,7 @@
                 // 公司动态静态数据
                 news : {                    
                     title : this.$t("content")[0].ABOUT.news.title,
-                    btnText : this.$t("content")[0].ABOUT.news.btnText,
+                    btnText : this.$t("SeeMore"),
                     list:[
                         {
                             "title": "玩咖公布2018第四季度及全年业绩",
@@ -188,8 +188,6 @@
         },
         computed:{
             trendUrl(){
-                console.log( this.$route.path );
-                
                 return this.$route.path + '/trend';
             }
         }

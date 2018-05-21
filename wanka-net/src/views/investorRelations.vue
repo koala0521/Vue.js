@@ -48,7 +48,7 @@
 				<p slot="title" >
 					{{ ctrl.title }} 
 				</p>
-				<div class="card-cont" v-html="ctrl.text" > </div>
+				<div class="card-cont" v-html="ctrl.html" > </div>
 			</Card>
 			<!-- 财务新闻稿 -->
 
@@ -61,7 +61,7 @@
 					{{ financeNews.title }} 
 				</p>
 				<router-link :to="toFinanceNews" slot="extra" >
-					{{ financeNews.more }} 
+					{{ SeeMore }} 
 				</router-link>
 				<div class="card-cont">
 					<p  class="small-title"  > {{ financeNews.SecondaryTitle[1] }} </p>
@@ -91,7 +91,7 @@
 			<card-list 
 				class="cotent-item"  
 				:title="compNews.title" 
-				:btntext="compNews.more"
+				:btntext="SeeMore"
 				:list="compNews.list"
 				:url="toCompNews"
 			>
@@ -107,7 +107,7 @@
 					{{ financeReport.title }} 
 				</p>
 				<router-link :to="toFinanceReport" slot="extra" >
-					{{ financeReport.more }} 
+					{{ SeeMore }} 
 				</router-link>
 				<div class="card-cont">
 					<!-- financeReport -->
@@ -131,7 +131,7 @@
 			<card-list 
 				class="cotent-item"  
 				:title="contactTrend.title" 
-				:btntext="contactTrend.more"
+				:btntext="SeeMore"
 				:list="contactTrend.list"
 				:url="toContactTrend"
 			>
@@ -177,7 +177,6 @@ export default {
 			// 财务新闻稿
 			financeNews : {
 				title : this.$t("content")[0].INVESTOR.financeNews.title,
-				more : this.$t("content")[0].INVESTOR.financeNews.btnText,
 				SecondaryTitle : this.$t("content")[0].INVESTOR.financeNews.SecondaryTitle,
 				list : [
 					{
@@ -225,7 +224,6 @@ export default {
 			//公司公告
 			compNews : {
 				title: this.$t("content")[0].INVESTOR.compNews.title,
-				more : this.$t("content")[0].INVESTOR.compNews.btnText,
 				list : [
 					{
 						"child_programa_name": "",
@@ -267,7 +265,6 @@ export default {
 			// 财务报告
 			financeReport : {
 				title: this.$t("content")[0].INVESTOR.financeReport.title,
-				more : this.$t("content")[0].INVESTOR.financeReport.btnText,
 				list : [
 					{
 						"child_programa_name": "",
@@ -302,33 +299,34 @@ export default {
 			// 投资者关系动态
 			contactTrend : {
 				title: this.$t("content")[0].INVESTOR.contactTrend.title,
-				more : this.$t("content")[0].INVESTOR.contactTrend.btnText,
 				list : [
 					{
 						"child_programa_name": "",
 						"child_programa_id": "",
 						"title": "玩咖公布2018第四季度及全年业绩",
-						"url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+						"id": Math.random() ,
 						"ctime": "1462590847"
 					},
 					{
 						"child_programa_name": "",
 						"child_programa_id": "",
 						"title": "玩咖公布2018第三季度业绩",
-						"url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+						"id": Math.random() ,
 						"ctime": "1462590847"
 					},
 					{
 						"child_programa_name": "",
 						"child_programa_id": "",
 						"title": "玩咖公布2018第二季度及中期业绩",
-						"url": "http://www.ijinshan.com/zhuanti/eduba/files/KingCloud.pdf",
+						"id": Math.random() ,
 						"ctime": "1462590847"
 					}
 				]
 			},
 			// 联系我们
-			contactUs : this.$t("content")[0].INVESTOR.contactUs
+			contactUs : this.$t("content")[0].INVESTOR.contactUs,
+			// 查看更多
+			SeeMore : this.$t("SeeMore"),
 
 		};
 	},
@@ -350,6 +348,7 @@ export default {
 		toContactTrend(){
 			return this.$route.path + '/investortrend'
 		},		
+		
 		// 业绩新闻
 		PerformanceNews(){
 			
