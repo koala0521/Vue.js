@@ -38,7 +38,14 @@ a.txt:hover{
 
         <ul class="news_sub_list" >
             <li v-for="item in list " :key="item.id" >
-                <a class="txt" :href="item.url" target="_blank">{{ item.title }}</a>
+                <a 
+                    class="txt" 
+                    :href="item.url" 
+                    target="_blank"
+                    @click="toDetail(item)"
+                >
+                    {{ item.title }}
+                </a>
                 <span class="item_time" >
                     {{ formatTime(item.ctime) }}
                 </span>
@@ -98,7 +105,7 @@ a.txt:hover{
             },
             list:{
                 type:Array,
-                default:()=> dataList
+                default:[]
             },
             url:{
                 type: String,
@@ -112,6 +119,23 @@ a.txt:hover{
             formatTime(ctime){
                 let time = ctime*1000;
                 return formatDate(time , '/' ).split(' ')[0]
+            },
+            // 跳转详情页
+            toDetail(item){
+
+                // PDF文件跳转新页面
+                if( item.url ){
+                    window.open( item.url , '_blank' )
+                    return
+                }
+
+                this.$router.push({
+                    // 跳转详情页
+                    path: this.url + '/detail',
+                    query:{
+                        id:item.id || 0
+                    }
+                });
             }
         }
     };

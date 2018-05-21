@@ -85,9 +85,9 @@
                         >
                             <a 
                                 class="txt" 
-                                target="_blank" 
-                                :href="val.url" 
-                                :title="val.title" 
+                                target="_blank"
+                                :title="val.title"
+                                @click="toDetail(val)" 
                             >
                                 {{ textClip(val.title , 32) }}
                             </a>
@@ -117,6 +117,7 @@
             }
         },
         methods:{
+            // 格式化时间
             formatTime(ctime){
                 let time = ctime*1000;
                 return formatDate(time , '/' ).split(' ')[0]
@@ -129,6 +130,23 @@
                 }
                 return text.substr( 0 , len ) + '...'
             },
+            // 跳转详情页
+            toDetail(item){
+
+                // PDF文件跳转新页面
+                if( item.url ){
+                    window.open( item.url , '_blank' )
+                    return
+                }
+
+                this.$router.push({
+
+                    path: this.$route.path + '/detail',
+                    query:{
+                        id:item.id || 0
+                    }
+                });
+            }
         }
     };
 

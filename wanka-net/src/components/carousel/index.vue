@@ -1,6 +1,12 @@
 <style>
-.swiper-slide , swiper-container{
+.swiper-slide , .swiper-container{
     width: 100%;
+    height: 100%;
+    position: relative;
+}
+.swiper-slide img{
+    width: 100%;
+    height: 100%;
 }
 .pagination {
   position: absolute;
@@ -9,7 +15,7 @@
   width: 100%;
   text-align: center;
 }
-.swiper-pagination-switch {
+span.swiper-pagination-bullet{
   display: inline-block;
   width: 10px;
   height: 10px;
@@ -19,60 +25,80 @@
   opacity: 0.9;
   border: 1px solid #fff;
   cursor: pointer;
+  outline: none;
 }
-.swiper-active-switch {
+span.swiper-pagination-bullet-active {
   width: 35px;
   background: #fff;
   opacity: 1;
   transition: width .4s ease-in;
+}
+.img-title{
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top:50%;
 }
 
 </style>
 
 <template>
     <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div 
-                v-for="(item , index ) in banner"
-                :key="index"
+
+        <swiper :options="swiperOption" ref="mySwiper" >
+            <swiper-slide 
+                v-for="(item , index) in banner" 
+                :key="index"            
                 class="swiper-slide"
-            
-            > 
-                <img :src="item.src" alt="">
-            </div>
-        </div>
-        <!-- 如果需要分页器 -->
-        <div class="pagination"></div>
-        
-        <!-- 如果需要导航按钮
-        <div class="swiper-button swiper-button-prev"></div>
-        <div class="swiper-button swiper-button-next"></div> -->
+            >
+                <img :src="item.img" :alt="item.description" draggable="false" >
+                <!-- <p class="img-title" >{{ item.title }}</p> -->
+            </swiper-slide>
+            <div class="swiper-pagination" slot="pagination"></div>
+        </swiper>
+
     </div>
 </template>
 <script>
 
-import Swiper from '../../libs/swiper/js/idangerous.swiper.min';
-import '../../libs/swiper/css/idangerous.swiper.css';
+import 'swiper/dist/css/swiper.css'
 
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+ 
     export default {
-        data () {
-            return {
-                value1: 0
+        components:{
+            swiper,
+            swiperSlide
+        },
+        
+        props:{
+            'banner':{
+                type:Array,
+                default:[]
             }
         },
-        props:['banner'],
-        mounted(){
-            let mySwiper = new Swiper('.swiper-container',{
-                loop: true,
-                autoplay : 5000,
-                autoResize : true,
-                pagination : '.pagination',   
-                paginationClickable :true, 
-                onSlideChangeStart: function(swiper){
-                    //some code
+
+        data () {
+            return {
+                swiperOption:{
+                    loop: true,
+                    autoplay : 5000,
+                    autoResize : true,
+                    allowTouchMove: false,
+                    pagination : {
+                        el:'.swiper-pagination',
+                        clickable:true
+                    },   
+                    paginationClickable :true, 
+                    observer:true,//修改swiper自己或子元素时，自动初始化swiper
+                    observeParents:true,//修改swiper的父元素时，自动初始化swiper                   
                 }
-                //其他设置
-            });  
+            }
+        },
+        computed: {
+            swiper() {
+                return this.$refs.mySwiper.swiper
+            }
         }
     }
 </script>
