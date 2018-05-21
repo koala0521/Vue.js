@@ -513,7 +513,23 @@ export default{
                     '1':'业绩新闻',
                     '2':'其他新闻'
                 }  
-            }
+            },
+
+            /* 三级页面 */   
+
+            // 详情页面 
+            'detailPage':{
+                'BreadcrumbList':[
+                    {'title':'投资者关系'},
+                    {'title':'投资者关系动态'},
+                    {'title':''}    
+                ],
+                'time':'时&nbsp; &nbsp;间',
+                'theme':'主&nbsp; &nbsp;题',
+                'content':'內&nbsp; &nbsp;容',
+                'address':'地&nbsp; &nbsp;址',
+                'company':'承办单位'
+            }            
 
         }],
 
@@ -1028,7 +1044,23 @@ export default{
                     '1':'业绩新闻',
                     '2':'其他新闻'
                 }  
-            }
+            },
+
+            /* 三级页面 */   
+
+            // 详情页面
+            'detailPage':{
+                'BreadcrumbList':[
+                    {'title':'Investor Relations '},
+                    {'title':'Event Calendar '},
+                    {'title':''}    
+                ],
+                'time':'Date',
+                'theme':'Subject',
+                'content':'Description',
+                'address':'Venue',
+                'company':'Organizer'
+            }            
 
         }],
 
@@ -1082,25 +1114,24 @@ export default{
                     'mainTitle':'公司信息',
                     'list':[
                         {
-                            'title' : '公司动态', 
+                            'title' : '公司動態', 
                             'name' : 'company_charity'
                         },
                         {
-                            'title' : '发展历程', 
+                            'title' : '發展歷程', 
                             'name' : 'company_dev'
                         },
                         {
-                            'title' : '管理团队', 
+                            'title' : '管理團隊', 
                             'name' : 'company_board'
                         }
                     ]
                 },
                 'news':{
-                    'title':'公司动态',
-                    'btnText':'查看更多'
+                    'title':'公司動態'
                 },
                 'Timeline':{
-                    'title':'发展历程',
+                    'title':'發展歷程',
                     'list':[
                         {
                             'content':'一站式APP开发支持与发布平台——聚传上线'
@@ -1150,26 +1181,26 @@ export default{
                     ]
                 },
                 'team':{
-                    'title':'管理团队', 
+                    'title':'管理團隊', 
                     'leader':'高第男',
-                    'JobTitle':'主要创办人，董事会主席兼CEO',
+                    'JobTitle':'主要創辦人，董事會主席兼CEO',
                     'description':'如果中方就美国制裁中兴一事报复，决定以国家安全为理由禁止苹果产品在中国销售，会怎样呢？巴普蒂斯特·苏说，出现这种局面，苹果将失如果中方就美国制裁中兴一事报复，决定以国家安全为理由禁止苹果产品在中国销售，会怎样呢？巴普蒂斯特·苏说，出现这种局面，苹果将失',
                     'leaderList':[
                         {
                             'name':'老武',
-                            'JobTitle':'主要创办人，董事会成员&CTO', 
+                            'JobTitle':'主要創辦人，董事會主席兼CEO', 
                         },
                         {
                             'name':'震总',
-                            'JobTitle':'主要创办人，董事会成员&CTO', 
+                            'JobTitle':'主要創辦人，董事會主席兼CEO', 
                         },    
                         {
                             'name':'老武',
-                            'JobTitle':'主要创办人，董事会成员&CTO', 
+                            'JobTitle':'主要創辦人，董事會主席兼CEO', 
                         },
                         {
                             'name':'震总',
-                            'JobTitle':'主要创办人，董事会成员&CTO', 
+                            'JobTitle':'主要創辦人，董事會主席兼CEO', 
                         }                                            
                     ]
 
@@ -1178,14 +1209,14 @@ export default{
             // 企业文化
             'CULTURE':{
                 'siderMenu':{
-                    'mainTitle':'企业文化',
+                    'mainTitle':'企業文化',
                     'list':[
                         {
                             'title': '核心理念',
                             'name': 'core_idea'
                         },
                         {
-                            'title': '员工活动',
+                            'title': '員工活動',
                             'name': 'employe_activity'
                         }
                     ]
@@ -1194,32 +1225,32 @@ export default{
                     'title':'核心理念',
                     'list':[
                         {
-                            'title':'愿景',
-                            'summary':'成为中国移动互联网商业化服务平台的标杆企业',
+                            'title':'願景',
+                            'summary':'新生态智能商业服务商',
                             'text':'如果中方就美国制裁中兴一事报复，决定以国家安全为理由禁止苹果产品在中国销售，会怎样呢？巴普蒂斯特·苏说，出现这种局面，苹果将失'
                         },{
                             'title':'使命',
-                            'summary':'成为中国移动互联网商业化服务平台的标杆企业',
+                            'summary':'全力打造移动智能新生态',
                             'text':'如果中方就美国制裁中兴一事报复，决定以国家安全为理由禁止苹果产品在中国销售，会怎样呢？巴普蒂斯特·苏说，出现这种局面，苹果将失'
                         },{
                             'title':'管理理念',
-                            'summary':'成为中国移动互联网商业化服务平台的标杆企业',
+                            'summary':'以人为本，关注成长',
                             'text':'如果中方就美国制裁中兴一事报复，决定以国家安全为理由禁止苹果产品在中国销售，会怎样呢？巴普蒂斯特·苏说，出现这种局面，苹果将失'
                         },{
-                            'title':'价值观',
-                            'summary':'成为中国移动互联网商业化服务平台的标杆企业',
+                            'title':'價值觀',
+                            'summary':'正直、创新、合作、执行',
                             'text':'如果中方就美国制裁中兴一事报复，决定以国家安全为理由禁止苹果产品在中国销售，会怎样呢？巴普蒂斯特·苏说，出现这种局面，苹果将失'
                         }
                     ]
                 },
                 'activity':{
-                    'title':'员工活动',
+                    'title':'員工活動',
                 }         
             },
             // 业务体系
             'PRODUCTS':{
                 'siderMenu':{
-                    'mainTitle':'业务体系',
+                    'mainTitle':'業務體係',
                     'list':[
                         {
                             'title': '业务体系1',
@@ -1269,26 +1300,26 @@ export default{
             // 投资者关系
             'INVESTOR':{
                 'siderMenu':{
-                    'mainTitle':'投资者关系',
+                    'mainTitle':'投資者關係',
                     'list':[
                         {
-                            'title': '企业管制',
+                            'title': '企業管治',
                             'name': 'control'
                         },
                         {
-                            'title': '财务新闻稿',
+                            'title': '財務新聞稿',
                             'name': 'news'
                         },{
                             'title':'公司公告',
                             'name': 'employe_activity1'
                         },{
-                            'title':'财务报告',
+                            'title':'財務報告',
                             'name': 'employe_activity2'
                         },{
-                            'title':'投资者关系动态',
+                            'title':'投資者關係動態',
                             'name': 'employe_activity3'
                         },{
-                            'title':'联系方式',
+                            'title':'聯繫方式',
                             'name': 'employe_activity4'
                         }
                     ]
@@ -1296,15 +1327,15 @@ export default{
                 
                 // 企业管制
                 'control':{
-                    'title':'企业管制',        
-                    'text' : `
+                    'title':'企業管治',        
+                    'html' : `
                         <p> 腾讯控股有限公司(「腾讯」或「本公司」，连同其附属公司及为会计目的而综合入账的公司合共称为「本集团」)为中国领先的互联网增值服 </p>
                         <p> 腾讯控股为中国领先的互联网增值服 </p> 
                         <p> 腾讯为中国领先的互联网增值服 </p> 
                         
                         <p class="router-link link mt20 ptb6" >  
-                            <a class="mr20" href="/investor/control">企业管治</a>  
-                            <a href="/investor/member" >董事会成员</a> 
+                            <a class="mr20" href="/investor/control">企業管治</a>  
+                            <a href="/investor/member" >董事會成員</a> 
                         </p> 
                         
                         <p class="mt20" >
@@ -1325,35 +1356,31 @@ export default{
                 // 财务新闻稿
                 'financeNews' : {
 
-                    'title':'财务新闻稿',
-                    'btnText':'查看更多',
+                    'title':'財務新聞稿',
                     'SecondaryTitle':{
-                        '1':'业绩新闻',
-                        '2':'其他新闻'
+                        '1':'業績新聞',
+                        '2':'其它新聞'
                     }
                 },
                 // 公司公告
                 'compNews' : {
                     'title':'公司公告',
-                    'btnText':'查看更多'
                 },
                 // 财务报告
                 'financeReport' : {
-                    'title':'财务报告',
-                    'btnText':'查看更多'                    
+                    'title':'財務報告',                  
                 },  
                 // 投资者关系动态
                 'contactTrend' : {
-                    'title':'投资者关系动态',
-                    'btnText':'查看更多'                        
+                    'title':'投資者關係動態',                   
                 },
                 // 联系我们
                 'contactUs':{
-                    'title':'欢迎您与我们取得联系！',
+                    'title':'歡迎您與我們取得聯繫！',
                     'html':`
-                        <p> 个人投资者查询 </p> 
-                        <p  class="pt10" > 电话：(86-755)86013388 转 72000 </p> 
-                        <p  class="pt10" > 电子邮箱：cosec@gm825.com </p> 
+                        <p> 個人投資者查詢 </p> 
+                        <p  class="pt10" > 電話：(86-755)86013388 轉 72000 </p> 
+                        <p  class="pt10" > 電子郵箱：cosec@gm825.com </p> 
                     `
                 }
             }, 
@@ -1544,8 +1571,22 @@ export default{
                     '1':'业绩新闻',
                     '2':'其他新闻'
                 }  
-            }
+            },
+            /* 三级页面 */   
 
+            // 详情页面
+            'detailPage':{
+                'BreadcrumbList':[
+                    {'title':'投資者關係'},
+                    {'title':'投資者關係動態'},
+                    {'title':''}    
+                ],
+                'time':'時&nbsp; &nbsp;間',
+                'theme':'主&nbsp; &nbsp;題',
+                'content':'內&nbsp; &nbsp;容',
+                'address':'地&nbsp; &nbsp;址',
+                'company':'承辦單位'
+            }
         }],
 
         // 查看更多

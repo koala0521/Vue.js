@@ -143,6 +143,16 @@ const routers = [
         component:(resolve) => require(['./views/companyInfosTrend.vue'] , resolve )
     }  
 
+    //三级路由
+    ,{
+        path:Investor + '/investortrend/detail',
+        name:'investorTrendDetail',
+        meta:{
+            title:'投资者关系动态新闻详情'
+        },
+        component:(resolve) => require(['./views/investorContactTrendDetail.vue'] , resolve )
+    }
+
     ,{
         path:'*',
         redirect:'/index'
