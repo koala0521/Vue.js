@@ -83,6 +83,15 @@ html,body{
 }
 
 
+/*  折叠筐  */
+.ivu-collapse-header{
+    
+    border-bottom: 1px solid #dddee1;
+}
+.header-modal .ivu-modal-footer{
+    display: none;
+}
+
 .tac{text-align:center !important;}
 .tal{text-align:left !important;}
 .tar{text-align:right !important;}
@@ -94,6 +103,9 @@ html,body{
 .full{height:100%;width:100%;}
 .wfull{width:100%;}
 .hfull{height:100%;}
+.inline-block{
+    display: inline-block;
+}
 .pointer{
     cursor: pointer;
 }
