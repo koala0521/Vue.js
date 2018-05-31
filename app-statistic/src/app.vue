@@ -1,18 +1,26 @@
+<style scoped>
+    .my-layout{
+        height: 100%;
+    }
+</style>
+
 <template>
-    <div>
-        <header>
-            <router-link to="/index">首页</router-link>
-            <router-link to="/setting">设置</router-link>
-        </header>
+
+    <Layout class="my-layout" >
         <router-view></router-view>
-    </div>
+    </Layout>
+
 </template>
 <script>
+    import { Layout } from 'iview';
     export default {
         data() {
             return {
 
             };
+        },
+        components:{
+            Layout
         },
         mounted() {
 
