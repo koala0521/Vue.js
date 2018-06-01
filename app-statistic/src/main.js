@@ -8,6 +8,8 @@ import App from './app.vue';
 import 'iview/dist/styles/iview.css';
 import name from './assets/css/global.css';
 
+import 'vue-happy-scroll/docs/happy-scroll.css'
+
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
@@ -25,14 +27,14 @@ router.beforeEach((to, from, next) => {
 
     LoadingBar.start();
     Util.title(to.meta.title);
-    if( !store.getters.login && to.name !== 'login' ){
+    // if( !store.getters.login && to.name !== 'login' ){
 
-        next({
-            name:'login'
-        });        
-        LoadingBar.finish();
-        return
-    }    
+    //     next({
+    //         name:'login'
+    //     });        
+    //     LoadingBar.finish();
+    //     return
+    // }    
     next();
 });
 

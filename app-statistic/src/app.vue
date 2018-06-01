@@ -1,6 +1,7 @@
 <style scoped>
     .my-layout{
         height: 100%;
+        background: #f9fafc;
     }
 </style>
 

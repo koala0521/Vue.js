@@ -34,6 +34,7 @@
     border-left: 1px solid #dddee1;
 }
 
+
 </style>
 
 
@@ -88,7 +89,8 @@
         <Modal
             title="系统公告"
             v-model="showModal"
-            class-name="vertical-center-modal header-modal">
+            class="header-modal"
+        >
                 <Collapse v-model="panel1">
                     <Panel name="1">
                         <span >史蒂夫·乔布斯</span> 

@@ -11,7 +11,10 @@ const routers = [
             {
                 path: 'today',
                 component: (resolve) => require(['./views/basicSituation/todaySituation.vue'], resolve),
-                name:'today'
+                name:'today',
+                meta: {
+                    title: '今日概况'
+                }
             },
             //  趋势分析
             {

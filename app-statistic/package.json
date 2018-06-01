@@ -20,6 +20,7 @@
     "iview": "^2.7.4",
     "vue": "^2.5.2",
     "vue-echarts": "^3.0.7",
+    "vue-happy-scroll": "^2.0.1",
     "vue-router": "^3.0.1",
     "vuex": "^2.2.1"
   },

@@ -12,23 +12,42 @@ p{
 html,body{
     height: 100%;
 }
+.ivu-layout{
+    background: #f9fafc;
+}
+
 .page-content-cont{
     margin-left: 200px;
 }
 .content-cont-width{
-    min-width: 1200px;
+    min-width: 1000px;
     margin: 0 auto;
 }
 .content-title{
-    height: 50px;
-    line-height: 30px;
-    padding: 10px;
+    height: 60px;
+    line-height: 40px;
+    padding: 10px 30px;
     font-size: 14px;
-    font-weight: 600;
-    
+    font-weight: 600;   
+}
+.poptip-wrap .ivu-poptip-inner{
+    overflow: hidden;
+    white-space : normal;
 }
 
-.cotent-item{
+.ivu-menu-vertical.ivu-menu-light:after{
+    width: 0;
+}
+
+/* 滚动条 */
+.happy-scroll-container{
+    width: auto !important;
+}
+.happy-scroll-content{
+    border-width: 0px !important;;
+}
+
+/* .cotent-item{
     padding-bottom: 30px;
     margin-bottom: 30px;
     border-radius: 0;
@@ -42,7 +61,7 @@ html,body{
 }
 .cotent-item  .item-col:not(.last){
     padding-bottom: 30px;
-}
+} */
 
 
 
