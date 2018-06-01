@@ -12,15 +12,20 @@ p{
 html,body{
     height: 100%;
 }
-.sub_cont{
-    width: 800px;
+.page-content-cont{
     margin-left: 200px;
-    padding-left: 40px;
 }
-.cont-width{
-    width: 1200px;
+.content-cont-width{
     min-width: 1200px;
     margin: 0 auto;
+}
+.content-title{
+    height: 50px;
+    line-height: 30px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    
 }
 
 .cotent-item{
@@ -90,6 +95,14 @@ html,body{
 }
 .header-modal .ivu-modal-footer{
     display: none;
+}
+.vertical-center-modal .ivu-modal-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.vertical-center-modal .ivu-modal{
+    top: 0;
 }
 
 .tac{text-align:center !important;}

@@ -10,9 +10,6 @@
         height: 100%;
         background: #e4e4e4;
     }
-    .page-content-cont{
-        margin-left: 240px;
-    }
 </style>
 <template>
 <div>
@@ -20,8 +17,7 @@
     <Layout class="content-wrap" >
         <Slider 
             class="slider-menu" hide-trigger 
-            :menu="sliderData"
-        
+            :menu="sliderData"        
         >
 
         </Slider>
