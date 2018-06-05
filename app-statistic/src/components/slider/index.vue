@@ -14,13 +14,18 @@
                 width="195px"
                 @on-select="changeMenu"
                 mode="vertical"
+                :open-names="openArr"
             >
 
-                <MenuGroup 
+                <Submenu  
                     v-for="( item , index ) in menu" 
                     :key="index" 
-                    :title="item.title"
+                    :name="index"
                 >
+                    <template slot="title">
+                        <Icon type="ios-paper"></Icon>
+                        {{ item.title }}
+                    </template>
                     <MenuItem 
                         v-for="( value ) in item.list"
                         :key="value.routerName"
@@ -29,7 +34,7 @@
                         <Icon type="document-text"></Icon>    
                         {{ value.title }}  
                     </MenuItem>
-                </MenuGroup>
+                </Submenu >
 
             </Menu>
         </happy-scroll>
@@ -38,7 +43,7 @@
 </template>
 
 <script>
-import { Sider , Menu , MenuGroup, MenuItem , Icon } from 'iview';
+import { Sider , Menu , Submenu , MenuItem , Icon } from 'iview';
 import { HappyScroll } from 'vue-happy-scroll';
     export default {
         data(){
@@ -46,10 +51,17 @@ import { HappyScroll } from 'vue-happy-scroll';
                 active:this.$route.name
             }
         },
+        computed:{
+            openArr(){
+                return this.menu.map( (item , index) =>{
+                    return index
+                });
+            }
+        },
         components:{
             Sider,
             Menu,
-            MenuGroup,
+            Submenu ,
             MenuItem,
             Icon,
             HappyScroll
