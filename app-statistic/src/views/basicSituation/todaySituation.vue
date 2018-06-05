@@ -60,7 +60,7 @@
 
     <div class="content-cont-width" >
         <Row class="content-title"  > 
-            <span>
+            <span  class="level-II-title"  >
                 {{ title }}
             </span>
             <Poptip 

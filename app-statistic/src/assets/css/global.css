@@ -52,12 +52,24 @@ html,body{
     box-shadow:none;
 }
 .chart .ivu-card-head{
-    padding: 26px 0;
+    padding: 30px 0;
+}
+
+/* 二级标题 */
+.level-II-title{
+    height: 60px;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: 600;    
 }
 
 /* .chart .ivu-dropdown-item.active:after{
     content: "✔"
 } */
+
+.chart .ivu-dropdown-item.active {
+    color: #26c6da;
+}
 
 
 
