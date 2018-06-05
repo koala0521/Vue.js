@@ -2,6 +2,8 @@
     .content-wrap{
         margin-top: 64px;
         height: 100%;
+        position: relative;
+        z-index: 10;
     }
     .slider-menu{
         position: fixed;
@@ -10,11 +12,30 @@
         height: 100%;
         background: #e4e4e4;
     }
+    .notice{
+        margin-top: 64px;
+        background: #3c3c3c;
+        color: #fff;
+        line-height: 50px;
+        width: 100%;
+        position: fixed;
+        z-index: 100;
+    }
+    .show-notice{
+        margin-top: 104px;
+    }
+    .show-notice .slider-menu{
+        top:104px;
+    }
 </style>
 <template>
 <div>
     <Header></Header>
-    <Layout class="content-wrap" >
+    <div class="notice tac">
+        通知：啦啦啦啦啦啦啦啦啦啦
+    </div> 
+    
+    <Layout class="content-wrap show-notice" >       
         <Slider 
             class="slider-menu" hide-trigger 
             :menu="sliderData"        
@@ -86,6 +107,26 @@
                             {
                                 title:'终端分析',
                                 routerName:'terminalAnalysis'
+                            },
+                            {
+                                title:'测试导航1',
+                                routerName:'test1'
+                            },
+                            {
+                                title:'测试导航2',
+                                routerName:'test2'
+                            },
+                            {
+                                title:'测试导航3',
+                                routerName:'test3'
+                            },
+                            {
+                                title:'测试导航4',
+                                routerName:'test4'
+                            },
+                            {
+                                title:'测试导航5',
+                                routerName:'test5'
                             }
                         ]
                     }
