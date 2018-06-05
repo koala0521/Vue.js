@@ -20,7 +20,10 @@ const routers = [
             {
                 path: 'trend',
                 component: (resolve) => require(['./views/basicSituation/trendAnalysis.vue'], resolve),
-                name:'trend'
+                name:'trend',
+                meta: {
+                    title: '趋势分析'
+                }                
             },
             // 用户活跃度
             {

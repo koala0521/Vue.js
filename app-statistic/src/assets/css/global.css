@@ -35,7 +35,7 @@ html,body{
     white-space : normal;
 }
 
-.ivu-menu-vertical.ivu-menu-light:after{
+.ivu-menu-vertical.ivu-menu-light:after , .ivu-menu-horizontal.ivu-menu-light:after {
     width: 0;
 }
 
@@ -47,21 +47,30 @@ html,body{
     border-width: 0px !important;;
 }
 
-/* .cotent-item{
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-    border-radius: 0;
+/* card */
+.ivu-card-shadow{
+    box-shadow:none;
 }
-.cotent-item .ivu-card-head , .part .ivu-card-head{
-    padding: 14px 0;
+.chart .ivu-card-head{
+    padding: 30px 0;
 }
 
-.cotent-item:not(.last){ 
-    border-bottom: 1px solid #e9eaec !important;
+/* 二级标题 */
+.level-II-title{
+    height: 60px;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: 600;    
 }
-.cotent-item  .item-col:not(.last){
-    padding-bottom: 30px;
+
+/* .chart .ivu-dropdown-item.active:after{
+    content: "✔"
 } */
+
+.chart .ivu-dropdown-item.active {
+    color: #26c6da;
+}
+
 
 
 

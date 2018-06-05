@@ -1,15 +1,21 @@
 <style scoped >
 .link , .dropdown-btn{
-    color: #FFF;
+    color: #999999;
 }
+.ivu-menu-item-active .link{
+
+    color: #4385f6;
+}
+
 .placard{
-    color: #FFF;
+    /* color: #FFF; */
     font-size: 16px;
 }
 .header{
     width: 100%;
-    background: #2d8cf0;
+    background: #fff;
     /* padding: 0; */
+    z-index: 999;
 }
 .dropdown-wrap{
     font-size: 14px;
@@ -28,29 +34,27 @@
     vertical-align: top;
 }
 .layout-nav{
-    margin-left: 200px;
+    margin-left: 150px;
 }
 .time{
     border-left: 1px solid #dddee1;
 }
 
-
 </style>
-
 
 <template>
     <Header class="header" :style="{position: 'fixed', width: '100%'}" >
         <Row>
             <Col span="20" >
-                <Menu theme="primary" mode="horizontal" active-name="1" class="nav-wrap"  >                                
+                <Menu theme="light" mode="horizontal" active-name="home" class="nav-wrap"  >                                
                     <div class="layout-logo"
                         @click="toHome"
                     >
                         <img src="../../assets/img/logo.png" alt="logo">
                     </div>  
                     <div class="layout-nav clear-both">
-                        <MenuItem name="home" class="ml40" >
-                            <a class="link" href="#">开发者中心首页</a>
+                        <MenuItem name="home" class="" >
+                            <a class="link" href="#">快应用统计首页</a>
                         </MenuItem>
                         <MenuItem name="document" >
                             <a class="link" href="#">开发文档</a>

@@ -40,7 +40,18 @@
         color: #333;
     }
     .chart{
-        height: 476px;
+        height: 470px;
+        padding: 0 20px;
+    }
+    .chart .chart-title{
+        height: 85px;
+        padding: 30px 0;
+    }
+    .chart .title-text{
+        font-weight: 600;
+    }
+    .ivu-dropdown-item.active{
+        color:#26c6da; 
     }
 
 </style>
@@ -49,7 +60,7 @@
 
     <div class="content-cont-width" >
         <Row class="content-title"  > 
-            <span>
+            <span  class="level-II-title"  >
                 {{ title }}
             </span>
             <Poptip 
@@ -202,11 +213,39 @@
                 </div>
             </div>
         </div>
-
         <div class="prl30 mt30">
-            <div class="item chart">
-                
-            </div>
+            <Card  
+                class="item chart" 
+                shadow
+            >
+                <div slot="title" >
+                    <span class="title-text">趋势图</span>
+                    <Dropdown 
+                        style="margin-left: 20px"
+                        trigger="click"
+                        @click="changeSelect"
+                    
+                    >
+                        <Button >
+                            选择显示数据（可多选）
+                            <Icon type="arrow-down-b"></Icon>
+                        </Button>
+                        <DropdownMenu slot="list" class="select" >
+                            <DropdownItem class="active" >
+                                驴打滚 
+                                <Icon type="checkmark-round"></Icon>
+                            </DropdownItem>
+                            <DropdownItem>
+                                炸酱面                                
+                                <Icon type="checkmark-round"></Icon>
+                            </DropdownItem>
+                            <DropdownItem disabled>豆汁儿</DropdownItem>
+                            <DropdownItem>冰糖葫芦</DropdownItem>
+                            <DropdownItem divided>北京烤鸭</DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
+                </div>
+            </Card>
         </div>
 
     </div>
@@ -214,15 +253,35 @@
 </template>
 
 <script>
-    import { Row , Col , Poptip, Icon  } from 'iview';
+    import { Row , Col , Poptip, Icon , Card , Dropdown, DropdownMenu , DropdownItem , Button } from 'iview';
     export default {
         data(){
             return {
-                title : this.$route.meta.title
+                title : this.$route.meta.title,
+                selectList:[
+                    {
+                        'title':'新用户数',
+                        'name':'new_users',
+                        'selected':true
+                    },{
+                        'title':'访问人数',
+                        'name':'visitors',
+                        'selected':true                        
+                    },{
+                        'title':'访问人数',
+                        'name':'visitors',
+                        'selected':true                          
+                    },{}
+                ]
             }
         },
         components:{
-            Row, Col , Poptip, Icon
+            Row, Col , Poptip, Icon ,Card ,Dropdown, DropdownMenu , DropdownItem , Button 
+        },
+        methods:{
+            changeSelect(name){
+
+            }
         },
         mounted(){
             console.log(this.$route.meta.title);
