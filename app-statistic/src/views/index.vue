@@ -22,10 +22,10 @@
         z-index: 100;
     }
     .show-notice{
-        margin-top: 104px;
+        margin-top: 114px;
     }
     .show-notice .slider-menu{
-        top:104px;
+        top:114px;
     }
 </style>
 <template>
