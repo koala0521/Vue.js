@@ -59,9 +59,9 @@
            
             <div class="layout-nav">
                 <MenuItem name="infos">
-                    <!-- <Icon type="stats-bars"></Icon> -->
-                    <!-- 公司信息             -->
-                    {{ menu[1] }}            
+                    <span>
+                    {{ menu[1] }}    
+                    </span>        
                 </MenuItem>
                 <MenuItem name="culture">
                     <!-- <Icon type="stats-bars"></Icon> -->
