@@ -112,8 +112,8 @@
  
             </div>            
         </div>
-        <div class="chart">
-            <Card shadow >
+        <div class="chart mb30">
+            <Card shadow class="hfull" >
                 <div slot="title" >
                     <span class="title-text">趋势图</span>
                     <Dropdown 
@@ -132,12 +132,13 @@
                                 v-for="item in chartDropList" 
                                 :key="item.name"
                                 :selected="item.selected === true"
+                                :disabled="item.disabled"
                                 :name="item.name"
                                 divided
                             >
                                 <span class="lf" >{{ item.title }}</span>
                                 <span class="fr" >
-                                    <Icon type="checkmark-round" class="ml" ></Icon>
+                                    <Icon v-show="item.selected" type="checkmark-round" class="ml" ></Icon>
                                 </span> 
                             </DropdownItem>
                         </DropdownMenu>
@@ -149,36 +150,111 @@
                             v-for="item in selectedDrop"
                             :key="item.name"
                         >
-                            {{ item.title }} 
-                            <Icon type="ios-close-empty"></Icon>
+                            {{ item.title }}
+                            <span @click="item.selected=false" class="p6 pointer" >
+                                <Icon type="ios-close-empty"></Icon>
+                            </span> 
                         </span>
-
-                        <!-- <span class="mr16">
-                            访问人数 
-                            <Icon type="ios-close-empty"></Icon>
-                        </span>
-                        <span class="mr16">
-                            访问人数
-                            
-                            <Icon type="ios-close-empty"></Icon>
-                        </span> -->
                     </div>
                     
                 </div>
+                <div>
+                    <ve-line 
+                        :data="chartData" 
+                        height="360px" 
+                        :judge-width="true" 
+                        :clipOverflow="false"
+                        :settings="chartSettings"
+                        :extend="chartExtend"
+                        :colors="colorList"
+                ></ve-line>
+                </div>
             </Card>            
+        </div>
+        <div class="table mb30">
+            <Table stripe :columns="columns1" :data="data1" ></Table>
         </div>
     </div>
     
 </template>
 
 <script>
-    import { Row , Col , Poptip, Icon , Card , Dropdown, DropdownMenu , DropdownItem , Button } from 'iview';
-    
+    import { Row , Col , Poptip, Icon , Card , Dropdown, DropdownMenu , DropdownItem , Button , Table  } from 'iview';
+    import VeLine from 'v-charts/lib/line'; 
+
     export default {
         data(){
-            
+
+            this.chartSettings = {
+                labelMap: {
+                    visitorTimes: '访问次数',
+                    openTimes: '打开次数',
+                    visitorPeoples:'访问人数',
+                    stayDuration:'次均停留时长',
+                    date:'日期'
+                },
+                dimension :['date'],
+                metrics : ['visitorPeoples' ,'visitorTimes' ]
+            }
+
+            // 配置参数
+            this.chartExtend = {
+
+                // 指标按钮控制
+                legend:{
+                    // show:false
+                    bottom : 10
+                },
+                // 控制整个图表
+                grid:{
+                    top:20
+                },
+                series: {
+                    type:'line', // 图表类型必须配置
+                    smooth: false,   // 是否平滑过渡
+                    lineStyle:{
+                        width:5
+                    },
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: true,
+                    splitLine:{show: false},//去除网格线
+                    // splitArea : {show : true},//保留网格区域 
+                    axisLine: {
+                        show:true,
+                        lineStyle: {
+                            // type: 'solid',
+                            color: '#e5e5e5',//左边线的颜色
+                            // width:'2'//坐标线的宽度
+                        }
+                    },
+                    axisTick:{
+                        show:true,
+                        inside:true
+                    }
+                },
+                yAxis :{
+                    type : 'value',
+                    splitLine:{show: false},//去除网格线
+                    // splitArea : {show : true},//保留网格区域    
+                    axisLine: {
+                        show:true,
+                        lineStyle: {
+                            color:'#e5e5e5',
+                        }
+                    }, 
+                    axisTick:{
+                        show:true,
+                        inside:true
+                    }                                   
+                }
+            }
+
             return {                
+                // 标题
                 title : this.$route.meta.title,
+                
                 timeList:[
                     {
                         'title':'今日',
@@ -231,41 +307,108 @@
                 ],
                 // 图表下拉选数据
                 chartDropList:[
-                   {
-                       'title':'访问人数',
-                       'name':'visitorPeoples',
-                       'selected':true
-                   },{
-                       'title':'访问次数',
-                       'name':'visitorTimes',
-                       'selected':true
-                   },{
-                       'title':'打开次数',
-                       'name':'openTimes',
-                       'selected':false
-                   },{
-                       'title':'次均停留时长',
-                       'name':'stayDuration',
-                       'selected':false
-                   }  
-                ]
+                    {
+                        'title':'访问人数',
+                        'name':'visitorPeoples',
+                        'selected':true,
+                        'disabled':false
+                    },{
+                        'title':'访问次数',
+                        'name':'visitorTimes',
+                        'selected':true,
+                        'disabled':false
+                    },{
+                        'title':'打开次数',
+                        'name':'openTimes',
+                        'selected':false,
+                        'disabled':true
+                    },{
+                        'title':'次均停留时长',
+                        'name':'stayDuration',
+                        'selected':false,
+                        'disabled':false
+                    }  
+                ],
+                chartData:{
+                    rows: [
+                        { 'date': '2018-05-22', 'visitorPeoples':1000 , 'visitorTimes': 32371, 'openTimes': 19810 },
+                        { 'date': '2018-05-23', 'visitorPeoples':3000 , 'visitorTimes': 12328, 'openTimes': 4398 },
+                        { 'date': '2018-05-24', 'visitorPeoples':3000 ,  'visitorTimes': 92381, 'openTimes': 52910 },
+                        { 'date': '2018-05-25', 'visitorPeoples':2000 ,  'visitorTimes': 12328, 'openTimes': 4398 },
+                        { 'date': '2018-05-26', 'visitorPeoples':3000 ,  'visitorTimes': 92381, 'openTimes': 62910 },
+                        { 'date': '2018-05-27', 'visitorPeoples':3000 ,  'visitorTimes': 32371, 'openTimes': 19810 },
+                        { 'date': '2018-05-28', 'visitorPeoples':6000 ,  'visitorTimes': 12328, 'openTimes': 4398 },
+                        { 'date': '2018-05-29', 'visitorPeoples':9000 ,  'visitorTimes': 92381, 'openTimes': 52910 },
+                        { 'date': '2018-05-30', 'visitorPeoples':3000 ,  'visitorTimes': 12328, 'openTimes': 4398 },
+                        { 'date': '2018-05-31', 'visitorPeoples':5000 ,  'visitorTimes': 92381, 'openTimes': 62910 },
+                        { 'date': '2018-06-01', 'visitorPeoples':3000 ,  'visitorTimes': 12328, 'openTimes': 4398 },
+                    ],
+                    loading: true    
+                },
+                colorObj : {
+                    visitorTimes:'#4187f6',
+                    openTimes:'#fa9706',
+                    visitorPeoples:'#5b4947',
+                    stayDuration:'#ee6e73'
+                },
+                // 列表数据
+                columns1: [
+                    {
+                        title: 'Name',
+                        key: 'name'
+                    },
+                    {
+                        title: 'Age',
+                        key: 'age'
+                    },
+                    {
+                        title: 'Address',
+                        key: 'address'
+                    }
+                ],
+                data1:[]
             }
         },
         computed:{
+            // 当前选中的数据
             selectedDrop(){
                 return this.chartDropList.filter(item=>{
                     return item.selected === true
                 });
-            }
+            },
+            // 当前选中的 name 
+            selectdName(){
+                return this.selectedDrop.map(item=>{
+                    return item.name
+                });
+            },
+            // 颜色数组
+            colorList(){
+                return this.selectdName.map(item=>{
+                    return this.colorObj[ item ]
+                });
+            }            
         },
         methods:{
             changeSelect(name){
                 this.chartDropList.forEach(item=>{
-                    if( item.name === name ){
+                    if( item.name === name && !item.disabled ){
                         item.selected = !item.selected;
                     }
-                });              
+                });          
             },
+        },
+        watch:{
+            selectedDrop:{
+                deep:true,
+                handler(val, oldVal){                            
+                    this.chartSettings.metrics = this.selectdName || [];
+
+                }
+            }
+        },
+        created(){
+
         },
         components:{
             Poptip,
@@ -276,7 +419,9 @@
             Card , 
             Dropdown,
             DropdownMenu , 
-            DropdownItem
+            DropdownItem,
+            VeLine,
+            Table 
         }
     };
     
