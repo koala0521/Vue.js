@@ -1,9 +1,10 @@
 <style scoped>
     .content-wrap{
-        margin-top: 64px;
+        margin-top: 76px;
         height: 100%;
         position: relative;
         z-index: 10;
+        margin-bottom: 190px;
     }
     .notice{
         margin-top: 76px;
@@ -13,23 +14,31 @@
         width: 100%;
         position: fixed;
         z-index: 100;
+        display: none;
     }
-    .show-notice{
+    .show-notice .notice{
+        display: block;
+    }
+    .show-notice .content-wrap{
         margin-top: 126px;
-        margin-bottom: 190px;
     }
-    .show-notice .slider-menu{
-        top:126px;
+    .close{
+        font-size: 30px;
+        line-height: 30px;
     }
 </style>
 <template>
-<div class="relative hfull" >
+<div class="relative hfull" :class="{'show-notice' : showNotice}"  >
     <Header></Header>
     <div class="notice tac">
         通知：啦啦啦啦啦啦啦啦啦啦
+        
+        <div class="fr p10 close" @click="closeNotice" >
+            <Icon type="ios-close-outline"></Icon>
+        </div>
     </div> 
     
-    <Layout class="content-wrap show-notice content-width relative" >       
+    <Layout class="content-wrap content-width relative" >       
         <Slider 
             hide-trigger 
             :menu="sliderData"        
@@ -51,7 +60,7 @@
     import Footer from '../components/footer';
     
 
-    import { Content , Layout } from 'iview';
+    import { Content , Layout , Icon } from 'iview';
     export default {
         data(){
             return {
@@ -108,7 +117,8 @@
                     //         }
                     //     ]
                     // }
-                ]
+                ],
+                showNotice:true
             }
         },
         components:{
@@ -116,7 +126,8 @@
             Content,
             Slider,
             Layout,
-            Footer
+            Footer,
+            Icon
         },
         methods:{
             logout(){
@@ -124,6 +135,10 @@
                 this.$router.push({
                     name:'login'
                 });
+            },
+            // 关闭提醒
+            closeNotice(){
+                this.showNotice =false;
             }
         }
     };

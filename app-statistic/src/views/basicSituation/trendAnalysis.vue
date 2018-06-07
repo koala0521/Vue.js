@@ -172,7 +172,7 @@
             </Card>            
         </div>
         <div class="table mb30">
-            <Table stripe :columns="columns1" :data="data1" ></Table>
+            <Table stripe :columns="columns" :data="data1" ></Table>
         </div>
     </div>
     
@@ -352,17 +352,27 @@
                     stayDuration:'#ee6e73'
                 },
                 // 列表数据
-                columns1: [
+                columns: [
                     {
-                        title: 'Name',
+                        title: '日期',
                         key: 'name'
                     },
                     {
-                        title: 'Age',
+                        title: '新用户数',
                         key: 'age'
                     },
                     {
-                        title: 'Address',
+                        title: '访问人数',
+                        key: 'address'
+                    },{
+                        title:'访问次数',
+                        key: 'address'
+                    },{
+                        title:'打开次数',
+                        key: 'address'
+                    },
+                    {
+                        title:'跳出率',
                         key: 'address'
                     }
                 ],
