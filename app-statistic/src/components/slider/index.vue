@@ -1,12 +1,16 @@
 <style scoped >
     .slider-menu{
         position: fixed;
-        top: 64px;
+        top: 76px;
         /* height: 100%; */
         background: #e4e4e4;
         bottom: 0;
         padding-bottom: 190px;
+        border-top: 2px solid #f9fafc;
     }
+    .show-notice .slider-menu{
+        top:126px;
+    }    
 </style>
 
 <template >

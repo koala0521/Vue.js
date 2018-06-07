@@ -10,10 +10,16 @@ p{
     line-height: 1.8em;
 }
 html,body{
-    height: 100%;
+    min-height: 100%;
 }
 .ivu-layout{
     background: #f9fafc;
+}
+
+.content-width{
+    min-width: 1200px;
+    width: 1200px;
+    margin: 0 auto;
 }
 
 .page-content-cont{
@@ -42,17 +48,30 @@ html,body{
 /* 滚动条 */
 .happy-scroll-container{
     width: auto !important;
+    height: 100% !important;
 }
 .happy-scroll-content{
     border-width: 0px !important;;
 }
 
 /* card */
-.ivu-card-shadow{
+.chart .ivu-card-shadow , .ivu-card.ivu-card-shadow:hover {
     box-shadow:none;
 }
 .chart .ivu-card-head{
     padding: 30px 0;
+    border: none;
+}
+.chart  .ivu-card-body{
+    padding:0px;
+}
+
+
+.ivu-layout-header{
+    height: 76px;
+}
+.ivu-menu-horizontal{
+    height: 74px;
 }
 
 /* 二级标题 */
@@ -146,6 +165,9 @@ html,body{
 .hfull{height:100%;}
 .inline-block{
     display: inline-block;
+}
+.relative{
+    position: relative;
 }
 .pointer{
     cursor: pointer;

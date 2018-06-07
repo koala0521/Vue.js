@@ -5,15 +5,8 @@
         position: relative;
         z-index: 10;
     }
-    .slider-menu{
-        position: fixed;
-        top: 64px;
-        left: 0;
-        height: 100%;
-        background: #e4e4e4;
-    }
     .notice{
-        margin-top: 64px;
+        margin-top: 76px;
         background: #3c3c3c;
         color: #fff;
         line-height: 50px;
@@ -22,22 +15,23 @@
         z-index: 100;
     }
     .show-notice{
-        margin-top: 114px;
+        margin-top: 126px;
+        margin-bottom: 190px;
     }
     .show-notice .slider-menu{
-        top:114px;
+        top:126px;
     }
 </style>
 <template>
-<div>
+<div class="relative hfull" >
     <Header></Header>
     <div class="notice tac">
         通知：啦啦啦啦啦啦啦啦啦啦
     </div> 
     
-    <Layout class="content-wrap show-notice" >       
+    <Layout class="content-wrap show-notice content-width relative" >       
         <Slider 
-            class="slider-menu" hide-trigger 
+            hide-trigger 
             :menu="sliderData"        
         >
 
@@ -48,11 +42,15 @@
             </Content>         
         </Layout>  
     </Layout>
+    <Footer></Footer>
 </div>
 </template>
 <script>
     import Header from '../components/header';
     import Slider from '../components/slider';
+    import Footer from '../components/footer';
+    
+
     import { Content , Layout } from 'iview';
     export default {
         data(){
@@ -61,75 +59,55 @@
                     {
                         title:'快应用概况',
                         list:[
-                            {
-                                title:'今日概况',
-                                routerName:'today'
-                            },
+                            // {
+                            //     title:'今日概况',
+                            //     routerName:'today'
+                            // },
                             {
                                 title:'趋势分析',
                                 routerName:'trend'
                             },
-                            {
-                                title:'用户活跃度',
-                                routerName:'activity'
-                            },
-                            {
-                                title:'用户留存度',
-                                routerName:'retention'
-                            },
+                            // {
+                            //     title:'用户活跃度',
+                            //     routerName:'activity'
+                            // },
+                            // {
+                            //     title:'用户留存度',
+                            //     routerName:'retention'
+                            // },
                         ]
                     },
-                    {
-                        title:'渠道分析',
-                        list:[
-                             {
-                                title:'手机厂商',
-                                routerName:'vendor'
-                            }
-                        ]
-                    },
-                    {
-                        title:'页面分析',
-                        list:[
-                            {
-                                title:'受访页',
-                                routerName:'visitedPage'
-                            }
-                        ]
-                    },
-                    {
-                        title:'用户画像',
-                        list:[
-                            {
-                                title:'地域分析',
-                                routerName:'areaAnalysis'
-                            },
-                            {
-                                title:'终端分析',
-                                routerName:'terminalAnalysis'
-                            },
-                            {
-                                title:'测试导航1',
-                                routerName:'test1'
-                            },
-                            {
-                                title:'测试导航2',
-                                routerName:'test2'
-                            },
-                            {
-                                title:'测试导航3',
-                                routerName:'test3'
-                            },
-                            {
-                                title:'测试导航4',
-                                routerName:'test4'
-                            },
-                            {
-                                title:'测试导航5',
-                                routerName:'test5'
-                            }
-                        ]
-                    }
+                    // {
+                    //     title:'渠道分析',
+                    //     list:[
+                    //          {
+                    //             title:'手机厂商',
+                    //             routerName:'vendor'
+                    //         }
+                    //     ]
+                    // },
+                    // {
+                    //     title:'页面分析',
+                    //     list:[
+                    //         {
+                    //             title:'受访页',
+                    //             routerName:'visitedPage'
+                    //         }
+                    //     ]
+                    // },
+                    // {
+                    //     title:'用户画像',
+                    //     list:[
+                    //         {
+                    //             title:'地域分析',
+                    //             routerName:'areaAnalysis'
+                    //         },
+                    //         {
+                    //             title:'终端分析',
+                    //             routerName:'terminalAnalysis'
+                    //         }
+                    //     ]
+                    // }
                 ]
             }
         },
@@ -137,7 +115,8 @@
             Header,
             Content,
             Slider,
-            Layout
+            Layout,
+            Footer
         },
         methods:{
             logout(){

@@ -34,18 +34,31 @@
     vertical-align: top;
 }
 .layout-nav{
-    margin-left: 150px;
+    margin-left: 200px;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    line-height: 74px;
 }
 .time{
     border-left: 1px solid #dddee1;
+}
+.user-info , .user-info .select{
+    /* height: 60px; */
+    height: 74px;
+}
+.user-info .select{
+
+    padding: 22px 0;
+    line-height: 32px;
 }
 
 </style>
 
 <template>
     <Header class="header" :style="{position: 'fixed', width: '100%'}" >
-        <Row>
-            <Col span="20" >
+        <Row class="content-width" > 
+            <Col span="18" >
                 <Menu theme="light" mode="horizontal" active-name="home" class="nav-wrap"  >                                
                     <div class="layout-logo"
                         @click="toHome"
@@ -68,26 +81,46 @@
                     </div>     
                 </Menu>            
             </Col>
-            <Col span="4" class="tar prl20" >
-                <span class="placard mr20 ml20" 
-                    @click="showPlacard"
-                >
-                    <Icon type="android-notifications-none"></Icon>
-                </span>
-                
-                <Dropdown trigger="click" placement="bottom-end" class="dropdown-wrap" >
-                    <a class="dropdown-btn" href="javascript:void(0)">
-                        koala
-                        <Icon type="arrow-down-b"></Icon>
-                    </a>
-                    <DropdownMenu slot="list">
-                        <DropdownItem>驴打滚</DropdownItem>
-                        <DropdownItem>炸酱面</DropdownItem>
-                        <DropdownItem>豆汁儿</DropdownItem>
-                        <DropdownItem>冰糖葫芦</DropdownItem>
-                        <DropdownItem>北京烤鸭</DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
+            <Col span="6" class="tar prl20 user-info" >
+                <Row>
+                    <Col span="12" class="select"  >
+                    <div>
+                        <Select v-model="activeVendor" placeholder="选择厂商" class="tac" style="width:126px">
+                            <Option 
+                                v-for="item in vendorList" 
+                                :value="item.name" 
+                                :key="item.name"
+                            >                                
+                                {{ item.title }}
+                            </Option>
+                        </Select>
+                    </div>
+                 
+                    </Col>
+                    <Col span="12" class="select"  >
+                        <div>
+                            <span class="placard mr20 ml20" 
+                                @click="showPlacard"
+                            >
+                                <Icon type="android-notifications-none"></Icon>
+                            </span>
+                            
+                            <Dropdown trigger="click" placement="bottom-end" class="dropdown-wrap" >
+                                <a class="dropdown-btn" href="javascript:void(0)">
+                                    koala
+                                    <Icon type="arrow-down-b"></Icon>
+                                </a>
+                                <DropdownMenu slot="list">
+                                    <DropdownItem>驴打滚</DropdownItem>
+                                    <DropdownItem>炸酱面</DropdownItem>
+                                    <DropdownItem>豆汁儿</DropdownItem>
+                                    <DropdownItem>冰糖葫芦</DropdownItem>
+                                    <DropdownItem>北京烤鸭</DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>                              
+                        </div>                    
+                    </Col>
+                </Row>    
             </Col>
         </Row>
         <Modal
@@ -119,7 +152,7 @@
 
 <script>
     
-    import { Header , Menu , MenuItem , Row , Col ,Dropdown , DropdownMenu, DropdownItem , Icon ,Modal ,Collapse,Panel  } from 'iview';
+    import { Header , Menu , MenuItem , Row , Col ,Dropdown , DropdownMenu, DropdownItem , Icon ,Modal ,Collapse,Panel , Button, Select , Option  } from 'iview';
 
     export default {
         components:{
@@ -134,12 +167,31 @@
             Icon,
             Modal,
             Collapse,
-            Panel 
+            Panel,
+            Button,
+            Select , 
+            Option
         },
         data(){
             return{
                 showModal:false,
-                panel1:'1'
+                panel1:'1',
+                vendorList:[
+                    {
+                        'title':'小米',
+                        'name':'xiaomi' 
+                    },{
+                        'title':'中兴',
+                        'name':'zhongxing' 
+                    },{
+                        'title':'华为',
+                        'name':'huawei' 
+                    },{
+                        'title':'金立',
+                        'name':'jingli' 
+                    }
+                ],
+                activeVendor:''
             }
         },
         methods:{
@@ -152,6 +204,15 @@
             },
             showPlacard(){
                 this.showModal =true;
+            },
+        },
+        watch:{
+            // 选择厂商
+            activeVendor( val ){
+                this.$store.dispatch({
+                    type:'selectVendor',
+                    activeVendor:val
+                });                
             }
         }
     };
