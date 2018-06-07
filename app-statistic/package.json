@@ -17,9 +17,10 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.15.3",
+    "echarts": "^4.1.0",
     "iview": "^2.7.4",
+    "v-charts": "^1.16.20",
     "vue": "^2.5.2",
-    "vue-echarts": "^3.0.7",
     "vue-happy-scroll": "^2.0.1",
     "vue-router": "^3.0.1",
     "vuex": "^2.2.1"

@@ -10,6 +10,8 @@ import name from './assets/css/global.css';
 
 import 'vue-happy-scroll/docs/happy-scroll.css'
 
+import 'v-charts/lib/style.css';
+
 
 Vue.use(VueRouter);
 Vue.use(Vuex);

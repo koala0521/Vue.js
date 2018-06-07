@@ -1,15 +1,18 @@
-<style>
+<style scoped >
     .slider-menu{
-        /* background: none;
-        overflow-y: scroll; */
+        position: fixed;
+        top: 64px;
+        /* height: 100%; */
+        background: #e4e4e4;
+        bottom: 0;
+        padding-bottom: 190px;
     }
 </style>
 
-<template>
-    <Sider  :style="{background: '#fff',width:'200px'}" >
-        <happy-scroll resize size="5" >
+<template >
+    <Sider class="slider-menu" :style="{background: '#fff',width:'200px'}" >
+        <happy-scroll resize size="5" class="pb20" >
             <Menu 
-                class="slider-menu"  
                 :active-name="active" 
                 width="195px"
                 @on-select="changeMenu"
