@@ -46,11 +46,16 @@ router.afterEach(() => {
 
 const store = new Vuex.Store({
     state: {
-        login:true
+        login:true,
+        // 选择厂商
+        activeVendor:''
     },
     getters: {
         login:( state )=>{
             return state.login
+        },
+        activeVendor:( state )=>{
+            return state.activeVendor
         }
     },
     mutations: {
@@ -60,6 +65,9 @@ const store = new Vuex.Store({
         },
         login:(state)=>{
             state.login = true
+        },
+        selectVendor:( state , payload )=>{
+            state.activeVendor = payload.activeVendor
         }
     },
     actions: {
@@ -69,6 +77,9 @@ const store = new Vuex.Store({
         },
         login({ commit }){
             commit('login');
+        },
+        selectVendor({ commit } , payload ){
+            commit('selectVendor' , payload);
         }
     }
 });
