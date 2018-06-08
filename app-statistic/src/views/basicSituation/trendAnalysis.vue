@@ -108,7 +108,7 @@
                         </div>
                     </Poptip> 
                 </div>
-                <div>1111</div>
+                <div>{{ item.totalNum }}</div>
  
             </div>            
         </div>
@@ -167,34 +167,57 @@
                         :settings="chartSettings"
                         :extend="chartExtend"
                         :colors="colorList"
+                        :loading="chartLoading"
                 ></ve-line>
                 </div>
             </Card>            
         </div>
-        <div class="table mb30">
-            <Table stripe :columns="columns" :data="data1" ></Table>
+        <div class="table mb30 relative">
+            <Table 
+                stripe 
+                :columns="columns" 
+                :data="tableData" 
+                :loading="false"
+            
+            ></Table>
+        </div>
+        <div class="page mb30 tar" >
+            <Page 
+                show-total show-elevator show-sizer
+                placement="top"
+                :total="total" 
+                :page-size="pageSize"
+                @on-change="changePage"
+                @on-page-size-change="changeSize"
+                :page-size-opts="pageSizeOpts"
+            ></Page>
         </div>
     </div>
     
 </template>
 
 <script>
-    import { Row , Col , Poptip, Icon , Card , Dropdown, DropdownMenu , DropdownItem , Button , Table  } from 'iview';
+    import { Row , Col , Poptip, Icon , Card , Dropdown, DropdownMenu , DropdownItem , Button , Table , Page } from 'iview';
     import VeLine from 'v-charts/lib/line'; 
+    import util from '../../libs/util';
 
     export default {
         data(){
 
             this.chartSettings = {
                 labelMap: {
-                    visitorTimes: '访问次数',
-                    openTimes: '打开次数',
-                    visitorPeoples:'访问人数',
-                    stayDuration:'次均停留时长',
+                    new_comer_cnt:'新用户数',
+                    page_cnt: '访问次数',
+                    open_cnt: '打开次数',
+                    visitor_cnt:'访问人数',
+                    avg_stay_time:'次均停留时长',
+                    bounce_rate:'跳出率',
                     date:'日期'
                 },
+                // 图表很坐标
                 dimension :['date'],
-                metrics : ['visitorPeoples' ,'visitorTimes' ]
+                // 图表默认展示的数据
+                metrics : ['new_comer_cnt','visitor_cnt']
             }
 
             // 配置参数
@@ -215,6 +238,7 @@
                     lineStyle:{
                         width:5
                     },
+                    animation:true
                 },
                 xAxis: {
                     type: 'category',
@@ -225,7 +249,7 @@
                         show:true,
                         lineStyle: {
                             // type: 'solid',
-                            color: '#e5e5e5',//左边线的颜色
+                            color: '#999999',//左边线的颜色
                             // width:'2'//坐标线的宽度
                         }
                     },
@@ -241,7 +265,7 @@
                     axisLine: {
                         show:true,
                         lineStyle: {
-                            color:'#e5e5e5',
+                            color:'#999999',
                         }
                     }, 
                     axisTick:{
@@ -254,7 +278,7 @@
             return {                
                 // 标题
                 title : this.$route.meta.title,
-                
+                // 时段选择
                 timeList:[
                     {
                         'title':'今日',
@@ -270,113 +294,238 @@
                         'name' : 'thirty_days'
                     },
                 ],
-                activeTime:'today',
+
+                activeTime: 'today',
+
+                // 选择时间段
+                range_time: util.getSomeDayFormat( 0 , '-' ),
+
                 // 小计数据
                 subtotalList:[
                     {
                         'title':'新用户数',
-                        'name':'new_users',
+                        'name':'total_new_comer_cnt',
                         'selected':true,
-                        'description':'首次访问小程序页面的用户数，同一用户多次访问不重复计；'
+                        'description':'首次访问小程序页面的用户数，同一用户多次访问不重复计；',
+                        'totalNum':'--'
                     },{
                         'title':'访问人数',
-                        'name':'visitorPeoples',
+                        'name':'total_visitor_cnt',
                         'selected':true,
-                        'description':'访问小程序内所有页面的总用户数，同一用户多次访问不重复计；'                        
+                        'description':'访问小程序内所有页面的总用户数，同一用户多次访问不重复计；',
+                        'totalNum':'--'                      
                     },{
                         'title':'访问次数',
-                        'name':'visitorTimes',
+                        'name':'total_page_cnt',
                         'selected':true ,
-                        'description':'访问小程序内所有页面总次数，多个页面之间跳转、同一页面的重复访问计为多次访问；'                          
+                        'description':'访问小程序内所有页面总次数，多个页面之间跳转、同一页面的重复访问计为多次访问；',
+                        'totalNum':'--'                          
                     },{
                         'title':'打开次数',
-                        'name':'openTimes',
+                        'name':'total_open_cnt',
                         'selected':true,
-                        'description':'打开小程序总次数，用户从打开小程序到主动关闭小程序或超时退出计为一次；'                             
+                        'description':'打开小程序总次数，用户从打开小程序到主动关闭小程序或超时退出计为一次；' ,
+                        'totalNum':'--'                            
                     },{
                         'title':'次均停留时长',
-                        'name':'stayDuration',
+                        'name':'total_avg_stay_time',
                         'selected':true,
-                        'description':'平均每次打开小程序停留在小程序页面的总时长，即小程序停留总时长/打开次数。'                           
+                        'description':'平均每次打开小程序停留在小程序页面的总时长，即小程序停留总时长/打开次数。',
+                        'totalNum':'--'                           
                     },{
                         'title':'跳出率',
-                         'name':'jumpOut',
+                        'name':'total_bounce_rate',
                         'selected':true,
-                        'description':'只浏览了一个页面便离开了网站的访问次数占总的访问次数的百分比。'                           
+                        'description':'只浏览了一个页面便离开了网站的访问次数占总的访问次数的百分比。',
+                        'totalNum':'--'                          
                     }
                 ],
+
                 // 图表下拉选数据
                 chartDropList:[
                     {
+                        'title':'新用户数',
+                        'name':'new_comer_cnt',
+                        'selected':true,
+                        'disabled':false
+                    },
+                    {
                         'title':'访问人数',
-                        'name':'visitorPeoples',
+                        'name':'visitor_cnt',
                         'selected':true,
                         'disabled':false
                     },{
                         'title':'访问次数',
-                        'name':'visitorTimes',
-                        'selected':true,
+                        'name':'page_cnt',
+                        'selected':false,
                         'disabled':false
                     },{
                         'title':'打开次数',
-                        'name':'openTimes',
-                        'selected':false,
-                        'disabled':true
-                    },{
-                        'title':'次均停留时长',
-                        'name':'stayDuration',
+                        'name':'open_cnt',
                         'selected':false,
                         'disabled':false
-                    }  
+                    },{
+                        'title':'次均停留时长',
+                        'name':'avg_stay_time',
+                        'selected':false,
+                        'disabled':false
+                    },{
+                        'title':'跳出率',
+                        'name':'bounce_rate',
+                        'selected':false,
+                        'disabled':false
+                    }   
                 ],
+                
+                // 图表数据
                 chartData:{
                     rows: [
-                        { 'date': '2018-05-22', 'visitorPeoples':1000 , 'visitorTimes': 32371, 'openTimes': 19810 },
-                        { 'date': '2018-05-23', 'visitorPeoples':3000 , 'visitorTimes': 12328, 'openTimes': 4398 },
-                        { 'date': '2018-05-24', 'visitorPeoples':3000 ,  'visitorTimes': 92381, 'openTimes': 52910 },
-                        { 'date': '2018-05-25', 'visitorPeoples':2000 ,  'visitorTimes': 12328, 'openTimes': 4398 },
-                        { 'date': '2018-05-26', 'visitorPeoples':3000 ,  'visitorTimes': 92381, 'openTimes': 62910 },
-                        { 'date': '2018-05-27', 'visitorPeoples':3000 ,  'visitorTimes': 32371, 'openTimes': 19810 },
-                        { 'date': '2018-05-28', 'visitorPeoples':6000 ,  'visitorTimes': 12328, 'openTimes': 4398 },
-                        { 'date': '2018-05-29', 'visitorPeoples':9000 ,  'visitorTimes': 92381, 'openTimes': 52910 },
-                        { 'date': '2018-05-30', 'visitorPeoples':3000 ,  'visitorTimes': 12328, 'openTimes': 4398 },
-                        { 'date': '2018-05-31', 'visitorPeoples':5000 ,  'visitorTimes': 92381, 'openTimes': 62910 },
-                        { 'date': '2018-06-01', 'visitorPeoples':3000 ,  'visitorTimes': 12328, 'openTimes': 4398 },
+                        {   
+                            // 日期
+                            'date': '2018-05-22',
+                            // 新用户数
+                            'new_comer_cnt':42311,
+                            // 访问人数
+                            'visitor_cnt':1000 , 
+                            // 访问次数
+                            'page_cnt':64534,
+                            // 跳出率
+                            'bounce_rate': 32371, 
+                            // 次均停留时长
+                            'avg_stay_time':'	00:00:30',
+                            // 打开次数
+                            'open_cnt': 19810 
+                        },
+                        { 'date': '2018-05-23', 'visitor_cnt':3000 , 'new_comer_cnt': 12328, 'open_cnt': 4398 },
+                        { 'date': '2018-05-23', 'visitor_cnt':3000 , 'new_comer_cnt': 12328, 'open_cnt': 4398 },
+                        { 'date': '2018-05-24', 'visitor_cnt':3000 ,  'new_comer_cnt': 92381, 'open_cnt': 52910 },
+                        { 'date': '2018-05-25', 'visitor_cnt':2000 ,  'new_comer_cnt': 12328, 'open_cnt': 4398 },
+                        { 'date': '2018-05-26', 'visitor_cnt':3000 ,  'new_comer_cnt': 92381, 'open_cnt': 62910 },
+                        { 'date': '2018-05-27', 'visitor_cnt':3000 ,  'new_comer_cnt': 32371, 'open_cnt': 19810 },
+                        { 'date': '2018-05-28', 'visitor_cnt':6000 ,  'new_comer_cnt': 12328, 'open_cnt': 4398 },
+                        { 'date': '2018-05-29', 'visitor_cnt':9000 ,  'new_comer_cnt': 92381, 'open_cnt': 52910 },
+                        { 'date': '2018-05-30', 'visitor_cnt':3000 ,  'new_comer_cnt': 12328, 'open_cnt': 4398 },
+                        { 'date': '2018-05-31', 'visitor_cnt':5000 ,  'new_comer_cnt': 92381, 'open_cnt': 62910 },
+                        { 'date': '2018-06-01', 'visitor_cnt':3000 ,  'new_comer_cnt': 12328, 'open_cnt': 4398 },
+                                                
                     ],
-                    loading: true    
                 },
+
+                // 图标颜色
                 colorObj : {
-                    visitorTimes:'#4187f6',
-                    openTimes:'#fa9706',
-                    visitorPeoples:'#5b4947',
-                    stayDuration:'#ee6e73'
+                    new_comer_cnt:'#7bdde9',
+                    page_cnt:'#4187f6',
+                    open_cnt:'#fa9706',
+                    visitor_cnt:'#5b4947',
+                    avg_stay_time:'#ee6e73',
+                    bounce_rate:'#feb2a5'
+
                 },
-                // 列表数据
+                // 列表表头数据
                 columns: [
                     {
                         title: '日期',
-                        key: 'name'
+                        key: 'date'
                     },
                     {
                         title: '新用户数',
-                        key: 'age'
+                        key: 'new_comer_cnt'
                     },
                     {
                         title: '访问人数',
-                        key: 'address'
+                        key: 'visitor_cnt'
                     },{
                         title:'访问次数',
-                        key: 'address'
+                        key: 'page_cnt'
                     },{
                         title:'打开次数',
-                        key: 'address'
+                        key: 'open_cnt'
+                    },{
+                        title:'均次停留时长',
+                        key: 'avg_stay_time'
                     },
                     {
                         title:'跳出率',
-                        key: 'address'
+                        key: 'bounce_rate'
                     }
                 ],
-                data1:[]
+
+                // 表格数据
+                tableData: [
+                    {
+                        "date":20180528, // 日期
+                        "new_comer_cnt":0, // 新用户数
+                        "visitor_cnt":0, // 访问人数
+                        "page_cnt":0, // 访问次数
+                        "open_cnt":0, // 打开次数
+                        "avg_stay_time":"00:00:00", // 均次停留时长
+                        "bounce_rate":"0%", // 跳出率
+                    },{
+                        "date":20180528, // 日期
+                        "new_comer_cnt":0, // 新用户数
+                        "visitor_cnt":0, // 访问人数
+                        "page_cnt":0, // 访问次数
+                        "open_cnt":0, // 打开次数
+                        "avg_stay_time":"00:00:00", // 均次停留时长
+                        "bounce_rate":"0%", // 跳出率
+                    },{
+                        "date":20180528, // 日期
+                        "new_comer_cnt":0, // 新用户数
+                        "visitor_cnt":0, // 访问人数
+                        "page_cnt":0, // 访问次数
+                        "open_cnt":0, // 打开次数
+                        "avg_stay_time":"00:00:00", // 均次停留时长
+                        "bounce_rate":"0%", // 跳出率
+                    }, {
+                        "date":20180528, // 日期
+                        "new_comer_cnt":0, // 新用户数
+                        "visitor_cnt":0, // 访问人数
+                        "page_cnt":0, // 访问次数
+                        "open_cnt":0, // 打开次数
+                        "avg_stay_time":"00:00:00", // 均次停留时长
+                        "bounce_rate":"0%", // 跳出率
+                    },{
+                        "date":20180528, // 日期
+                        "new_comer_cnt":0, // 新用户数
+                        "visitor_cnt":0, // 访问人数
+                        "page_cnt":0, // 访问次数
+                        "open_cnt":0, // 打开次数
+                        "avg_stay_time":"00:00:00", // 均次停留时长
+                        "bounce_rate":"0%", // 跳出率
+                    },{
+                        "date":20180528, // 日期
+                        "new_comer_cnt":0, // 新用户数
+                        "visitor_cnt":0, // 访问人数
+                        "page_cnt":0, // 访问次数
+                        "open_cnt":0, // 打开次数
+                        "avg_stay_time":"00:00:00", // 均次停留时长
+                        "bounce_rate":"0%", // 跳出率
+                    },{
+                        "date":20180528, // 日期
+                        "new_comer_cnt":0, // 新用户数
+                        "visitor_cnt":0, // 访问人数
+                        "page_cnt":0, // 访问次数
+                        "open_cnt":0, // 打开次数
+                        "avg_stay_time":"00:00:00", // 均次停留时长
+                        "bounce_rate":"0%", // 跳出率
+                    },{
+                        "date":20180528, // 日期
+                        "new_comer_cnt":0, // 新用户数
+                        "visitor_cnt":0, // 访问人数
+                        "page_cnt":0, // 访问次数
+                        "open_cnt":0, // 打开次数
+                        "avg_stay_time":"00:00:00", // 均次停留时长
+                        "bounce_rate":"0%", // 跳出率
+                    },                    
+                ],                
+                //分页相关
+                total: 8,
+                pageSize: 20,
+                current: 1,
+                pageSizeOpts: this.$store.getters.pageSizeOpts,
+
+                // loadings                
+                chartLoading: true    
             }
         },
         computed:{
@@ -401,24 +550,198 @@
         },
         methods:{
             changeSelect(name){
+                
                 this.chartDropList.forEach(item=>{
                     if( item.name === name && !item.disabled ){
                         item.selected = !item.selected;
                     }
-                });          
+                });   
+                
+                let selectedLen = this.chartDropList.filter(item=>{
+                    return item.selected
+                }).length;
+                
+                // 限制多选
+                if( selectedLen === 4 ){
+                    this.chartDropList.forEach(item=>{
+                        if( item.selected === false ){
+                            item.disabled = true;
+                        }
+                    });                                       
+                }else{
+                    this.chartDropList.forEach(item=>{
+                        if(  item.disabled === true ){
+                            item.disabled = false;
+                        }
+                    }); 
+                }
             },
+            // 切换页码
+            changePage( page ){
+                this.current = page;
+                this.getListData();  
+            },
+            // 切换显示条数
+            changeSize( size ){
+                this.pageSize = size;
+                this.getListData();                
+            },
+
+            // 请求合计数据
+            getTotalData(){
+                let _this = this;
+                util.ajax.get('/report/daily_count' ,{
+                    params:{
+                        range_time: this.range_time,
+                        channel:this.$store.getters.activeVendor
+                    }    
+                })
+                .then(req=>{
+                    console.log('===============req=====================');
+                    console.log(req);
+                    console.log('================req====================');
+                    _this.subtotalList.forEach(item=>{
+                        if( obj[ item.name ] || obj[ item.name ] === 0 ){
+                            item.totalNum = obj[ item.name ];
+                            return
+                        }                    
+                        item.totalNum = '--';
+                    });                    
+                })
+                .catch(err=>{
+                    console.log( 'err' , err );                
+                });                
+            },
+
+            // 请求图表数据
+            getChartData(){
+                let _this = this;
+                util.ajax.get('/report/daily_chart' ,{
+                    params:{
+                        range_time: this.range_time,
+                        channel:this.$store.getters.activeVendor
+                    }    
+                })
+                .then(req=>{
+                    console.log('===============req=====================');
+                    console.log(req);
+                    console.log('================req====================');
+                    let data = req.data;
+                    if( data.error_code === 0 ){
+                        _this.chartData.rows = data.list;
+                    }
+                })
+                .catch(err=>{
+                    console.log( 'err' , err );                
+                });  
+
+
+            },
+
+            // 请求封装 >> 列表数据
+            getListData(){
+                
+                console.log( '请求列表数据' );
+                
+                util.ajax.get('/report/daily_list',{
+                    params:{
+                        range_time: this.range_time,
+                        pn: this.current,
+                        rn: this.pageSize,
+                        channel:this.$store.getters.activeVendor
+                    }
+                })
+                .then(req=>{
+                    console.log('===============req=====================');
+                    console.log(req);
+                    console.log('================req====================');
+                })
+                .catch(err=>{
+                    console.log( 'err' , err );                
+                });                
+            },
+
         },
         watch:{
+            //  图表选项
             selectedDrop:{
                 deep:true,
                 handler(val, oldVal){                            
                     this.chartSettings.metrics = this.selectdName || [];
 
                 }
+            },
+            // 切换选择的时间段
+            activeTime(val, oldVal){
+
+                let range_timeObj = {
+                    'today': util.getSomeDayFormat( 0 , '-' ),
+                    'lastday': util.getSomeDayFormat( -1  , '-' ) + ',' + util.getSomeDayFormat( 0, '-' ),
+                    'sen_days': util.getSomeDayFormat( -7  , '-' ) + ',' + util.getSomeDayFormat( 0, '-' ),
+                    'thirty_days': util.getSomeDayFormat( -30 , '-' ) + ',' + util.getSomeDayFormat( 0 , '-' )
+                };
+                this.range_time = range_timeObj[ val ] || val || '';
+                
+                this.getListData();  
             }
         },
-        created(){
+        created(){   
 
+            let _this = this;
+
+            setTimeout(()=>{
+
+                _this.chartLoading = false;
+
+                let obj = {
+                    'total_avg_stay_time':10023,
+                    'total_new_comer_cnt':654
+                };                
+                _this.subtotalList.forEach(item=>{
+                    if( obj[ item.name ] || obj[ item.name ] === 0 ){
+                        item.totalNum = obj[ item.name ];
+                        return
+                    }                    
+                    item.totalNum = '--';
+                });
+                _this.chartData.rows.push.apply( _this.chartData.rows , [
+                    {   
+                        // 日期
+                        'date': '2018-05-22',
+                        // 新用户数
+                        'new_comer_cnt':42311,
+                        // visitor_cnt
+                        'visitor_cnt':1000 , 
+                        // 访问次数
+                        'page_cnt':64534,
+                        // 跳出率
+                        'bounce_rate': 32371, 
+                        // 次均停留时长
+                        'avg_stay_time':'	00:00:30',
+                        // 打开次数
+                        'open_cnt': 19810 
+                    },
+                    { 'date': '2018-05-23', 'visitor_cnt':3000 , 'new_comer_cnt': 12328, 'open_cnt': 4398 },
+                    { 'date': '2018-05-23', 'visitor_cnt':3000 , 'new_comer_cnt': 12328, 'open_cnt': 4398 },
+                    { 'date': '2018-05-24', 'visitor_cnt':3000 ,  'new_comer_cnt': 92381, 'open_cnt': 52910 },
+                    { 'date': '2018-05-25', 'visitor_cnt':2000 ,  'new_comer_cnt': 12328, 'open_cnt': 4398 },
+                    { 'date': '2018-05-26', 'visitor_cnt':3000 ,  'new_comer_cnt': 92381, 'open_cnt': 62910 },
+                    { 'date': '2018-05-27', 'visitor_cnt':3000 ,  'new_comer_cnt': 32371, 'open_cnt': 19810 },
+                    { 'date': '2018-05-28', 'visitor_cnt':6000 ,  'new_comer_cnt': 12328, 'open_cnt': 4398 },
+                    { 'date': '2018-05-29', 'visitor_cnt':9000 ,  'new_comer_cnt': 92381, 'open_cnt': 52910 },
+                    { 'date': '2018-05-30', 'visitor_cnt':3000 ,  'new_comer_cnt': 12328, 'open_cnt': 4398 },
+                    { 'date': '2018-05-31', 'visitor_cnt':5000 ,  'new_comer_cnt': 92381, 'open_cnt': 62910 },
+                    { 'date': '2018-06-01', 'visitor_cnt':3000 ,  'new_comer_cnt': 12328, 'open_cnt': 4398 },
+                                    
+                ]); 
+
+            },3000)
+
+
+            // 请求列表破数据
+            this.getListData();
+            // 请求合计数据
+            this.getTotalData() 
         },
         components:{
             Poptip,
@@ -431,7 +754,8 @@
             DropdownMenu , 
             DropdownItem,
             VeLine,
-            Table 
+            Table,
+            Page
         }
     };
     
