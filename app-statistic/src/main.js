@@ -50,7 +50,8 @@ const store = new Vuex.Store({
     state: {
         login:true,
         // 选择厂商
-        activeVendor:''
+        activeVendor:'',
+        pageSizeOpts:[20,40,60,80]
     },
     getters: {
         login:( state )=>{
@@ -58,6 +59,9 @@ const store = new Vuex.Store({
         },
         activeVendor:( state )=>{
             return state.activeVendor
+        },
+        pageSizeOpts( state ){
+            return state.pageSizeOpts
         }
     },
     mutations: {
