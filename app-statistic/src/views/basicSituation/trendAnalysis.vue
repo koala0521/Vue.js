@@ -549,6 +549,7 @@
             }            
         },
         methods:{
+            // 图表下拉选项选择
             changeSelect(name){
                 
                 this.chartDropList.forEach(item=>{
@@ -660,6 +661,28 @@
                     console.log( 'err' , err );                
                 });                
             },
+
+            // 导出数据
+            exportData(){
+
+                console.log( '导出数据' );
+                
+                util.ajax.get('/report/daily_list',{
+                    params:{
+                        range_time: this.range_time,
+                        channel:this.$store.getters.activeVendor,
+                        export:1
+                    }
+                })
+                .then(req=>{
+                    console.log('===============导出数据=====================');
+                    console.log('导出数据成功');
+                    console.log('================导出数据====================');
+                })
+                .catch(err=>{
+                    console.log( 'err' , err );                
+                });                 
+            }
 
         },
         watch:{

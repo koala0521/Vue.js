@@ -42,6 +42,7 @@
     "file-loader": "^1.1.5",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.28.0",
+    "http-proxy-middleware": "^0.18.0",
     "iview-loader": "^1.0.0",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",

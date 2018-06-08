@@ -31,5 +31,19 @@ module.exports = merge(webpackBaseConfig, {
             template: './src/template/index.ejs',
             inject: false
         })
-    ]
+    ],
+
+    devServer: {
+        proxy: {
+            //匹配代理的url
+            '/report': {
+            // 目标服务器地址
+              target: 'http://dev.api.tongji.so-quick.cn',
+              //路径重写
+              pathRewrite: {'^/report' : '/report'},
+              changeOrigin: true,
+              secure: false
+            }
+         }
+    },    
 });

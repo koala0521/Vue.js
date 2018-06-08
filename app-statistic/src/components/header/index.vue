@@ -52,6 +52,9 @@
     padding: 22px 0;
     line-height: 32px;
 }
+.selet-chanel{
+    /* color: #4a84ff; */
+}
 
 </style>
 
@@ -85,7 +88,7 @@
                 <Row>
                     <Col span="12" class="select"  >
                     <div>
-                        <Select v-model="activeVendor" placeholder="选择厂商" class="tac" style="width:126px">
+                        <Select v-model="activeVendor" placeholder="选择厂商" class="tac selet-chanel" style="width:126px">
                             <Option 
                                 v-for="item in vendorList" 
                                 :value="item.name" 
