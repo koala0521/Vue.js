@@ -5,6 +5,9 @@ const merge = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.base.config.js');
 const fs = require('fs');
 
+// 跨域配置测试
+const proxy = require('http-proxy-middleware');
+
 fs.open('./src/config/env.js', 'w', function(err, fd) {
     const buf = 'export default "development";';
     fs.write(fd, buf, 0, buf.length, 0, function(err, written, buffer) {});
@@ -35,14 +38,14 @@ module.exports = merge(webpackBaseConfig, {
 
     devServer: {
         proxy: {
-            //匹配代理的url
-            '/report': {
-            // 目标服务器地址
-              target: 'http://dev.api.tongji.so-quick.cn',
-              //路径重写
-              pathRewrite: {'^/report' : '/report'},
-              changeOrigin: true,
-              secure: false
+            //匹配发起的请求的 url
+            '/report/*': {
+                // 目标服务器地址
+                target: 'http://dev.api.tongji.so-quick.cn',
+                //路径重写
+                //   pathRewrite: {'^/index' : '/'},
+                changeOrigin: true,
+                secure: false
             }
          }
     },    
