@@ -46,6 +46,36 @@
     .select{
         width: 175px;
     }
+
+    .table-spin{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99;
+        background-color: hsla(0,0%,100%,.8);
+    }
+
+    .table-spin .center{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateY(-50%);
+    }
+    .table-spin-icon-load{
+        animation: ani-demo-spin 1s linear infinite;
+    }
+    @keyframes ani-demo-spin {
+        from { transform: rotate(0deg);}
+        50%  { transform: rotate(180deg);}
+        to   { transform: rotate(360deg);}
+    }    
+    .table-spin .loader{
+        width: 42px;
+        height: 42px;
+    }
+
 </style>
 
 <template>
@@ -176,10 +206,16 @@
             <Table 
                 stripe 
                 :columns="columns" 
-                :data="tableData" 
-                :loading="false"
-            
+                :data="tableData"             
             ></Table>
+
+            <div class="table-spin" >
+                <Spin class="center" >
+                    <div class="loader">
+                        <Icon type="load-c" size=40 class="table-spin-icon-load"></Icon>
+                    </div>               
+                </Spin>
+            </div>
         </div>
         <div class="page mb30 tar" >
             <Page 
@@ -197,7 +233,7 @@
 </template>
 
 <script>
-    import { Row , Col , Poptip, Icon , Card , Dropdown, DropdownMenu , DropdownItem , Button , Table , Page } from 'iview';
+    import { Row , Col , Poptip, Icon , Card , Dropdown, DropdownMenu , DropdownItem , Button , Table , Page , Spin } from 'iview';
     import VeLine from 'v-charts/lib/line'; 
     import util from '../../libs/util';
 
@@ -714,7 +750,7 @@
 
             setTimeout(()=>{
 
-                _this.chartLoading = false;
+                // _this.chartLoading = false;
 
                 let obj = {
                     'total_avg_stay_time':10023,
@@ -778,7 +814,8 @@
             DropdownItem,
             VeLine,
             Table,
-            Page
+            Page,
+            Spin
         }
     };
     
