@@ -24,15 +24,16 @@
                 :open-names="openArr"
             >
 
-                <Submenu  
+                <MenuGroup   
                     v-for="( item , index ) in menu" 
                     :key="index" 
                     :name="index"
+                    :title="item.title"
                 >
-                    <template slot="title">
+                    <!-- <template slot="title">
                         <Icon type="ios-paper"></Icon>
                         {{ item.title }}
-                    </template>
+                    </template> -->
                     <MenuItem 
                         v-for="( value ) in item.list"
                         :key="value.routerName"
@@ -41,7 +42,7 @@
                         <Icon type="document-text"></Icon>    
                         {{ value.title }}  
                     </MenuItem>
-                </Submenu >
+                </MenuGroup  >
 
             </Menu>
         </happy-scroll>
@@ -50,7 +51,7 @@
 </template>
 
 <script>
-import { Sider , Menu , Submenu , MenuItem , Icon } from 'iview';
+import { Sider , Menu , Submenu , MenuItem, MenuGroup  , Icon } from 'iview';
 import { HappyScroll } from 'vue-happy-scroll';
     export default {
         data(){
@@ -71,7 +72,8 @@ import { HappyScroll } from 'vue-happy-scroll';
             Submenu ,
             MenuItem,
             Icon,
-            HappyScroll
+            HappyScroll,
+            MenuGroup 
         },
         props:['menu'],
         methods:{
