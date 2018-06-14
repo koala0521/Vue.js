@@ -13,7 +13,7 @@
 }
 .header{
     width: 100%;
-    background: #fff;
+    background: #495060;
     /* padding: 0; */
     z-index: 999;
 }
@@ -62,11 +62,11 @@
     <Header class="header" :style="{position: 'fixed', width: '100%'}" >
         <Row class="content-width" > 
             <Col span="18" >
-                <Menu theme="light" mode="horizontal" active-name="home" class="nav-wrap"  >                                
+                <Menu theme="dark" mode="horizontal" active-name="home" class="nav-wrap"  >                                
                     <div class="layout-logo"
                         @click="toHome"
                     >
-                        <img src="../../assets/img/logo.png" alt="logo">
+                        <img src="https://file.iviewui.com/dist/03635a3c88122ad605117128f3fda0ca.png" alt="logo">
                     </div>  
                     <div class="layout-nav clear-both">
                         <MenuItem name="home" class="" >

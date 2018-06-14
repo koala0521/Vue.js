@@ -591,50 +591,50 @@
             // 请求合计数据
             getTotalData(){
                 let _this = this;
-                util.ajax.get('/report/daily_count' ,{
-                    params:{
-                        range_time: this.range_time,
-                        channel:this.$store.getters.activeVendor
-                    }    
-                })
-                .then(req=>{
-                    console.log('===============req=====================');
-                    console.log(req);
-                    console.log('================req====================');
-                    _this.subtotalList.forEach(item=>{
-                        if( obj[ item.name ] || obj[ item.name ] === 0 ){
-                            item.totalNum = obj[ item.name ];
-                            return
-                        }                    
-                        item.totalNum = '--';
-                    });                    
-                })
-                .catch(err=>{
-                    console.log( 'err' , err );                
-                });                
+                // util.ajax.get('/report/daily_count' ,{
+                //     params:{
+                //         range_time: this.range_time,
+                //         channel:this.$store.getters.activeVendor
+                //     }    
+                // })
+                // .then(req=>{
+                //     console.log('===============req=====================');
+                //     console.log(req);
+                //     console.log('================req====================');
+                //     _this.subtotalList.forEach(item=>{
+                //         if( obj[ item.name ] || obj[ item.name ] === 0 ){
+                //             item.totalNum = obj[ item.name ];
+                //             return
+                //         }                    
+                //         item.totalNum = '--';
+                //     });                    
+                // })
+                // .catch(err=>{
+                //     console.log( 'err' , err );                
+                // });                
             },
 
             // 请求图表数据
             getChartData(){
                 let _this = this;
-                util.ajax.get('/report/daily_chart' ,{
-                    params:{
-                        range_time: this.range_time,
-                        channel:this.$store.getters.activeVendor
-                    }    
-                })
-                .then(req=>{
-                    console.log('===============req=====================');
-                    console.log(req);
-                    console.log('================req====================');
-                    let data = req.data;
-                    if( data.error_code === 0 ){
-                        _this.chartData.rows = data.list;
-                    }
-                })
-                .catch(err=>{
-                    console.log( 'err' , err );                
-                });  
+                // util.ajax.get('/report/daily_chart' ,{
+                //     params:{
+                //         range_time: this.range_time,
+                //         channel:this.$store.getters.activeVendor
+                //     }    
+                // })
+                // .then(req=>{
+                //     console.log('===============req=====================');
+                //     console.log(req);
+                //     console.log('================req====================');
+                //     let data = req.data;
+                //     if( data.error_code === 0 ){
+                //         _this.chartData.rows = data.list;
+                //     }
+                // })
+                // .catch(err=>{
+                //     console.log( 'err' , err );                
+                // });  
 
 
             },
@@ -644,22 +644,22 @@
                 
                 console.log( '请求列表数据' );
                 
-                util.ajax.get('/report/daily_list',{
-                    params:{
-                        range_time: this.range_time,
-                        pn: this.current,
-                        rn: this.pageSize,
-                        channel:this.$store.getters.activeVendor
-                    }
-                })
-                .then(req=>{
-                    console.log('===============req=====================');
-                    console.log(req);
-                    console.log('================req====================');
-                })
-                .catch(err=>{
-                    console.log( 'err' , err );                
-                });                
+                // util.ajax.get('/report/daily_list',{
+                //     params:{
+                //         range_time: this.range_time,
+                //         pn: this.current,
+                //         rn: this.pageSize,
+                //         channel:this.$store.getters.activeVendor
+                //     }
+                // })
+                // .then(req=>{
+                //     console.log('===============req=====================');
+                //     console.log(req);
+                //     console.log('================req====================');
+                // })
+                // .catch(err=>{
+                //     console.log( 'err' , err );                
+                // });                
             },
 
             // 导出数据

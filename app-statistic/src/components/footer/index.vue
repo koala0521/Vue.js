@@ -66,8 +66,8 @@
             <div class="footer-top relative">
                 <div class="footer-box">
                     <div class="footer-left">
-                        <p>联盟成员</p>
-                        <ul class="clear-both" >
+                        <p>iview -- 一套基于 Vue.js 的高质量 UI 组件库</p>
+                        <!-- <ul class="clear-both" >
                             <li><a href="https://dev.mi.com/console/app/newapp.html" target="_blank">小米开放平台</a></li>
                             <li><a href="http://apps.ztems.com/" target="_blank">中兴开发者平台</a></li>
                             <li><a href="http://developer.huawei.com/cn/consumer" target="_blank">华为开发者联盟</a></li>
@@ -78,7 +78,7 @@
                             <li><a href="https://open.oppomobile.com/" target="_blank">OPPO开放平台</a></li>
                             <li><a href="https://dev.vivo.com.cn/" target="_blank">vivo开发者平台</a></li>
                             <li><a href="http://www.oneplus.cn/" target="_blank">一加官网</a></li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
             </div>
