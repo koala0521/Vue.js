@@ -88,7 +88,7 @@
                 <Row>
                     <Col span="12" class="select"  >
                     <div>
-                        <Select v-model="activeVendor" placeholder="选择厂商" class="tac selet-chanel" style="width:126px">
+                        <Select v-model="activeVendor" placeholder="选择小程序" class="tac selet-chanel" style="width:126px">
                             <Option 
                                 v-for="item in vendorList" 
                                 :value="item.name" 
@@ -181,20 +181,20 @@
                 panel1:'1',
                 vendorList:[
                     {
-                        'title':'小米',
+                        'title':'开心消消乐',
                         'name':'xiaomi' 
                     },{
-                        'title':'中兴',
+                        'title':'跳一跳',
                         'name':'zhongxing' 
                     },{
-                        'title':'华为',
+                        'title':'麦当劳',
                         'name':'huawei' 
                     },{
-                        'title':'金立',
+                        'title':'饿了么外卖',
                         'name':'jingli' 
                     }
                 ],
-                activeVendor:''
+                activeVendor:'xiaomi'
             }
         },
         methods:{
