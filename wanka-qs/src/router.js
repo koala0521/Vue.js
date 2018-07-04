@@ -21,7 +21,7 @@ const routers = [
             // 主页
             {
                 path: 'home',
-                component: (resolve) => require(['./views/app-list.vue'], resolve),
+                component: (resolve) => require(['./views/app_list.vue'], resolve),
                 name: 'list',
                 meta: {
                     title: '主页'

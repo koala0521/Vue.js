@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="ptb20" >
+        <div class="ptb20 tac" >
             <router-link to="home">主页</router-link>
             <router-link to="charts">报表</router-link>
             <router-link to="doc">文档</router-link>
