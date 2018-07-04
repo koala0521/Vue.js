@@ -11,7 +11,6 @@ const routers = [
     // 登陆后的页面
     {
         path: '',
-        // name:'index',
         meta: {
             title: '快应用统计'
         },
@@ -33,18 +32,26 @@ const routers = [
                 path: 'charts',
                 component: (resolve) => require(['./views/charts.vue'], resolve),
                 children: [
+                    // 默认展示趋势分析
                     {
                         path: 'trend',
-                        component: (resolve) => require(['./views/charts.vue'], resolve),
+                        component: (resolve) => require(['./views/charts_trend.vue'], resolve),
                         name: 'trend',
                         meta: {
                             title: '报表 - 趋势分析'
                         }                
-                    },
+                    },{
+                        path: 'day',
+                        component: (resolve) => require(['./views/charts_day.vue'], resolve),
+                        name: 'day',
+                        meta: {
+                            title: '报表 - 今日概况'
+                        }                          
+                    },            
                     {
-                        path: '*',
-                        redirect: 'trend'
-                    }                    
+                        path: '',
+                        redirect: {name:'trend'}
+                    }                   
                 ]
             },
             // 开发文档
@@ -57,14 +64,14 @@ const routers = [
                 }                
             },            
             {
-                path: '*',
+                path: '',
                 redirect: 'home'
             }
         ]
     },
     {
         path: '*',
-        rredirect: { name: 'list' }
+        redirect: { name: 'list' }
     }
 ]
 ;
