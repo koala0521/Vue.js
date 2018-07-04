@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>iView project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <link rel="stylesheet" href="/dist/main.css?da208ea7c69163ef4e8e">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script type="text/javascript">
+        // 监测 ie浏览器支持  版本是否小于IE9 
+        var userAgent = window.navigator.userAgent.toLowerCase();
+        
+        if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("msie") > -1  ) {  
+            var ieVersion = userAgent.match(/msie\s\d+/)[0].match(/\d+/)[0];
+            if( ieVersion <= 11 ){
+                window.location.href = "http://file.wankacn.com/wankaonline/notice/updata.html";
+            }
+            console.log( ' 你的IE版本是>>>>>>>>>' , ieVersion );
+        }  
+    </script>    
+    <script type="text/javascript" src="/env.js"  >  </script>
+
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="/dist/vendors.js?da208ea7c69163ef4e8e"></script>
+    <script type="text/javascript" src="/dist/main.js?da208ea7c69163ef4e8e"></script>
+</body>
+
+</html>
