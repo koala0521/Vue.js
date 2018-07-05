@@ -24,4 +24,13 @@ util.ajax = axios.create({
     }
 });
 
+// sessin id 存储
+util.setStorage = ( key ,value )=>{
+    sessionStorage.setItem( key , value );
+}
+// sessin id 读取
+util.getStorage = ( key )=>{
+    return sessionStorage.getItem( key );
+}
+
 export default util;
