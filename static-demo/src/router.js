@@ -1,5 +1,5 @@
 const routers = [
-    // 登陆页面
+    // login page
     {
         path: '/login',
         component: (resolve) => require(['./views/login.vue'], resolve),
@@ -8,7 +8,7 @@ const routers = [
         },
         name:'login'
     },
-    // 登陆后的页面
+    // after login => home page
     {
         path: '',
         meta: {
@@ -17,7 +17,7 @@ const routers = [
         component: (resolve) => require(['./views/index.vue'], resolve),
         children:[
             
-            // 主页
+            // app list page
             {
                 path: 'home',
                 component: (resolve) => require(['./views/app_list.vue'], resolve),
@@ -27,7 +27,7 @@ const routers = [
                 }                   
             },
 
-            // 报表
+            // charts page
             {
                 path: 'charts',
                 component: (resolve) => require(['./views/app_charts.vue'], resolve),
