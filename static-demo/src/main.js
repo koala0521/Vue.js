@@ -2,7 +2,7 @@
 require('es6-promise').polyfill();
 
 import Vue from 'vue';
-import { LoadingBar } from 'iview';
+import { LoadingBar , Message } from 'iview';
 import VueRouter from 'vue-router';
 import Routers from './router';
 import store from './store';
@@ -16,6 +16,9 @@ import 'vue-happy-scroll/docs/happy-scroll.css'
 import 'v-charts/lib/style.css';
 
 Vue.use(VueRouter);
+
+// message 组件挂载全局
+Vue.prototype.$Message = Message;
 
 // 路由配置
 const RouterConfig = {
