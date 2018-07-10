@@ -1,10 +1,14 @@
 <template>
-    <div>
+    <Layout>
         <router-view></router-view>
-    </div>
+    </Layout>
 </template>
 <script>
+import { Layout } from 'iview';
     export default {
+        components:{
+            Layout
+        },
         data() {
             return {
 
