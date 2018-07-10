@@ -9,7 +9,7 @@
             <Step title="待进行" content="这里是该步骤的描述信息"></Step>
         </Steps> -->
         <div class="app-list-wrap" >
-            <mTbale :columns="column" :tableData="list" ></mTbale>
+            <m-tbale :columns="column" :tableData="list" ></m-tbale>
         </div>
                 
     </div>
