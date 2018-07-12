@@ -1,5 +1,5 @@
 <template>
-    <Layout>
+    <Layout class="full min-wid relative" >
         <router-view></router-view>
     </Layout>
 </template>
