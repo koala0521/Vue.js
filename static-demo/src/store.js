@@ -14,7 +14,24 @@ const store = new Vuex.Store({
 
         // showNotice: true,
         // // 用户信息
-        // userInfo: null
+        userInfo: { name:'test-user-00000001'},
+        // 当前选择的 app 
+        appId:'1',
+        // 用户所有的 app
+        appList: [
+            {
+                value: '1',
+                label: 'New York'
+            },
+            {
+                value: '2',
+                label: 'London'
+            },
+            {
+                value: '3',
+                label: 'Sydney'
+            },
+        ]
     },
     getters: {
         login:( state )=>{
@@ -32,9 +49,15 @@ const store = new Vuex.Store({
         // showNotice( state ){
         //     return state.showNotice
         // },
-        // userInfo( state ){
-        //     return state.userInfo
-        // }
+        userInfo( state ){
+            return state.userInfo
+        },
+        appId( state ){
+            return state.appId
+        },
+        appList( state ){
+            return state.appList
+        },
     },
     mutations: {
 
@@ -53,9 +76,12 @@ const store = new Vuex.Store({
         // closeNotice(state){
         //     state.showNotice = false;
         // },
-        // updateUserInfo( state , payload ){
-        //     state.userInfo = payload.data;
-        // }
+        updateUserInfo( state , payload ){
+            state.userInfo = payload.data;
+        },
+        undateAppId( state , payload ){
+            state.appId = payload.appId;
+        }
     },
     actions: {
 
@@ -74,9 +100,12 @@ const store = new Vuex.Store({
         // closeNotice({ commit }){
         //     commit('closeNotice');
         // },
-        // updateUserInfo( { commit } , payload ){
-        //     commit('updateUserInfo', payload );
-        // }
+        updateUserInfo( { commit } , payload ){
+            commit('updateUserInfo' , payload );
+        },
+        undateAppId( { commit } , payload ){
+            commit( 'undateAppId' , payload );
+        }
     }
 });
 
