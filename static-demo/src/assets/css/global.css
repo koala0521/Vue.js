@@ -14,13 +14,63 @@ img{
     vertical-align: top;
 }
 html,body{
-    min-height: 100%;
+    /* min-height: 100%; */
+    height: 100%;
+    background: #f7f8fa;
 }
 .ivu-layout{
-    background: #f9fafc;
+    /* background: #f7f8fa; */
     font-size: 14px;    
     color: #323232;
     font-family: Microsoft YaHei,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;
+}
+.min-wid{
+    min-width: 1280px;
+}
+
+/* ****************************************** */
+
+/* 登录页面 */
+#login .ivu-input{
+    height: 44px;
+}
+#login .ivu-input-group-prepend{
+    border-radius: 22px;
+    padding: 0 20px;
+    background: #f8f5fc;
+}
+#login .ivu-input{
+    border-radius: 0 22px 22px 0;
+    background: #f8f5fc;
+}
+/* 登录页面 */
+
+/* ****************************************** */
+
+/* header 组件 */
+
+
+.header .ivu-select-selection{
+    height: 32px;
+    border: none;
+    border-bottom: 2px solid #eeeeee;
+    border-radius: 0;
+}
+
+/* header 组件 */
+
+/* ****************************************** */
+
+/* 气泡 */
+
+.poptip-wrap{
+    color: #666;
+}
+
+/* 气泡 */
+
+.look-more{
+    color: #fccc94;
 }
 
 .content-width{
@@ -73,18 +123,10 @@ html,body{
     padding:0px;
 }
 
-
-.ivu-layout-header{
-    height: 76px;
-}
-.ivu-menu-horizontal{
-    height: 74px;
-}
-
 /* 二级标题 */
 .level-II-title{
-    height: 60px;
-    line-height: 40px;
+    /* height: 60px;
+    line-height: 40px; */
     font-size: 14px;
     font-weight: 600;    
 }
@@ -169,6 +211,8 @@ html,body{
     top: 0;
 }
 
+/* 公用 class */
+
 .tac{text-align:center !important;}
 .tal{text-align:left !important;}
 .tar{text-align:right !important;}
@@ -190,6 +234,28 @@ html,body{
     cursor: pointer;
 }
 .breakword{word-wrap:break-word;word-break:break-all;}
+
+.row-flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.row-flex-space-around{
+    justify-content: space-around;
+}
+.row-flex-space-between{
+    justify-content: space-between;
+}
+
+.row-flex-center{
+    justify-content: center;
+}
+.f-hide{
+    overflow: hidden;
+}
+.f-auto{
+    overflow: auto;
+}
 
 /*快捷补丁*/
 .p2{padding:2px;}.p4{padding:4px;}.p6{padding:6px;}.p8{padding:8px;}.p10{padding:10px;}.p12{padding:12px;}.p16{padding:16px;}.p20{padding:20px;}.p24{padding:24px;}.p28{padding:28px;}.p30{padding:30px;}.p32{padding:32px;}.p36{padding:36px;}.p40{padding:40px;}.p48{padding:48px;}.p50{padding:50px;}.p56{padding:56px;}.p60{padding:60px;}.p64{padding:64px;}
