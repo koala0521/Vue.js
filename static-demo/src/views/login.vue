@@ -1,33 +1,103 @@
 <style scoped>
-    #login{
-        width: 500px;
-        position: fixed;
-        left: 50%;
-        top: 50%;
-        transform:translate(-50% ,-50% );  
-        box-shadow: 0 0 20px 2px;
-        padding: 50px;
+    .login-wrap{
+        background: url('../assets/img/bg.jpg') no-repeat center;
+        background-size: 100% 100%;
     }
+    #login{
+        width: 400px;
+        position: fixed;
+        right: 54px;
+        top: 50%;
+        transform:translate( 0 ,-50% );  
+        /* box-shadow: 0 0 20px 2px; */
+        padding: 16px 16px;
+    }
+    #login .item{
+        margin-bottom: 30px;
+    }
+    #login .submit-btn{
+        height:44px;
+        width: 170px;
+        background-color: #658afc;
+    }
+    .ver-code{
+        width: 218px;
+    }
+    .code-img{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 132px;
+        height: 44px;
+        background: #000;
+    }
+
+    .title-wrap .title{
+        line-height: 46px;
+        color: #333333;
+        font-size: 30px;
+        font-weight: 500;
+    }
+    .title-wrap .dis{
+        line-height: 34px;
+        font-size: 16px;
+    }
+    .item-bg{
+        background: #f8f5fc;
+    }
+    .copyright{
+        width: 400px;
+        position: fixed;
+        right: 54px;
+        bottom: 30px;
+        padding: 16px 16px;        
+        line-height: 22px;
+        font-size: 12px;
+    }
+    .copyright p{
+        padding-left: 14px;
+        color: #dadada;
+        text-align: center;
+    }
+    
 </style>
 
 <template>
-    <div class="full" >
+    <div class="full relative login-wrap" >
         <div id="login">
+            <div class="title-wrap mb40">
+                <h2 class="title" >Hello!</h2>
+                <p class="dis" >欢迎登陆-玩咖开应用统计平台</p>
+            </div>
             <Form ref="form" :model="formItem" :rules="formRule">
-                <FormItem prop="user">
-                    <Input type="text" v-model="formItem.user" placeholder="用户名">
-                        <Icon type="ios-person-outline" slot="prepend"></Icon>
+                <FormItem prop="user" class="item" >
+                    <Input  size="large" type="text" v-model="formItem.user" placeholder="用户名">
+                        <!-- <Icon type="ios-person-outline" slot="prepend"></Icon> -->
+                        <span slot="prepend" >账 号</span>
                     </Input>
                 </FormItem>
-                <FormItem prop="password">
-                    <Input type="password" v-model="formItem.password" placeholder="密码">
-                        <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                <FormItem prop="password" class="item" >
+                    <Input size="large" type="password" v-model="formItem.password" placeholder="密码">
+                        <span slot="prepend" >密 码</span>
                     </Input>
                 </FormItem>
-                <FormItem class="tac" >
-                    <Button type="primary" @click="handleSubmit('form')">登陆</Button>
+                <FormItem prop="password" class="item relative" >
+                    <Input class="ver-code" type="text" v-model="formItem.verCode" placeholder="请输入验证信息">
+                        <span slot="prepend" >验证码</span>
+                    </Input>
+                    <div class="code-img">aaaaa</div>
+                </FormItem>
+
+                <FormItem class="item pt10" >
+                    <Button class="submit-btn" type="primary" shape="circle"  @click="handleSubmit('form')">登陆</Button>
+                </FormItem>
+                <FormItem>
+                    <!-- <a href="#">忘记密码?</a> -->
                 </FormItem>
             </Form>
+        </div>
+        <div class="copyright">
+            <p>COPYRIGHT © 1998 – 2018 TENCENT. ALL RIGHTS RESERVED.  玩咖公司 版权所</p>
         </div>
     </div>
 
@@ -77,6 +147,10 @@
                         { required: true, message: '请输入密码', trigger: 'blur' },
                         // { type: 'string', min: 6, max:12 ,message: '密码长度为 6 - 12 位', trigger: 'blur' },
                         { validator: validatePass, trigger: 'blur' }
+                    ],
+                    verCode:[
+                        { required: true, message: '请输入验证码', trigger: 'blur' },
+                        { type: 'string', min: 6, max:12 ,message: '验证码错误', trigger: 'blur' }
                     ]
                 }
             }
