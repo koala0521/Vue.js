@@ -39,14 +39,14 @@
         components:{
             Header
         },
-      methods:{
+        methods:{
             logout(){              
-                    this.$store.dispatch('loginOut');
-                    this.$router.push({
-                        name:'login'
-                    });
+                this.$store.dispatch('loginOut');
+                this.$router.push({
+                    name:'login'
+                });
             }
-      }
+        }
     }
     
 </script>

@@ -31,7 +31,7 @@ const store = new Vuex.Store({
                 value: '3',
                 label: 'Sydney'
             },
-        ]
+        ],
     },
     getters: {
         login:( state )=>{
@@ -57,7 +57,7 @@ const store = new Vuex.Store({
         },
         appList( state ){
             return state.appList
-        },
+        }
     },
     mutations: {
 

@@ -124,55 +124,36 @@
                 appid: this.$store.getters.appId
             }
         },
-        mounted(){
-            console.log('=============mounted=======================');
-            console.log( this.$router.currentRoute.name );
-            console.log('==============mounted======================');
-        },
-        beforeUpdate(){
-            console.log('组件 beforeUpdate');
-        },
-        updated(){
-            console.log('组件 updated');
-            
-        },
         watch:{
-            appid(val , oldVal){
-                console.log('=============oldVal=======================');
-                console.log( val , oldVal );
-                console.log('=============oldVal=======================');
+            'appid'(val , oldVal){
+
                 this.$store.dispatch('undateAppId',{
                     appId : val
                 });
+            },
+            //  监听路由变化
+            '$route'( to , from ){                
+                this.currentItem = to.name;
             }
         },
         methods:{
             menuChange(name){
-                console.log('name' , name );
                 this.$router.push({
                     name
                 });
-                this.currentItem = name;
             },
             toDocouemnt(){
                 this.$router.push({
                     path: '/doc'
                 });
-                this.currentItem = 'doc';
             },
             onDropMenu( name ){
-                console.log('name' , name );  
+
                 if( !name ) return              
                 this.$router.push({
                     name
                 });
-            },
-            // changeApp(val){
-            //     console.log('val' , val);
-            //     // this.$store.dispatch('undateAppId',{
-            //     //     appId : val
-            //     // })
-            // }
+            }
         }
     };
 </script>

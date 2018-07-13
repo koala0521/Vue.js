@@ -79,8 +79,7 @@
                         title: '操作',
                         key: 'do',
                         render: (h, params) => {
-                            console.log('params' , params );
-                            
+
                             return h('router-link', {
                                     props: {
                                         to: '/charts/trend',
